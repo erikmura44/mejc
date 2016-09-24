@@ -1,0 +1,1 @@
+/* Find user function is a fulljoin for passport */
