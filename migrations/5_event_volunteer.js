@@ -3,7 +3,6 @@ exports.up = function(knex, Promise) {
     table.integer('event_id')
       .references('event.id')
       .onDelete('CASCADE');
-
     table.integer('volunteer_id')
       .references('volunteer.id')
       .onDelete('CASCADE');

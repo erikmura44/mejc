@@ -6,9 +6,9 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
 const session = require('express-session');
 const passport = require('./passport');
-
 
 const index = require('./controllers/index');
 const volunteers = require('./controllers/volunteers');
@@ -27,13 +27,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(sessions({
+
+app.use(session({
   secret: process.env.SECRET,
   saveUninitialized: true,
   resave: false
 }));
+
 app.use(passport.initialize());
-app.use(passport.sesion());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
