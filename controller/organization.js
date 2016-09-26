@@ -3,9 +3,27 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+// const passport = require('../passport')
+// const bcrypt = require('bcrypt');
+
+const organizationModel = require('../model/organization_query');
+
+router.get('/', (req, res, next) => {
+  organizationModel.findAllOrganizations()
+    .then((data) => {
+      res.render('organization/organization', {
+        data: data
+      })
+    })
+});
+
+router.get('/:id', (req, res, next) => {
+  organizationModel.findOrganizationbyID(req.params.id)
+  .then((data) => {
+    res.render('organization/organization_single', {
+      data: data
+    });
+  })
 });
 
 module.exports = router;

@@ -80,13 +80,6 @@ function addOrganization(userData){
   return knex('organization').insert(userData)
 }
 
-function findVolunteerbyID(id){
-  return knex('volunteer').where("id", id).first()
-}
-
-function findOrganizationbyID(id){
-  return knex('organization').where("id", id).first()
-}
 
 module.exports = {
   findVolunteerUsername:findVolunteerUsername,
@@ -98,7 +91,5 @@ module.exports = {
   countofOrgUser: countOfOrganizationUser,
   countofVolUser: countOfVolunteerUser,
   addOrganization: addOrganization,
-  addVolunteer: addVolunteer,
-  findVolunteerbyID: findVolunteerbyID,
-  findOrganizationbyID: findOrganizationbyID
+  addVolunteer: addVolunteer
 };
