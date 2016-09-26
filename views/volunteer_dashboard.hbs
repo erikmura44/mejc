@@ -1,4 +1,14 @@
-{{! /volunteer/:id/dashboard }}
+{{! /volunteer/dashboard }}
 
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+
+{{#each data}}
+{{username}}<br>
+{{email}}<br>
+{{first_name}}<br>
+{{last_name}}<br>
+{{about}}<br>
+{{location}}<br>
+{{phone_number}}<br>
+{{/each}}

@@ -5,7 +5,7 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 
 const router = express.Router();
-const indexModel = require('../models/index_query');
+const indexModel = require('../model/index_query');
 
 
 /* GET splash page. */
@@ -22,7 +22,7 @@ router.get('/login/volunteer', (req,res,next) => {
 });
 
 router.post('/login/volunteer', passport.authenticate('local', {
-  successRedirect:'/volunteer/dashboard',
+  successRedirect:'/dashboard/volunteer',
   failureRedirect:'/login/volunteer'
 }));
 
@@ -31,7 +31,7 @@ router.get('/login/organization', (req,res,next) => {
 });
 
 router.post('/login/organization', passport.authenticate('local', {
-  successRedirect:'/organization/dashboard',
+  successRedirect:'/dashboard/organization',
   failureRedirect:'/login/organization'
 }));
 
@@ -95,36 +95,40 @@ router.post('/register/organization', (req, res, next) => {
     })
 })
 
+// NEED TO FLESH OUT - partially completed; don't work
+router.get('/dashboard/volunteer', (req, res, next)=>{
+  if (!req.isAuthenticated()){
+    res.redirect('/login/volunteer');
+    return;
+  }
+// find dashboard info for specific volunteer
+indexModel.findVolunteerbyID(1)
+  .then((data) => {
+    res.render('volunteer_dashboard')
+      // render per object
+  })
+});
+
+// NEED TO FLESH OUT - partially completed; don't work
+router.get('/dashboard/organization', (req, res, next)=>{
+  if (!req.isAuthenticated()){
+    res.redirect('/login/organization');
+    return;
+  }
+// find dashboard info for specific organization
+  // .then((data) => {
+  //   res.render('organization_dashboard', {
+  //     // render per object
+  //   })
+  // })
+});
+
+
 router.get('/logout', (req,res,next) => {
   if(req.isAuthenticated()){
     req.logout();
     res.redirect('/')
   }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-router.get('/volunteer', (req, res, next) => {
-  res.render('volunteer');
-});
-
-router.get('/volunteer/dashboard', (req,res,next)=>{
-  res.render('volunteer_dashboard');
-});
-
-router.get('/volunteer/:id', (req, res, next) => {
-  res.render('volunteer_byid');
 });
 
 

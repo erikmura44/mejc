@@ -3,7 +3,7 @@
 const bcrypt = require("bcrypt");
 const passport = require("passport")
 const Local = require("passport-local")
-const indexModel = require('./models/index_query')
+const indexModel = require('./model/index_query')
 
 
 passport.use(new Local((username, password, done) => {
