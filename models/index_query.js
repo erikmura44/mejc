@@ -12,7 +12,7 @@ function countOfVolunteerUser(volName){
 }
 
 function findVolunteerUsername(username){
-  return knex('volunteer').select('user_name').where('user_name',username).first();
+  return knex('volunteer').select('user_name').where('user_name',username).first()
 }
 
 function findVolunteerData(username){
@@ -81,7 +81,7 @@ function addOrganization(userData){
 }
 
 
-module.exports {
+module.exports = {
   findVolunteerUsername:findVolunteerUsername,
   findVolunteerData: findVolunteerData,
   findVolunteerHashedPassword: findVolunteerHashedPassword,

@@ -1,28 +1,36 @@
 'use strict'
 
 const express = require('express');
+const passport = require('passport');
+const bcrypt = require('bcrypt');
+
 const router = express.Router();
-const indexModel = require('../models/index_query')
+const indexModel = require('../models/index_query');
+
 
 /* GET splash page. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.render('index', { title: 'MEJC' });
 });
 
-router.get('/login/volunteer', (req,res,next) => {
+router.get('/login', (req,res,next)=>{
   res.render('login');
 });
 
-router.post('/login/volunteer', passport.authenticateVolunteer('local', {
+router.get('/login/volunteer', (req,res,next) => {
+  res.render('login_volunteer');
+});
+
+router.post('/login/volunteer', passport.authenticate('local', {
   successRedirect:'/volunteer/dashboard',
   failureRedirect:'/login/volunteer'
 }));
 
 router.get('/login/organization', (req,res,next) => {
-  res.render('login');
+  res.render('login_organization');
 });
 
-router.post('/login/organization', passport.authenticateOrganization('local', {
+router.post('/login/organization', passport.authenticate('local', {
   successRedirect:'/organization/dashboard',
   failureRedirect:'/login/organization'
 }));
@@ -30,7 +38,6 @@ router.post('/login/organization', passport.authenticateOrganization('local', {
 router.get('/register', (req,res,next) => {
   res.render('register');
 });
-
 
 router.get('/register/volunteer', (req,res,next) => {
   res.render('register_volunteer');
