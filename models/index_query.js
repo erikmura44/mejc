@@ -34,9 +34,9 @@ function authenticateVolunteer(username, password){
 }
 
 function addVolunteer(user_name,password,email){
-  if(!user_name || !password || !email){
-    return false;
-  }
+  // if(!user_name || !password || !email){
+  //   return false;
+  // }
   return findVolunteerUsername(username)
   .then(function(data){
     if(data){
@@ -82,9 +82,9 @@ function authenticateOrganization(username, password){
 }
 
 function addOrganization(user_name,password,email){
-  if(!user_name || !password || !email){
-    return false;
-  }
+  // if(!user_name || !password || !email){
+  //   return false;
+  // }
   return findOrganizationUsername(username)
   .then(function(data){
     if(data){
