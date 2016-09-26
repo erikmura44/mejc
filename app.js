@@ -29,7 +29,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(session({
+<<<<<<< HEAD
   secret: "This team rox",
+=======
+  secret: "this team rox",
+>>>>>>> 49c40b7aabe20cfd9c2e2835ce94884f600bf971
   saveUninitialized: true,
   resave: false
 }));
