@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
           end_time: 12:30:00,
           description: fakeInfo.description(),
           available_positions: 50,
-          registed_volunteers: 23,
+          registed_volunteers: 2,
           organization_id: 10
         }),
         knex('event').insert({
@@ -48,7 +48,7 @@ exports.seed = function(knex, Promise) {
           end_time: 13:00:00,
           description: fakeInfo.description(),
           available_positions: 3,
-          registed_volunteers: 3,
+          registed_volunteers: 0,
           organization_id: 1
         }),
         knex('event').insert({
@@ -62,7 +62,7 @@ exports.seed = function(knex, Promise) {
           end_time: 12:00:00,
           description: fakeInfo.description(),
           available_positions: 4,
-          registed_volunteers: 2,
+          registed_volunteers: 1,
           organization_id: 2
         }),
         knex('event').insert({
@@ -76,7 +76,7 @@ exports.seed = function(knex, Promise) {
           end_time: ,
           description: fakeInfo.description(),
           available_positions: 8,
-          registed_volunteers: 5,
+          registed_volunteers: 2,
           organization_id: 7
         }),
         knex('event').insert({
@@ -89,7 +89,7 @@ exports.seed = function(knex, Promise) {
           start_time: ,
           end_time: ,
           description: fakeInfo.description(),
-          available_positions: 20,
+          available_positions: 3,
           registed_volunteers: 2,
           organization_id: 8
         }),
@@ -118,7 +118,7 @@ exports.seed = function(knex, Promise) {
           end_time: ,
           description: fakeInfo.description(),
           available_positions: 2,
-          registed_volunteers: 3,
+          registed_volunteers: 0,
           organization_id: 5
         }),
         knex('event').insert({
@@ -146,7 +146,7 @@ exports.seed = function(knex, Promise) {
           end_time: ,
           description: fakeInfo.description(),
           available_positions: 2,
-          registed_volunteers: 1,
+          registed_volunteers: 0,
           organization_id: 5
         })
       ]);
