@@ -7,6 +7,10 @@ function hashPassword(password){
   return bcrypt.hashSync(password,10);
 }
 
+function countOfVolunteerUser(volName){
+  return knex('volunteer').count('user_name').where('user_name', volName);
+}
+
 function findVolunteerUsername(username){
   return knex('volunteer').select('user_name').where('user_name',username).first();
 }
@@ -33,26 +37,17 @@ function authenticateVolunteer(username, password){
   });
 }
 
-function addVolunteer(user_name,password,email){
-  // if(!user_name || !password || !email){
-  //   return false;
-  // }
-  return findVolunteerUsername(username)
-  .then(function(data){
-    if(data){
-      return false;
-    }
-    return knex('volunteer').insert({user_name: user_name, password: hashPassword(password),email:email});
-  })
-  .catch(function(err){
-    return err;
-  });
+function addVolunteer(userData){
+  return knex('volunteer').insert(userData)
 }
-
 
 //Organization Login
 function hashPassword(password){
   return bcrypt.hashSync(password,10);
+}
+
+function countOfOrganizationUser(orgName){
+  return knex('organization').count('user_name').where('user_name', orgName);
 }
 
 function findOrganizationUsername(username){
@@ -67,34 +62,22 @@ function findOrganizationHashedPassword(username){
   return knex('organization').select('organization.password').where('organization.user_name',username).first();
 }
 
-function authenticateOrganization(username, password){
-  return findOrganizationUsername(username)
-  .then(function(userData){
-    if(!userData){
-      return false;
-    }
-    return findOrganizationHashedPassword(username)
-    .then(function(hashedPassword){
-      hashedPassword = hashedPassword.password;
-      return bcrypt.compareSync(password, hashedPassword);
-    });
-  });
-}
+// function authenticateOrganization(username, password){
+//   return findOrganizationUsername(username)
+//   .then(function(userData){
+//     if(!userData){
+//       return false;
+//     }
+//     return findOrganizationHashedPassword(username)
+//     .then(function(hashedPassword){
+//       hashedPassword = hashedPassword.password;
+//       return bcrypt.compareSync(password, hashedPassword);
+//     });
+//   });
+// }
 
-function addOrganization(user_name,password,email){
-  // if(!user_name || !password || !email){
-  //   return false;
-  // }
-  return findOrganizationUsername(username)
-  .then(function(data){
-    if(data){
-      return false;
-    }
-    return knex('organization').insert({user_name: user_name, password: hashPassword(password),email:email});
-  })
-  .catch(function(err){
-    return err;
-  });
+function addOrganization(userData){
+  return knex('organization').insert(userData)
 }
 
 
@@ -104,5 +87,9 @@ module.exports {
   findVolunteerHashedPassword: findVolunteerHashedPassword,
   findOrganizationUsername: findOrganizationUsername,
   findOrganizationData: findOrganizationData,
-  findOrganizationHashedPassword: findOrganizationHashedPassword
+  findOrganizationHashedPassword: findOrganizationHashedPassword,
+  countofOrgUser: countOfOrganizationUser,
+  countofVolUser: countOfVolunteerUser,
+  addOrganization: addOrganization,
+  addVolunteer: addVolunteer
 };
