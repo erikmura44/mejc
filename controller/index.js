@@ -102,7 +102,8 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
     return;
   }
 // find dashboard info for specific volunteer
-indexModel.findVolunteerbyID(1)
+// indexModel.findVolunteerbyID(id)
+indexModel.findVolunteerbyID(1) // hardcoded for testing
   .then((data) => {
     res.render('volunteer_dashboard')
       // render per object
@@ -111,16 +112,18 @@ indexModel.findVolunteerbyID(1)
 
 // NEED TO FLESH OUT - partially completed; don't work
 router.get('/dashboard/organization', (req, res, next)=>{
-  if (!req.isAuthenticated()){
-    res.redirect('/login/organization');
-    return;
-  }
+  // if (!req.isAuthenticated()){
+  //   res.redirect('/login/organization');
+  //   return;
+  // }
 // find dashboard info for specific organization
-  // .then((data) => {
-  //   res.render('organization_dashboard', {
-  //     // render per object
-  //   })
-  // })
+// indexModel.findOrganizationbyID(id)
+indexModel.findOrganizationbyID(1) // hardcoded for testing
+  .then((data) => {
+    res.render('organization_dashboard', {
+      // render per object
+    })
+  })
 });
 
 
