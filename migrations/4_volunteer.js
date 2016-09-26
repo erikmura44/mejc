@@ -6,13 +6,9 @@ exports.up = function(knex, Promise) {
     table.string('first_name');
     table.string('last_name');
     table.text('about');
+    table.string('location');
     table.string('email');
     table.string('phone_number');
-
-    table.integer('interest_id') // when inserting data into this, need to stringify
-      .references('interest.id')
-      .onDelete('CASCADE');
-
     // table.refenence skills foreign
   })
 };
