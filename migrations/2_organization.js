@@ -5,10 +5,11 @@ exports.up = function(knex, Promise) {
     table.string('password');
     table.string('organization_name');
     table.text('about');
-    table.string('city');
-    table.string('contact_name');
+    table.string('address');
+    table.string('contact');
     table.string('email');
     table.string('phone_number');
+    table.string('website');
   })
 };
 
