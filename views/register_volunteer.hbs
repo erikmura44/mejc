@@ -1,0 +1,29 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="title-post">{{title}}</h1>
+      <h4 class="header-post">Log In</h4>
+      <form class="post-blog-form" action="/register/volunteer" method="POST">
+        <ul>
+          <li>
+            <label for="user_name">Username</label>
+            <input type="text" name="user_name" placeholder="John Smith" required>
+          </li>
+          <li>
+            <label for="password">Enter Password</label>
+            <input type="password" name="password" placeholder="************" required>
+          </li>
+          <li>
+            <label for="email">Enter Email</label>
+            <input type="email" name="email" placeholder="john.doe@gmail.com" required>
+          </li>
+          <li>
+            <input type="submit" class="submit-btn" name="registerVolSubmit" value="Submit" required>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>
