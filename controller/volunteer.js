@@ -8,15 +8,23 @@ const router = express.Router();
 
 const volunteerModel = require('../model/volunteer_query');
 
+
 router.get('/', (req, res, next) => {
   volunteerModel.findAllVolunteers()
     .then((data) => {
-      res.render('volunteer')
+      res.render('volunteer/volunteer', {
+        data: data
+      })
     })
 });
 
 router.get('/:id', (req, res, next) => {
-  res.render('volunteer_single');
+  volunteerModel.findVolunteerbyID(req.params.id)
+  .then((data) => {
+    res.render('volunteer/volunteer_single', {
+      data: data
+    });
+  })
 });
 
 module.exports = router;
