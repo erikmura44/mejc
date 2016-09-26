@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+'use strict'
 /**
  * Module dependencies.
  */
@@ -34,7 +34,7 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
-  let port = parseInt(val, 10);
+  var port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
