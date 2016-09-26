@@ -4,10 +4,10 @@ exports.up = function(knex, Promise) {
     table.string('title').notNullable();
     table.string('location').notNullable();
     table.string('address').notNullable();
-    table.date('start_date');  // Format: YYYY-MM-DD
-    table.date('end_date');
-    table.time('start_time');  // Format: HH:MI:SS
-    table.time('end_time');
+    table.string('start_date');  // Format: YYYY-MM-DD
+    table.string('end_date');
+    table.string('start_time');  // Format: HH:MI AM/PM
+    table.string('end_time');
     table.text('description').notNullable();
     table.integer('available_positions').notNullable();
     table.integer('registed_volunteers').notNullable();
