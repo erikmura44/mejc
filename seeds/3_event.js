@@ -16,11 +16,11 @@ exports.seed = function(knex, Promise) {
           address: '1644 Platte St, Denver, CO 80202',
           start_date: 2016-10-01,
           end_date: 2016-10-01,
-          start_time: 09:00:00
+          start_time: 09:00:00,
           end_time: 17:00:00,
-          description: fakeInfo.description()
-          volunteers_needed: 4,
-          volunteers_registered: 3,
+          description: fakeInfo.description(),
+          available_positions: 4,
+          registed_volunteers: 3,
           organization_id: 9
         }),
         knex('event').insert({
@@ -32,9 +32,9 @@ exports.seed = function(knex, Promise) {
           end_date: 2016-09-30,
           start_time: 10:00:00,
           end_time: 12:30:00,
-          description: fakeInfo.description()
-          volunteers_needed: 50,
-          volunteers_registered: 23,
+          description: fakeInfo.description(),
+          available_positions: 50,
+          registed_volunteers: 23,
           organization_id: 10
         }),
         knex('event').insert({
@@ -46,9 +46,9 @@ exports.seed = function(knex, Promise) {
           end_date: 2016-10-06,
           start_time: 11:30:00,
           end_time: 13:00:00,
-          description: fakeInfo.description()
-          volunteers_needed: 3,
-          volunteers_registered: 3,
+          description: fakeInfo.description(),
+          available_positions: 3,
+          registed_volunteers: 3,
           organization_id: 1
         }),
         knex('event').insert({
@@ -60,9 +60,9 @@ exports.seed = function(knex, Promise) {
           end_date: 2016-11-05,
           start_time: 10:00:00,
           end_time: 12:00:00,
-          description: fakeInfo.description()
-          volunteers_needed: 4,
-          volunteers_registered: 2,
+          description: fakeInfo.description(),
+          available_positions: 4,
+          registed_volunteers: 2,
           organization_id: 2
         }),
         knex('event').insert({
@@ -74,9 +74,9 @@ exports.seed = function(knex, Promise) {
           end_date: 2071-02-30,
           start_time: ,
           end_time: ,
-          description: fakeInfo.description()
-          volunteers_needed: 8,
-          volunteers_registered: 5,
+          description: fakeInfo.description(),
+          available_positions: 8,
+          registed_volunteers: 5,
           organization_id: 7
         }),
         knex('event').insert({
@@ -88,65 +88,65 @@ exports.seed = function(knex, Promise) {
           end_date: 2017-01-01,
           start_time: ,
           end_time: ,
-          description: fakeInfo.description()
-          volunteers_needed: 20,
-          volunteers_registered: 2,
+          description: fakeInfo.description(),
+          available_positions: 20,
+          registed_volunteers: 2,
           organization_id: 8
         }),
         knex('event').insert({
           id: 7,
-          title: ,
-          location: ,
-          address: ,
-          start_date: ,
-          end_date: ,
-          start_time: ,
-          end_time: ,
-          description: fakeInfo.description()
-          volunteers_needed: 4,
-          volunteers_registered: 0,
+          title: 'Event Coordination for the WildAgain Winter Gala',
+          location: 'DoubleTree - Stapleton North',
+          address: '4040 Quebec St, Denver, CO 80216',
+          start_date: 2016-12-05,
+          end_date: 2016-12-05,
+          start_time: 1:30:00,
+          end_time: 23:30:00,
+          description: fakeInfo.description(),
+          available_positions: 4,
+          registed_volunteers: 0,
           organization_id: 3
         }),
         knex('event').insert({
           id: 8,
-          title: ,
-          location: ,
-          address: ,
-          start_date: ,
-          end_date: ,
+          title: 'Refugee Service Intern',
+          location: 'Denver Rescue Mission',
+          address: '3501 E. 46th Avenue, Denver, CO 80216',
+          start_date: 2016-10-01,
+          end_date: 2016-05-01,
           start_time: ,
           end_time: ,
-          description: fakeInfo.description()
-          volunteers_needed: ,
-          volunteers_registered: ,
+          description: fakeInfo.description(),
+          available_positions: 2,
+          registed_volunteers: 3,
           organization_id: 5
         }),
         knex('event').insert({
           id: 9,
-          title: ,
-          location: ,
-          address: ,
-          start_date: ,
-          end_date: ,
+          title: 'Office & Committee Volunteers',
+          location: 'Flatirons Habitat for Humanity',
+          address: '2540 Frontier Ave Boulder, CO 80301',
+          start_date: 9:00:00,
+          end_date: 16:30:00,
           start_time: ,
           end_time: ,
-          description: fakeInfo.description()
-          volunteers_needed: ,
-          volunteers_registered: ,
+          description: fakeInfo.description(),
+          available_positions: 5,
+          registed_volunteers: 3,
           organization_id: 4
         }),
         knex('event').insert({
           id: 10,
-          title: ,
-          location: ,
-          address: ,
-          start_date: ,
-          end_date: ,
+          title: 'Medical Assistant Intern',
+          location: 'Denver Rescue Mission',
+          address: '3501 E. 46th Avenue, Denver, CO 80216',
+          start_date: 2016-10-01,
+          end_date: 2016-05-01,
           start_time: ,
           end_time: ,
-          description: fakeInfo.description()
-          volunteers_needed: ,
-          volunteers_registered: ,
+          description: fakeInfo.description(),
+          available_positions: 2,
+          registed_volunteers: 1,
           organization_id: 5
         })
       ]);

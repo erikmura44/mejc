@@ -8,9 +8,9 @@ exports.up = function(knex, Promise) {
     table.date('end_date');
     table.time('start_time');  // Format: HH:MI:SS
     table.time('end_time');
-    table.integer('description').notNullable();
-    table.integer('volunteers_needed').notNullable();
-    table.integer('volunteers_registered').notNullable();
+    table.text('description').notNullable();
+    table.integer('available_positions').notNullable();
+    table.integer('registed_volunteers').notNullable();
     table.integer('organization_id')
       .references('organization.id')
       .onDelete('CASCADE');
