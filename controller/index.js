@@ -1,24 +1,25 @@
 'use strict'
 
 const express = require('express');
-const passport = require('passport');
+const router = express.Router();
+
+const passport = require('../passport')
 const bcrypt = require('bcrypt');
 
-const router = express.Router();
 const indexModel = require('../model/index_query');
 
 
 /* GET splash page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'MEJC' });
+  res.render('index/index', { title: 'MEJC' });
 });
 
 router.get('/login', (req,res,next)=>{
-  res.render('login');
+  res.render('index/login');
 });
 
 router.get('/login/volunteer', (req,res,next) => {
-  res.render('login_volunteer');
+  res.render('index/login_volunteer');
 });
 
 router.post('/login/volunteer', passport.authenticate('local', {
@@ -27,7 +28,7 @@ router.post('/login/volunteer', passport.authenticate('local', {
 }));
 
 router.get('/login/organization', (req,res,next) => {
-  res.render('login_organization');
+  res.render('index/login_organization');
 });
 
 router.post('/login/organization', passport.authenticate('local', {
@@ -36,11 +37,11 @@ router.post('/login/organization', passport.authenticate('local', {
 }));
 
 router.get('/register', (req,res,next) => {
-  res.render('register');
+  res.render('index/register');
 });
 
 router.get('/register/volunteer', (req,res,next) => {
-  res.render('register_volunteer');
+  res.render('index/register_volunteer');
 });
 
 router.post('/register/volunteer', (req, res, next) => {
@@ -68,7 +69,7 @@ router.post('/register/volunteer', (req, res, next) => {
 })
 
 router.get('/register/organization', (req,res,next) => {
-  res.render('register_organization');
+  res.render('index/register_organization');
 });
 
 router.post('/register/organization', (req, res, next) => {
@@ -105,7 +106,7 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
 // indexModel.findVolunteerbyID(id)
 indexModel.findVolunteerbyID(1) // hardcoded for testing
   .then((data) => {
-    res.render('volunteer_dashboard')
+    res.render('index/dashboard_volunteer')
       // render per object
   })
 });
@@ -120,7 +121,7 @@ router.get('/dashboard/organization', (req, res, next)=>{
 // indexModel.findOrganizationbyID(id)
 indexModel.findOrganizationbyID(1) // hardcoded for testing
   .then((data) => {
-    res.render('organization_dashboard', {
+    res.render('index/dashboard_organization', {
       // render per object
     })
   })
