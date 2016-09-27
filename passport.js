@@ -13,8 +13,10 @@ const indexModel = require('./model/index_query')
 
 passport.use('organization', new LocalStrategy(
   (username, password, done) => {
+    console.log('Organization Passport', username);
     indexModel.findOrganizationData(username)
     .then((userData) => {
+      console.log(userData);
       if(userData){
         bcrypt.compare(password, userData.password,
         function(err, res){
@@ -37,8 +39,10 @@ passport.use('organization', new LocalStrategy(
 
 passport.use('volunteer', new LocalStrategy(
   (username, password, done) => {
+    console.log('Volunteer Passport', username);
     indexModel.findVolunteerData(username)
     .then((userData) => {
+      console.log(userData);
       if(userData){
         bcrypt.compare(password, userData.password,
         function(err, res){
