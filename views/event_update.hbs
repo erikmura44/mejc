@@ -7,19 +7,19 @@
         <ul>
           <li>
             <label for="title">Title</label>
-            <input type="text" name="title" placeholder="Event Title" value="{{data.title}}" require>
+            <input type="text" name="title" value="{{data.title}}" require>
           </li>
           <li>
             <label for="location">Location/building</label>
-            <input type="text" name="location" placeholder="i.e. Galvanize Platte" value="{{data.location}}">
+            <input type="text" name="location" value="{{data.location}}">
           </li>
           <li>
             <label for="street">Street</label>
-            <input type="text" name="street" placeholder="Street Address" value="{{data.street}}" require>
+            <input type="text" name="street" value="{{data.street}}" require>
           </li>
           <li>
             <label for="city">City</label>
-            <input type="text" name="city" placeholder="Denver" value="{{data.city}}" require>
+            <input type="text" name="city" value="{{data.city}}" require>
           </li>
           <li>
             <label for="start_date">Start Date</label>
@@ -27,27 +27,27 @@
           </li>
           <li>
             <label for="start_time">Start Time</label>
-            <input type="time" name="start_time" placeholder="" value="{{data.start_time}}" require>
+            <input type="time" name="start_time" value="{{data.start_time}}" require>
           </li>
           <li>
             <label for="end_date">End Date</label>
-            <input type="date" name="end_date" placeholder="" value="{{data.end_date}}" require>
+            <input type="date" name="end_date" value="{{data.end_date}}" require>
           </li>
           <li>
             <label for="end_time">End Time</label>
-            <input type="time" name="end_time" placeholder="" value="{{data.end_time}}" require>
+            <input type="time" name="end_time" value="{{data.end_time}}" require>
           </li>
           <li>
             <label for="">Start Date</label>
-            <input type="date" name="" placeholder="" value="{{data.start_date}}" require>
+            <input type="date" name="start_date"  value="{{data.start_date}}" require>
           </li>
           <li>
             <label for="available_positions">Number of Volunteers Desired</label>
-            <input type="number" name="available_positions" value="{{data.available_positions}}" placeholder="0">
+            <input type="number" name="available_positions" value="{{data.available_positions}}">
           </li>
           <li>
             <label for="description">Event Description</label>
-            <textarea rows='8' name="description" placeholder="Insert information about the event." value="{{data.description}}" require></textarea>
+            <textarea rows='8' name="description" require>{{data.description}}</textarea>
           </li>
           <li>
             <input type="submit" class="submit-btn" name="loginVolSubmit" value="Submit" require>
