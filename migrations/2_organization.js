@@ -3,12 +3,14 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.string('user_name');
     table.string('password');
-    table.string('organization_name');
+
     table.text('about');
-    table.string('address');
-    table.string('contact');
     table.string('email');
     table.string('phone_number');
+
+    table.string('organization_name');
+    table.string('address');
+    table.string('contact');
     table.string('website');
   })
 };

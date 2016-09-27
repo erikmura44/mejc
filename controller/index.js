@@ -3,38 +3,19 @@
 const express = require('express');
 const router = express.Router();
 
-const passport = require('../passport')
-const bcrypt = require('bcrypt');
+const passportVol = require('../passportVol')
+const passportOrg = require('../passportOrg')
+const bcrypt = require('bcrypt')
 
 const indexModel = require('../model/index_query');
+const volunteerModel = require('../model/volunteer_query');
+const organizationModel = require('../model/organization_query');
 
 
 /* GET splash page. */
 router.get('/', (req, res, next) => {
   res.render('index/index', { title: 'MEJC' });
 });
-
-router.get('/login', (req,res,next)=>{
-  res.render('index/login');
-});
-
-router.get('/login/volunteer', (req,res,next) => {
-  res.render('index/login_volunteer');
-});
-
-router.post('/login/volunteer', passport.authenticate('local', {
-  successRedirect:'/dashboard/volunteer',
-  failureRedirect:'/login/volunteer'
-}));
-
-router.get('/login/organization', (req,res,next) => {
-  res.render('index/login_organization');
-});
-
-router.post('/login/organization', passport.authenticate('local', {
-  successRedirect:'/dashboard/organization',
-  failureRedirect:'/login/organization'
-}));
 
 router.get('/register', (req,res,next) => {
   res.render('index/register');
@@ -96,6 +77,31 @@ router.post('/register/organization', (req, res, next) => {
     })
 })
 
+router.get('/login', (req,res,next)=>{
+  res.render('index/login');
+});
+
+router.get('/login/volunteer', (req,res,next) => {
+  res.render('index/login_volunteer');
+});
+
+router.get('/login/organization', (req,res,next) => {
+  res.render('index/login_organization');
+});
+
+
+router.post('/login/volunteer', passportVol.authenticate('local', {
+  successRedirect:'/dashboard/volunteer',
+  failureRedirect:'/login/volunteer'
+}));
+
+router.post('/login/organization', passportOrg.authenticate('local', {
+  successRedirect:'/dashboard/organization',
+  failureRedirect:'/login/organization'
+}));
+
+
+
 // NEED TO FLESH OUT - partially completed; don't work
 router.get('/dashboard/volunteer', (req, res, next)=>{
   if (!req.isAuthenticated()){
@@ -103,8 +109,7 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
     return;
   }
 // find dashboard info for specific volunteer
-// indexModel.findVolunteerbyID(id)
-indexModel.findVolunteerbyID(1) // hardcoded for testing
+volunteerModel.findVolunteerbyID(req.user.id) // hardcoded for testing
   .then((data) => {
     res.render('index/dashboard_volunteer')
       // render per object
@@ -119,7 +124,7 @@ router.get('/dashboard/organization', (req, res, next)=>{
   // }
 // find dashboard info for specific organization
 // indexModel.findOrganizationbyID(id)
-indexModel.findOrganizationbyID(1) // hardcoded for testing
+organizationModel.findOrganizationbyID(1) // hardcoded for testing
   .then((data) => {
     res.render('index/dashboard_organization', {
       // render per object
@@ -135,5 +140,18 @@ router.get('/logout', (req,res,next) => {
   }
 });
 
+// function authenticateVolunteer(username, password){
+//   return findVolunteerUsername(username)
+//   .then(function(userData){
+//     if(!userData){
+//       return false;
+//     }
+//     return findVolunteerHashedPassword(username)
+//     .then(function(hashedPassword){
+//       hashedPassword = hashedPassword.password;
+//       return bcrypt.compareSync(password, hashedPassword);
+//     });
+//   });
+// }
 
 module.exports = router;
