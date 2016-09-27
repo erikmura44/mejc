@@ -42,7 +42,7 @@ passport.use('volunteer', new LocalStrategy(
     console.log('Volunteer Passport', username);
     indexModel.findVolunteerData(username)
     .then((userData) => {
-      console.log(userData);
+      // console.log(userData);
       if(userData){
         bcrypt.compare(password, userData.password,
         function(err, res){
@@ -89,7 +89,8 @@ passport.use('volunteer', new LocalStrategy(
 //
 
 passport.serializeUser((userData, done) => {
-  done(null, userData.user_name)
+  console.log('from serialize', userData);
+  done(null, userData)
 })
 
 // // Code to go with LocalStrategy
@@ -103,14 +104,26 @@ passport.serializeUser((userData, done) => {
 
 // DO YOU NEED TO CREATE ANOTHER ONE FOR ORGANIZATION
 // how is deserializeUser connected with the /logout ROUTE?
-passport.deserializeUser((username, done) => {
-  indexModel.findVolunteerData(username)
-  .then((userData) => {
-    done(null, userData)
-  })
-  .catch(function(err){
-    done(err)
-  })
+passport.deserializeUser((userdata, done) => {
+  if (userdata.type === 'volunteer' ){
+    indexModel.findVolunteerData(userdata.user_name)
+      .then((userData) => {
+        console.log('from deserialize', userData);
+        done(null, userData)
+      })
+      .catch(function(err){
+        done(err)
+      })
+  } else {
+    indexModel.findOrganizationData(userdata.user_name)
+      .then((userData) => {
+        console.log('from deserialize', userData);
+        done(null, userData)
+      })
+      .catch(function(err){
+        done(err)
+      })
+    }
 })
 
 module.exports = passport

@@ -2,12 +2,29 @@ const knex = require('./knex_config.js');
 
 function findOrganizationData(orgName){
   return knex('organization')
-  .where('user_name',orgName).first();
+  .where('user_name',orgName).first()
+  .then((userData) => {
+    if (typeof userData === 'undefined') {
+      return
+    } else {
+      userData.type = 'organization'
+      return userData
+    }
+  })
+
 }
 
 function findVolunteerData(volName){
   return knex('volunteer')
-    .where('user_name',volName).first();
+    .where('user_name',volName).first()
+    .then((userData) => {
+      if (typeof userData === 'undefined') {
+        return
+      } else {
+        userData.type = 'volunteer'
+        return userData
+      }
+    })
 }
 
 function findOrganizationHashedPassword(orgName){
