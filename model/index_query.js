@@ -8,11 +8,15 @@ function hashPassword(password){
 }
 
 function countOfVolunteerUser(volName){
-  return knex('volunteer').count('user_name').where('user_name', volName);
+  return knex('volunteer')
+  .count('user_name')
+  .where('user_name', volName);
 }
 
-function findVolunteerUsername(username){
-  return knex('volunteer').select('user_name').where('user_name',username).first()
+function findVolunteerUser(username){
+  return knex('volunteer')
+  // .select('user_name')
+  .where('user_name',username).first()
 }
 
 function findVolunteerData(username){
@@ -69,7 +73,7 @@ function addOrganization(userData){
 
 
 module.exports = {
-  findVolunteerUsername:findVolunteerUsername,
+  findVolunteerUser:findVolunteerUser,
   findVolunteerData: findVolunteerData,
   findVolunteerHashedPassword: findVolunteerHashedPassword,
   findOrganizationUsername: findOrganizationUsername,
