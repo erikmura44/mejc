@@ -23,20 +23,25 @@ router.get('/create', (req, res, next) => {
   res.render('event_create')
 })
 
-router.get('/update', (req, res, next) => {
-  eventModel.findAllEvents()
+router.get('/:id/update', (req, res, next) => {
+  eventModel.findEventbyID(req.params.id)
     .then((data) => {
       res.render('event_update', {
-        data: data[0]
+        data: data
       })
     })
 })
 
 router.get('/:id', (req, res, next) => {
-  res.render('event_single');
+  eventModel.findEventbyID(req.params.id)
+  .then((data) => {
+    res.render('event_single', {
+      data:data
+    })
+  })
 });
 
-<<<<<<< HEAD
+
 router.get('/test/searchc', (req, res, next) => {
   testModel.findEventbyCause('International')
     .then((data) => {
