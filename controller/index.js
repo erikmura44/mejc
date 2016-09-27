@@ -89,12 +89,12 @@ router.get('/login/volunteer', (req,res,next) => {
 });
 
 
-//**********************this doesn't work!!!!!!!!!!!!!!!****************
+//**********this doesn't work still!!!!!!!!**********
 router.post('/login/organization', passport.authenticate('organization', {
   successRedirect:'/dashboard/organization',
   failureRedirect:'/register/organization'
 }));
-//**********************************************************************
+//****************************************************
 
 
 router.post('/login/volunteer', passport.authenticate('volunteer', {
