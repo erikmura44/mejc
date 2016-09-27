@@ -1,55 +1,45 @@
-/* Find user function is a fulljoin for passport */
-var bcrypt = require('bcrypt');
-var knex = require('./knex_config.js');
+const knex = require('./knex_config.js');
 
-//Volunteer Login
-function hashPassword(password){
-  return bcrypt.hashSync(password,10);
+function findOrganizationData(orgName){
+  return knex('organization')
+  .where('user_name',orgName).first();
 }
 
-function countOfVolunteerUser(userName){
+function findVolunteerData(volName){
   return knex('volunteer')
-    .count('user_name')
-    .where('user_name', userName);
+    .where('user_name',volName).first();
 }
 
-function findVolunteerData(username){
-  return knex('volunteer')
-    .where('user_name',username).first();
+function findOrganizationHashedPassword(orgName){
+  return knex('organization')
+  .select('organization.password')
+  .where('organization.user_name',orgName).first();
 }
 
-function findVolunteerHashedPassword(username){
+function findVolunteerHashedPassword(volName){
   return knex('volunteer')
     .select('volunteer.password')
-    .where('volunteer.user_name',username).first();
-}
-
-
-function addVolunteer(userData){
-  return knex('volunteer').insert(userData)
-}
-
-//Organization Login
-function hashPassword(password){
-  return bcrypt.hashSync(password,10);
+    .where('volunteer.user_name',volName).first();
 }
 
 function countOfOrganizationUser(orgName){
-  return knex('organization').count('user_name').where('user_name', orgName);
-}
-
-
-function findOrganizationData(username){
   return knex('organization')
-    .where('user_name',username).first();
+    .count('user_name')
+    .where('user_name', orgName);
 }
 
-function findOrganizationHashedPassword(username){
-  return knex('organization').select('organization.password').where('organization.user_name',username).first();
+function countOfVolunteerUser(volName){
+  return knex('volunteer')
+    .count('user_name')
+    .where('user_name', volName);
 }
 
-function addOrganization(userData){
-  return knex('organization').insert(userData)
+function addOrganization(orgName){
+  return knex('organization').insert(orgName)
+}
+
+function addVolunteer(volName){
+  return knex('volunteer').insert(volName)
 }
 
 module.exports = {
