@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const eventModel = require('../model/event_query');
 
 // const passport = require('../passport')
 // const bcrypt = require('bcrypt');
@@ -11,7 +12,9 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
   eventModel.findAllEvents()
     .then((data) => {
-      res.render('event')
+      res.render('event', {
+        data:data
+      })
     })
 });
 
