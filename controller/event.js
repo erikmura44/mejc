@@ -18,8 +18,13 @@ router.get('/', (req, res, next) => {
     })
 });
 
+router.get('/create', (req, res, next) => {
+  res.render('event_create')
+})
+
 router.get('/:id', (req, res, next) => {
   res.render('event_single');
 });
+
 
 module.exports = router;
