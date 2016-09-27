@@ -9,7 +9,10 @@ exports.up = function(knex, Promise) {
     table.string('phone_number');
 
     table.string('organization_name');
-    table.string('address');
+    table.string('street');
+    table.string('city');
+    table.string('state');
+    table.string('zip');
     table.string('contact');
     table.string('website');
   })
