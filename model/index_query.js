@@ -11,7 +11,6 @@ function findOrganizationData(orgName){
       return userData
     }
   })
-
 }
 
 function findVolunteerData(volName){

@@ -1,14 +1,10 @@
-{{! /volunteer/dashboard }}
 
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
 
-{{#each data}}
-{{username}}<br>
-{{email}}<br>
-{{first_name}}<br>
-{{last_name}}<br>
-{{about}}<br>
-{{location}}<br>
-{{phone_number}}<br>
-{{/each}}
+{{data.user_name}}
+{{data.about}}
+{{data.email}}
+{{data.phone_number}}
+{{data.first_name}}
+{{data.last_name}}
+{{data.city}}
+{{data.state}}
