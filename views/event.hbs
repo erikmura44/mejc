@@ -1,4 +1,17 @@
 {{! /event }}
-
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class='container'>
+  <div class='row'>
+    <div class ='col-md-10'>
+      <ul id='eventList'>
+        {{#each data}}
+          <li>
+            <div>
+              <a href='/event/{{id}}'>
+                <h2>{{title}}</h2>
+                </a>
+              <h3>{{city}}</h3>
+          </div>
+        {{/each}}
+    </div>
+  </div>
+</div>
