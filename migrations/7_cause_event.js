@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('interest_event', function(table) {
-    table.integer('interest_id')
-      .references('interest.id')
+  return knex.schema.createTable('cause_event', function(table) {
+    table.integer('cause_id')
+      .references('cause.id')
       .onDelete('CASCADE');
     table.integer('event_id')
       .references('event.id')
@@ -11,5 +11,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('interest_event')
+  return knex.schema.dropTableIfExists('cause_event')
 };
