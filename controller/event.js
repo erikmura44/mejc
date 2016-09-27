@@ -26,7 +26,7 @@ router.get('/update', (req, res, next) => {
   eventModel.findAllEvents()
     .then((data) => {
       res.render('event_update', {
-        data:data[0]
+        data: data[0]
       })
     })
 })
