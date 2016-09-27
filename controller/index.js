@@ -108,7 +108,7 @@ router.get('/dashboard/organization', (req, res, next)=>{
     res.redirect('/register/organization');
     return;
   }
-  indexModel.findOrganizationbyID(id)
+  indexModel.findOrganizationData(req.user.user_name)
   .then((data) => {
     res.render('index/dashboard_organization', {
       data:data
@@ -121,7 +121,7 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
     res.redirect('/login/volunteer');
     return;
   }
-  volunteerModel.findVolunteerbyID(req.user.id)
+  indexModel.findVolunteerData(req.user.user_name)
   .then((data) => {
     res.render('index/dashboard_volunteer', {
       data:data
