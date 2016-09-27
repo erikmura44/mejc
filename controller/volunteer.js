@@ -8,7 +8,6 @@ const router = express.Router();
 
 const volunteerModel = require('../model/volunteer_query');
 
-
 router.get('/', (req, res, next) => {
   volunteerModel.findAllVolunteers()
     .then((data) => {
@@ -18,6 +17,7 @@ router.get('/', (req, res, next) => {
     })
 });
 
+// need to authorize for login
 router.get('/:id', (req, res, next) => {
   volunteerModel.findVolunteerbyID(req.params.id)
   .then((data) => {

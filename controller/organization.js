@@ -3,9 +3,6 @@
 const express = require('express');
 const router = express.Router();
 
-// const passport = require('../passport')
-// const bcrypt = require('bcrypt');
-
 const organizationModel = require('../model/organization_query');
 
 router.get('/', (req, res, next) => {

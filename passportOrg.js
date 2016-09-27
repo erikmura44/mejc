@@ -6,9 +6,8 @@ const Local = require("passport-local")
 
 const indexModel = require('./model/index_query')
 
-
 passport.use(new Local((username, password, done) => {
-  indexModel.findUser(username)
+  userModel.findUser(username)
   .then((userData) => {
     if(userData){
       bcrypt.compare(password, userData.password,
@@ -28,12 +27,15 @@ passport.use(new Local((username, password, done) => {
     done(err)
   })
 }))
+
 passport.serializeUser((userData, done) => {
   done(null, userData.user_name)
 })
+
 // passport.deserializeUser((userData, done) => {
 //   done(null, userData);
 // }) // this deserializeUser() only captures user_name within req.body
+
 passport.deserializeUser((username, done) => {
   userModel.findUser(username)
   .then((userData) => {
@@ -43,4 +45,5 @@ passport.deserializeUser((username, done) => {
     done(err)
   })
 })
+
 module.exports = passport

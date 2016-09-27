@@ -23,19 +23,6 @@ function findVolunteerHashedPassword(username){
   return knex('volunteer').select('volunteer.password').where('volunteer.user_name',username).first();
 }
 
-function authenticateVolunteer(username, password){
-  return findVolunteerUsername(username)
-  .then(function(userData){
-    if(!userData){
-      return false;
-    }
-    return findVolunteerHashedPassword(username)
-    .then(function(hashedPassword){
-      hashedPassword = hashedPassword.password;
-      return bcrypt.compareSync(password, hashedPassword);
-    });
-  });
-}
 
 function addVolunteer(userData){
   return knex('volunteer').insert(userData)

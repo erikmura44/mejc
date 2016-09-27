@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const session = require('express-session');
-const passport = require('./passport');
+const passportVol = require('./passportVol')
+const passportOrg = require('./passportOrg')
 
 const index = require('./controller/index');
 const volunteer = require('./controller/volunteer');
@@ -34,8 +35,11 @@ app.use(session({
   resave: false
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passportOrg.initialize());
+app.use(passportOrg.session());
+
+app.use(passportVol.initialize());
+app.use(passportVol.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
