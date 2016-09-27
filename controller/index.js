@@ -108,26 +108,24 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
     res.redirect('/login/volunteer');
     return;
   }
-// find dashboard info for specific volunteer
-volunteerModel.findVolunteerbyID(req.user.id) // hardcoded for testing
+volunteerModel.findVolunteerbyID(req.user.id)
   .then((data) => {
-    res.render('index/dashboard_volunteer')
-      // render per object
+    res.render('index/dashboard_volunteer', {
+      data:data
+    })
   })
 });
 
 // NEED TO FLESH OUT - partially completed; don't work
 router.get('/dashboard/organization', (req, res, next)=>{
-  // if (!req.isAuthenticated()){
-  //   res.redirect('/login/organization');
-  //   return;
-  // }
-// find dashboard info for specific organization
-// indexModel.findOrganizationbyID(id)
-organizationModel.findOrganizationbyID(1) // hardcoded for testing
+  if (!req.isAuthenticated()){
+    res.redirect('/register/organization');
+    return;
+  }
+indexModel.findOrganizationbyID(id)
   .then((data) => {
     res.render('index/dashboard_organization', {
-      // render per object
+      data:data
     })
   })
 });
@@ -139,19 +137,5 @@ router.get('/logout', (req,res,next) => {
     res.redirect('/')
   }
 });
-
-// function authenticateVolunteer(username, password){
-//   return findVolunteerUsername(username)
-//   .then(function(userData){
-//     if(!userData){
-//       return false;
-//     }
-//     return findVolunteerHashedPassword(username)
-//     .then(function(hashedPassword){
-//       hashedPassword = hashedPassword.password;
-//       return bcrypt.compareSync(password, hashedPassword);
-//     });
-//   });
-// }
 
 module.exports = router;
