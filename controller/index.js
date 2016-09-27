@@ -3,8 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const passportVol = require('../passportVol')
-const passportOrg = require('../passportOrg')
+const passport = require('../passport')
 const bcrypt = require('bcrypt')
 
 const indexModel = require('../model/index_query');
@@ -90,14 +89,9 @@ router.get('/login/organization', (req,res,next) => {
 });
 
 
-router.post('/login/volunteer', passportVol.authenticate('local', {
+router.post('/login/volunteer', passport.authenticate('local', {
   successRedirect:'/dashboard/volunteer',
   failureRedirect:'/login/volunteer'
-}));
-
-router.post('/login/organization', passportOrg.authenticate('local', {
-  successRedirect:'/dashboard/organization',
-  failureRedirect:'/login/organization'
 }));
 
 
