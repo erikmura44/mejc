@@ -1,13 +1,17 @@
-{{! /event }}
+{{! /organization }}
+
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
 <div class='container'>
   <div class='row'>
     <div class ='col-md-10'>
-      <ul id='eventList'>
+      <ul id='organizationList'>
         {{#each data}}
           <li>
             <div>
-              <a href='/event/{{id}}'>
-                <h2>{{title}}</h2>
+              <a href='/organization/{{id}}'>
+                <h2>{{organization_name}}</h2>
                 </a>
               <h3>{{city}}</h3>
           </div>

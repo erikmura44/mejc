@@ -8,12 +8,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const session = require('express-session');
-const passport = require('./passport');
+const passport = require('./passport')
 
-const index = require('./controllers/index');
-const volunteers = require('./controllers/volunteers');
-const organizations = require('./controllers/organizations');
-const events = require('./controllers/events')
+const index = require('./controller/index');
+const volunteer = require('./controller/volunteer');
+const organization = require('./controller/organization');
+const events = require('./controller/event')
 
 const app = express();
 
@@ -40,9 +40,9 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/volunteers', volunteers);
-app.use('/organizations', organizations);
-app.use('/events', events);
+app.use('/volunteer', volunteer);
+app.use('/organization', organization);
+app.use('/event', events);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

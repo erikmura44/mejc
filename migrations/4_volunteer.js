@@ -3,13 +3,15 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.string('user_name');
     table.string('password');
-    table.string('first_name');
-    table.string('last_name');
+
     table.text('about');
-    table.string('location');
     table.string('email');
     table.string('phone_number');
-    // table.refenence skills foreign
+
+    table.string('first_name');
+    table.string('last_name');
+    table.string('city');
+    table.string('state');    // table.refenence skills foreign
   })
 };
 
