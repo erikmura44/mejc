@@ -1,14 +1,12 @@
- {{! /organization/:id/dashboard }}
 
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-
-{{#each data}}
-{{username}}<br>
-{{email}}<br>
-{{first_name}}<br>
-{{last_name}}<br>
-{{about}}<br>
-{{location}}<br>
-{{phone_number}}<br>
-{{/each}}
+{{data.user_name}}<br>
+{{data.email}}<br>
+{{data.about}}<br>
+{{data.phone_number}}<br>
+{{data.organization_name}}<br>
+{{data.street}}<br>
+{{data.city}}<br>
+{{data.state}}<br>
+{{data.zip}}<br>
+{{data.contact}}<br>
+{{data.website}}<br>
