@@ -8,6 +8,7 @@ const eventModel = require('../model/event_query');
 // const bcrypt = require('bcrypt');
 
 // const eventModel = require('../model/event_query');
+const testModel = require('../model/test_queries');
 
 router.get('/', (req, res, next) => {
   eventModel.findAllEvents()
@@ -35,5 +36,19 @@ router.get('/:id', (req, res, next) => {
   res.render('event_single');
 });
 
+<<<<<<< HEAD
+router.get('/test/searchc', (req, res, next) => {
+  testModel.findEventbyCause('International')
+    .then((data) => {
+      console.log(data);
+    })
+});
+
+router.get('/test/searchcc', (req, res, next) => {
+  testModel.findEventbyCause_City('International', 'Denver')
+    .then((data) => {
+      console.log(data);
+    })
+});
 
 module.exports = router;
