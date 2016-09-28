@@ -1,30 +1,25 @@
-{{! /event }}
 
-<select class="causeDropdown">
-  {{#each data}}
-  <option value="{{name}}">{{name}}</option>
-  {{/each}}
-</select>
-
-<form class="cityInput" action="index.html" method="post">
-  <input type="text" name="city" value="city" placeholder="City">
-  <input type="submit" name="submit" value="Submit" />
-</form>
-
-
-<div class='container'>
-  <div class='row'>
-    <div class ='col-md-10'>
-      <ul id='eventList'>
-        {{#each data}}
-          <li>
-            <div>
+<!-- Still need to add cause dropdown -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row" id="form">
+        <form class="city-input" action="index.html" method="post" id="eventForm">
+          <input type="submit" name="submit" value="Submit" class="form">
+          <input type="text" name="city" value="city" placeholder="City" class="form">
+        </form>
+        <h1>Events</h1>
+      </div>
+      <div class="row">
+          {{#each data}}
+            <div class="event-list">
               <a href='/event/{{id}}'>
-                <h2>{{title}}</h2>
-                </a>
-              <h3>{{city}}</h3>
-          </div>
-        {{/each}}
+                <h2 class="event-list-names">{{title}}</h2>
+              </a>
+              <h3 class="event-list-city">{{city}} , {{state}}</h3>
+            </div>
+          {{/each}}
+      </div>
     </div>
   </div>
 </div>
