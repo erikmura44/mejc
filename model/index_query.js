@@ -1,5 +1,6 @@
 const knex = require('./knex_config.js');
 
+// *********** SHOULD WE RESTRICT THE USER DATA RETURNED? ********//
 function findOrganizationData(orgName){
   return knex('organization')
   .where('user_name',orgName).first()
@@ -25,29 +26,30 @@ function findVolunteerData(volName){
       }
     })
 }
+// *********************************************************//
 
 function findOrganizationHashedPassword(orgName){
   return knex('organization')
-  .select('organization.password')
-  .where('organization.user_name',orgName).first();
+  .where('organization.user_name',orgName)
+  .select('organization.password').first();
 }
 
 function findVolunteerHashedPassword(volName){
   return knex('volunteer')
-    .select('volunteer.password')
-    .where('volunteer.user_name',volName).first();
+    .where('volunteer.user_name',volName)
+    .select('volunteer.password').first();
 }
 
 function countOfOrganizationUser(orgName){
   return knex('organization')
+    .where('user_name', orgName)
     .count('user_name')
-    .where('user_name', orgName);
 }
 
 function countOfVolunteerUser(volName){
   return knex('volunteer')
+    .where('user_name', volName)
     .count('user_name')
-    .where('user_name', volName);
 }
 
 function addOrganization(orgName){
