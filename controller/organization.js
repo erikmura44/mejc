@@ -19,7 +19,8 @@ router.get('/:id', (req, res, next) => {
   .then((organization) => {
     res.render('organization/organization_single', {
       title: 'MEJC',
-      organization: JSON.stringify(organization)
+      organization: JSON.stringify(organization),
+      organizationRender: organization
     });
   })
 });
