@@ -101,7 +101,9 @@ router.post('/login/volunteer', passport.authenticate('volunteer', {
 
 // ***************************************
 router.get('/profile/volunteer', (req, res, next) => {
-  res.render('index/profile_form_volunteer')
+  res.render('index/profile_form_volunteer', {
+    username: req.user.user_name
+  })
 })
 
 router.post('/profile/volunteer', (req, res, next) => {
