@@ -7,8 +7,6 @@ const passport = require('../passport')
 const bcrypt = require('bcrypt')
 
 const indexModel = require('../model/index_query');
-const volunteerModel = require('../model/volunteer_query');
-const organizationModel = require('../model/organization_query');
 const mapModel = require('../model/map_query');
 
 
