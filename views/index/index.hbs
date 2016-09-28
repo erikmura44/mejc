@@ -1,19 +1,21 @@
-{{! / }}
 
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-
-<a href='/login'>Login</a>
-<a href="/register">Register</a>
-<a href='/event'>Click here to see all volunteers</a>
-<a href='/organization'>Click here to see all organizations</a>
-
-
-
-<!-- router.get('/volunteer', (req,res,next) => {
-  res.render('volunteer/volunteer');
-});
-
-router.get('/organization', (req,res,next) => {
-  res.render('organization/organization');
-}); -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row" id="title">
+        <h1>{{title}}</h1>
+      </div>
+      <div class="row">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-md-offset-2" id="home-button-left">
+          <a href='/organization'><button type="button" class="btn btn-primary">See All Organizations</button></a>
+        </div>
+        <div class="col-md-3 col-md-offset-2" id="home-button-right">
+          <a href="/event"><button type="button" class="btn btn-primary">See All Events</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
