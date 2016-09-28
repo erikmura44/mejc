@@ -31,6 +31,12 @@ a {
 #actions {
     margin-top: 15px;
 }
+.logo {
+  display: inline-block;
+  margin-left: 20px;
+  height: 75px;
+}
+
 
 
 /***************
@@ -99,13 +105,14 @@ ul.topnav {
 /* Float the list items side by side */
 ul.topnav li {
     float: right;
+    vertical-align: middle;
 }
 /* Style the links inside the list items */
 ul.topnav li a {
     display: inline-block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 16px;
     text-decoration: none;
     transition: 0.3s;
     font-size: 17px;
@@ -231,11 +238,4 @@ FORMS
 .form-style-7 input[type="button"]:hover{
     background: #6B9FFF;
     color:#fff;
-}
-.siteName {
-  display: inline-block;
-  color:white;
-  margin-left: 20px;
-  margin-top:0px;
-  padding-top: 4px;
 }
