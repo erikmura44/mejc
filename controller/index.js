@@ -9,7 +9,6 @@ const bcrypt = require('bcrypt')
 const indexModel = require('../model/index_query');
 
 
-/* GET splash page. */
 router.get('/', (req, res, next) => {
   res.render('index/index', { title: 'MEJC' });
 });
@@ -30,14 +29,12 @@ router.post('/register/organization', (req, res, next) => {
       } else {
         let userData = {
           user_name: req.body.username,
-          password: bcrypt.hashSync(req.body.password, 8),      // passwords are never stored in plain text
+          password: bcrypt.hashSync(req.body.password, 8),
           email: req.body.email
         }
-        // **************************************************
         indexModel.addOrganization(userData)
           .then(() =>{
             userData.type = 'organization'
-            // console.log('this is before req.logIn', userData) // this is to see userData... does it include type?
             req.logIn(userData, (err) => {
               if (err) { return next(err) }
               res.redirect('/dashboard/organization')
@@ -49,7 +46,6 @@ router.post('/register/organization', (req, res, next) => {
       }
     })
 })
-// **********************************************
 
 router.get('/register/volunteer', (req,res,next) => {
   res.render('index/register_volunteer');
@@ -63,17 +59,15 @@ router.post('/register/volunteer', (req, res, next) => {
       } else {
         let userData = {
           user_name: req.body.username,
-          password: bcrypt.hashSync(req.body.password, 8),      // passwords are never stored in plain text
+          password: bcrypt.hashSync(req.body.password, 8),
           email: req.body.email
         }
-// **************************************************
         indexModel.addVolunteer(userData)
           .then(() =>{
             userData.type = 'volunteer'
-            // console.log('this is before req.logIn', userData) // this is to see userData... does it include type?
             req.logIn(userData, (err) => {
               if (err) { return next(err) }
-              res.redirect('/dashboard/volunteer')
+              res.redirect('/profile/volunteer')
             })
           })
           .catch((err) => {
@@ -82,7 +76,7 @@ router.post('/register/volunteer', (req, res, next) => {
       }
     })
 })
-// **********************************************
+
 router.get('/login', (req,res,next)=>{
   res.render('index/login');
 });
@@ -95,7 +89,6 @@ router.get('/login/volunteer', (req,res,next) => {
   res.render('index/login_volunteer');
 });
 
-
 router.post('/login/organization', passport.authenticate('organization', {
   successRedirect:'/dashboard/organization',
   failureRedirect:'/register/organization'
@@ -106,6 +99,23 @@ router.post('/login/volunteer', passport.authenticate('volunteer', {
   failureRedirect:'/login/volunteer'
 }));
 
+// ***************************************
+router.get('/profile/volunteer', (req, res, next) => {
+  res.render('index/profile_form_volunteer')
+})
+
+router.post('/profile/volunteer', (req, res, next) => {
+  indexModel.updateVolunteerInfo(req.user.user_name, req.body)
+    .then((data) => {
+      res.redirect('/dashboard/volunteer')
+    })
+    .catch((err) => {
+      console.error('Error caught in inserting into DB')
+      next(err)
+    })
+})
+
+// ********************************
 
 // NEED TO FLESH OUT - partially completed; don't work
 router.get('/dashboard/organization', (req, res, next)=>{
@@ -128,7 +138,7 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
     return;
   }
   indexModel.findVolunteerData(req.user.user_name)
-  .then((data) => {
+    .then((data) => {
     // console.log('This is after GET to dashboard & before render', req.user); // this is to check that I am getting back the right info; ie type is tracked
     res.render('index/dashboard_volunteer', {
       data:data
