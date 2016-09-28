@@ -1,18 +1,24 @@
-{{! /event/:id }}
-
 <script>
   events = {{{events}}}
 </script>
 
-<h1>{{eventsRender.title}}</h1>
-<p>{{eventsRender.location}}</p>
-<p>{{eventsRender.street}}</p>
-<p>{{eventsRender.city}}</p>
-<p>{{eventsRender.zip}}</p>
-<p>{{eventsRender.start_date}}</p>
-<p>{{eventsRender.end_date}}</p>
-<p>{{eventsRender.start_time}}</p>
-<p>{{eventsRender.end_time}}</p>
-
-
-<div id="map" style="height: 200px;"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <h1 class="username">{{eventsRender.title}}</h1><hr>
+      </div>
+      <div class="row">
+        <div class="col-md-8" id="users">
+          <u>About</u>: {{eventsRender.description}}<br><br>
+          <u>Location</u>: {{eventsRender.location}}<br><br>
+          <u>Address</u>: {{eventsRender.street}},  {{eventsRender.city}}, {{eventsRender.zip}}<br><br>
+          <u>Start Date/Time</u>: {{eventsRender.start_date}} / {{eventsRender.start_time}}<br><br>
+          <u>End Date/Time</u>: {{eventsRender.end_date}} / {{eventsRender.end_time}}<br><br>
+        </div>
+        <div class="col-md-4">
+          <div id="map" style="height: 300px;width:auto;"></div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,32 +1,36 @@
-{{! /volunteer }}
 
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
 
-<select class="causeDropdown">
-  {{#each data}}
-  <option value="{{name}}">{{name}}</option>
-  {{/each}}
-</select>
 
-<form class="cityInput" action="index.html" method="post">
-  <input type="text" name="city" value="city" placeholder="City">
-  <input type="submit" name="submit" value="Submit" />
-</form>
-
-<div class='container'>
-  <div class='row'>
-    <div class ='col-md-10'>
-      <ul id='volunteerList'>
-        {{#each data}}
-          <li>
-            <div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row" id="form">
+        <form class="city-input" action="index.html" method="post" id="orgForm">
+          <input type="submit" name="submit" value="Submit" class="form">
+          <input type="text" name="city" value="city" placeholder="City" class="form">
+        </form>
+        <select class="causeDropdown">
+          {{#each data}}
+          <option value="{{name}}">{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="row">
+          {{#each data}}
+          <div class="col-md-11">
+            <div class="organization-list">
               <a href='/volunteer/{{id}}'>
-                <h2>{{user_name}}</h2>
-                </a>
-              <h3>{{city}}, {{state}}</h3>
+                <h2 class="org-list-names">{{first_name}}{{last_name}}</h2>
+              </a>
+              <h3 class="org-list-city">{{city}}, {{state}}</h3>
+            </div>
           </div>
-        {{/each}}
+            <div class="col-md-1" id="actions">
+              <a href="/edit">Edit</a>
+              <a href="/delete">Delete</a>
+            </div>
+          {{/each}}
+      </div>
     </div>
   </div>
 </div>
