@@ -17,20 +17,26 @@
     <a href="/organization/{{data.id}}">View Your Organization's Profile</a>
 </div>
 
-<!-- BUILD OUT THESE ROUTES -->
+<!-- **************  BUILD OUT THESE ROUTES  ************** -->
 <div>
   <h3>Edit Your User Account</h3>
-    <a href="/users/update/user_name/{{data.id}}">Edit Your Username</a>
-    <a href="/users/update/password/{{data.id}}">Edit Your Password</a>
-    <a href="/organization/{{data.id}}/update">Update Your Organization's Profile</a>
-    <a href="/users/delete/{{data.id}}">Delete Your Account</a>
+    <a href="/organization/{{data.id}}/username/update">Edit Your Username</a>
+    <a href="/organization/{{data.id}}/password/update">Edit Your Password</a>
+    <a href="/organization/{{data.id}}/profile/update">Update Your Profile</a>
+    <a href="/organization/{{data.id}}/delete">Delete Your Account</a> <!-- should confirm delete before deleting-->
 </div>
+<!-- ****************************************************** -->
 
 <div>
   <h3>Do Something</h3>
-    <a href="/">Create A New Event</a>
-    <a href="#">Search for Volunteers</a>
+    <a href="/event/new">Create A New Event</a>
+    <a href="/volunteer">Search for Volunteers</a>
 </div>
+
+
+<!-- **************  FIX THIS ELEMENT: KNEX QUERY FOR ALL EVENTS ORG HAS PLANNED  ************** -->
+<!-- **************  ADD BUTTON TO EACH EVENT: ONE TO DELETE & ONE TO UPDDATE  ************** -->
+<!-- **************  CREATE ROUTES FOR THE DELETE & UPDDATE EVENT ITEM  ************** -->
 
 <div class="container">
   <div class="row">
@@ -55,3 +61,4 @@
     </div>
   </div>
 </div>
+<!-- **************************************************************************************** -->
