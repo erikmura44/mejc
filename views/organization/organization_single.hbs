@@ -1,11 +1,43 @@
 {{! /organization/:id }}
-
 <script>
   organization = {{{organization}}}
 </script>
 
-<h1>{{organizationRender.user_name}}</h1>
-<p>Id is {{organizationRender.id}}</p>
+<p>{{organizationRender.organization_name}}</p>
 
+<p>About: {{organizationRender.about}}</p>
+
+<p>Address: {{organizationRender.street}} {{organizationRender.city}}, {{organizationRender.state}} {{organizationRender.zip}}</p>
+<p>Website: {{organizationRender.website}}</p>
+<p>Phone: {{organizationRender.phone_number}}</p>
+
+<p>Contact: {{organizationRender.contact}}</p>
+<p>Email: {{organizationRender.email}}</p>
 
 <div id="map" style="height: 200px;"></div>
+
+<!-- BUILD OUT THESE ROUTES -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row" id="form">
+        <form class="city-input" action="index.html" method="post" id="eventForm">
+          <input type="submit" name="submit" value="Submit" class="form">
+          <input type="text" name="city" value="city" placeholder="City" class="form">
+        </form>
+        <h1>All Organized Events</h1>
+      </div>
+      <div class="row">
+          {{#each data}}
+            <div class="event-list">
+              <a href='/event/{{id}}'>
+                <h2 class="event-list-names">{{title}}</h2>
+              </a>
+              <h3 class="event-list-city">{{city}}, {{state}}</h3>
+            </div>
+          {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

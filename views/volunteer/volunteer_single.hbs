@@ -4,8 +4,14 @@
   volunteer = {{{volunteer}}}
 </script>
 
-<h1>{{volunteerRender.user_name}}</h1>
-<p>Id is {{volunteerRender.id}}</p>
+
+Name: {{volunteerRender.first_name}} {{volunteerRender.last_name}}
+Username: {{volunteerRender.user_name}}
+Email: {{volunteerRender.email}}
+Phone Number: {{volunteerRender.phone_number}}  <!-- maybe don't show this later -->
+
+About: {{volunteerRender.about}}
+Location: {{volunteerRender.city}}, {{volunteerRender.state}}
 
 
 <div id="map" style="height: 200px;"></div>
