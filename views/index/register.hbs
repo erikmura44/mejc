@@ -4,12 +4,121 @@
       <h1 class="log-in-title">Register Here</h1>
       <div class="row">
         <div class="col-md-3 col-md-offset-2" id="home-button-left">
-          <a href='/register/organization'><button type="button" class="btn btn-primary">Organization</button></a>
+          <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#org_register">Organization</button></a>
         </div>
         <div class="col-md-3 col-md-offset-2" id="home-button-right">
-          <a href="/register/volunteer"><button type="button" class="btn btn-primary"> Volunteer</button></a>
+          <button type="button"class="btn btn-primary"data-toggle="modal" data-target="#vol_register"> Volunteer</button></a>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- REGISTER AS AN ORGANIZATION MODAL -->
+
+<div class="modal fade" id="org_register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Organization</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h1 class="title-post">{{title}}</h1>
+              <h4 class="log-in-title">Register</h4>
+              <form class="form-style-7" action="/register/organization" method="POST">
+                <ul>
+                  <li>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="john_smith
+                    " autofocus="" required>
+                    <span>Enter your username here</span>
+                  </li>
+                  <li>
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="john@johnsmith.com" id="email" required>
+                    <span>Please Enter Your Email</span>
+                  </li>
+                  <li>
+                    <label for="password">Enter Password</label>
+                    <input type="password" name="password" placeholder="********" required>
+                    <span>Enter your password here</span>
+                  </li>
+                  <li>
+                    <label for="password">Confirm Password</label>
+                    <input type="password" placeholder="********" id="confirm_password" required>
+                    <span>Please Confirm Your Password</span>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" name="loginVolSubmit" value="Submit" required>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+<!--    REGISTER AS VOLUNTEER MODAL       -->
+
+<div class="modal fade" id="vol_register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Volunteer</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h1 class="title-post">{{title}}</h1>
+              <h4 class="log-in-title">Register</h4>
+              <form class="form-style-7" action="/register/volunteer" method="POST">
+                <ul>
+                  <li>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="johns_smith"  required>
+                    <span>Enter your username here</span>
+                  </li>
+                  <li>
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="John@johnsmith.com" id="email" required>
+                    <span>Please Enter Your Email</span>
+                  </li>
+                  <li>
+                    <label for="password">Enter Password</label>
+                    <input type="password" name="password" placeholder="********" required>
+                    <span>Enter your password here</span>
+                  </li>
+                  <li>
+                    <label for="password">Confirm Password</label>
+                    <input type="password" placeholder="********" id="confirm_password" required>
+                    <span>Please Confirm Your Password</span>
+                  </li>
+                  <li>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" name="loginVolSubmit" value="Submit" required>
+      </div>
+    </div>
+  </form>
   </div>
 </div>

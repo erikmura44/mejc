@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <h1 class="log-in-title">Log In</h1>
@@ -11,5 +11,107 @@
         </div>
       </div>
     </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h1 class="log-in-title">Login</h1>
+      <div class="row">
+        <div class="col-md-3 col-md-offset-2" id="home-button-left">
+          <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#org_login">Organization</button>
+        </div>
+        <div class="col-md-3 col-md-offset-2" id="home-button-right">
+          <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#vol_login">Volunteer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--        LOGIN AS ORGANIZATION MODAL      -->
+
+<div class="modal fade" id="org_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Organization</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h1 class="title-post">{{title}}</h1>
+              <h4 class="log-in-title">Login</h4>
+              <form class="form-style-7" action="/login/organization" method="POST">
+                <ul>
+                  <li>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="john_smith" required>
+                    <span>Enter your username here</span>
+                  </li>
+                  <li>
+                    <label for="password">Enter Password</label>
+                    <input type="password" name="password" placeholder="********" required>
+                    <span>Enter your password here</span>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" name="loginVolSubmit" value="Submit" required>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+<!--    LOGIN AS VOLUNTEER MODAL       -->
+
+<div class="modal fade" id="vol_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Volunteer</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h1 class="title-post">{{title}}</h1>
+              <h4 class="log-in-title">Login</h4>
+              <form class="form-style-7" action="/login/volunteer" method="POST">
+                <ul>
+                  <li>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="john_smith" required>
+                    <span>Enter your username here</span>
+                  </li>
+                  <li>
+                    <label for="password">Enter Password</label>
+                    <input type="password" name="password" placeholder="*******" required>
+                    <span>Enter your password here</span>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" name="loginVolSubmit" value="Submit" required>
+      </div>
+    </div>
+  </form>
   </div>
 </div>
