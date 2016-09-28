@@ -32,21 +32,15 @@ router.get('/:id/update', (req, res, next) => {
     })
 })
 
-router.get('/:id', (req, res, next) => {
-  eventModel.findEventbyID(req.params.id)
-  .then((data) => {
-    res.render('event_single', {
-      data:data
-    })
-  })
-});
+
 
 router.get('/:id', (req, res, next) => {
   eventModel.findEventbyID(req.params.id)
-  .then(function(organization){
-    res.render('event/event_single', {
+  .then(function(events){
+    res.render('event_single', {
       title: 'MEJC',
-      events: JSON.stringify(events)
+      events: JSON.stringify(events),
+      eventsRender: events
     });
   })
 });
