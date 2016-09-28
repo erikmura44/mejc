@@ -23,20 +23,25 @@ About: {{data.about}}
 </div>
 
 
-<!-- BUILD OUT THESE ROUTES -->
+<!-- **************  BUILD OUT THESE ROUTES  ************** -->
 <div>
   <h3>Edit Your User Account</h3>
-    <a href="/users/update/user_name/{{data.id}}">Edit Your Username</a>
-    <a href="/users/update/password/{{data.id}}">Edit Your Password</a>
-    <a href="/organization/{{data.id}}/update">Update Your Profile</a>
-    <a href="/users/delete/{{data.id}}">Delete Your Account</a>
+    <a href="/volunteer/{{data.id}}/username/update">Edit Your Username</a>
+    <a href="/volunteer/{{data.id}}/password/update">Edit Your Password</a>
+    <a href="/volunteer/{{data.id}}/profile/update">Update Your Profile</a>
+    <a href="/volunteer/{{data.id}}/delete">Delete Your Account</a> <!-- should confirm delete before deleting-->
 </div>
+<!-- ****************************************************** -->
 
 <div>
   <h3>Do Something</h3>
-    <a href="/">Browse Organizations</a>
-    <a href="#">Browse Events</a>
+    <a href="/organization">Browse Organizations</a>
+    <a href="/event">Browse Events</a>
 </div>
+
+<!-- **************  FIX THIS ELEMENT: KNEX QUERY FOR ALL EVENTS VOL IS SIGNED UP FOR  ************** -->
+<!-- **************  ADD BUTTON TO EACH EVENT: ONE UNREGISTER EVENT DETAILS  ************** -->
+<!-- **************  CREATE ROUTES FOR THE DELETE & UPDDATE EVENT ITEM  ************** -->
 
 <div class="container">
   <div class="row">
@@ -61,3 +66,4 @@ About: {{data.about}}
     </div>
   </div>
 </div>
+<!-- **************************************************************************************** -->
