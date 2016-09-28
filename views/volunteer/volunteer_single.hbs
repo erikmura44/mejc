@@ -1,4 +1,11 @@
 {{! /volunteer/:id }}
 
-<h1>{{data.user_name}}</h1>
-<p>Id is {{data.id}}</p>
+<script>
+  volunteer = {{{volunteer}}}
+</script>
+
+<h1>{{volunteer.user_name}}</h1>
+<p>Id is {{volunteer.id}}</p>
+
+
+<div id="map" style="height: 200px;"></div>

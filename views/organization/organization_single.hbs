@@ -1,4 +1,11 @@
 {{! /organization/:id }}
 
-<h1>{{data.user_name}}</h1>
-<p>Id is {{data.id}}</p>
+<script>
+  organization = {{{organization}}}
+</script>
+
+<h1>{{organization.user_name}}</h1>
+<p>Id is {{organization.id}}</p>
+
+
+<div id="map" style="height: 200px;"></div>

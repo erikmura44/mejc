@@ -19,12 +19,12 @@ router.get('/', (req, res, next) => {
     })
 });
 
-// need to authorize for login
 router.get('/:id', (req, res, next) => {
   volunteerModel.findVolunteerbyID(req.params.id)
-  .then((data) => {
+  .then(function(volunteer){
     res.render('volunteer/volunteer_single', {
-      data: data
+      title: 'MEJC',
+      volunteer: JSON.stringify(volunteer)
     });
   })
 });

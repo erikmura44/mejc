@@ -41,6 +41,16 @@ router.get('/:id', (req, res, next) => {
   })
 });
 
+router.get('/:id', (req, res, next) => {
+  eventModel.findEventbyID(req.params.id)
+  .then(function(organization){
+    res.render('event/event_single', {
+      title: 'MEJC',
+      events: JSON.stringify(events)
+    });
+  })
+});
+
 
 router.get('/test/searchc', (req, res, next) => {
   testModel.filterEventbyCause('International')

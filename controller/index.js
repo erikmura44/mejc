@@ -7,7 +7,7 @@ const passport = require('../passport')
 const bcrypt = require('bcrypt')
 
 const indexModel = require('../model/index_query');
-
+const mapModel = require('../model/map_query');
 
 /* GET splash page. */
 router.get('/', (req, res, next) => {
@@ -23,10 +23,8 @@ router.get('/register/organization', (req,res,next) => {
 });
 
 router.post('/register/organization', (req, res, next) => {
-  console.log('post hit!', req.body.username);
   indexModel.countofOrgUser(req.body.username)
     .then((num) => {
-      console.log('num is: ', num, 'num.count is: ', num[0].count)
       if (parseInt(num[0].count) > 0){
         res.render('error', {message: 'Username is taken.'})
       } else {
@@ -40,7 +38,6 @@ router.post('/register/organization', (req, res, next) => {
             res.redirect('/login/organization')
           })
           .catch((err) => {
-            console.log(err)
             res.render('error', {message: 'error in inserting user data into database'})
           })
       }
@@ -54,7 +51,6 @@ router.get('/register/volunteer', (req,res,next) => {
 router.post('/register/volunteer', (req, res, next) => {
   indexModel.countofVolUser(req.body.username)
     .then((num) => {
-      console.log('num is: ', num, 'num.count is: ', num[0].count)
       if (parseInt(num[0].count) > 0){
         res.render('error', {message: 'Username is taken.'})
       } else {
@@ -68,7 +64,6 @@ router.post('/register/volunteer', (req, res, next) => {
             res.redirect('/login/volunteer')
           })
           .catch((err) => {
-            console.log(err)
             res.render('error', {message: 'error in inserting user data into database'})
           })
       }

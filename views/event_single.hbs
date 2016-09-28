@@ -1,11 +1,18 @@
 {{! /event/:id }}
 
-<h1>{{data.title}}</h1>
-<p>{{data.location}}</p>
-<p>{{data.street}}</p>
-<p>{{data.city}}</p>
-<p>{{data.zip}}</p>
-<p>{{data.start_date}}</p>
-<p>{{data.end_date}}</p>
-<p>{{data.start_time}}</p>
-<p>{{data.end_time}}</p>
+<script>
+  events = {{{events}}}
+</script>
+
+<h1>{{events.title}}</h1>
+<p>{{events.location}}</p>
+<p>{{events.street}}</p>
+<p>{{events.city}}</p>
+<p>{{events.zip}}</p>
+<p>{{events.start_date}}</p>
+<p>{{events.end_date}}</p>
+<p>{{events.start_time}}</p>
+<p>{{events.end_time}}</p>
+
+
+<div id="map" style="height: 200px;"></div>

@@ -16,9 +16,10 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   organizationModel.findOrganizationbyID(req.params.id)
-  .then((data) => {
+  .then((organization) => {
     res.render('organization/organization_single', {
-      data: data
+      title: 'MEJC',
+      organization: JSON.stringify(organization)
     });
   })
 });
