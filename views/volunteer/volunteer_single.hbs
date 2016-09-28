@@ -1,17 +1,25 @@
-{{! /volunteer/:id }}
-
 <script>
   volunteer = {{{volunteer}}}
 </script>
 
 
-Name: {{volunteerRender.first_name}} {{volunteerRender.last_name}}
-Username: {{volunteerRender.user_name}}
-Email: {{volunteerRender.email}}
-Phone Number: {{volunteerRender.phone_number}}  <!-- maybe don't show this later -->
-
-About: {{volunteerRender.about}}
-Location: {{volunteerRender.city}}, {{volunteerRender.state}}
-
-
-<div id="map" style="height: 200px;"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <h1 class="username">{{volunteerRender.user_name}}</h1><hr>
+      </div>
+      <div class="row">
+        <div class="col-md-6" id="users">
+          <u>Name</u>: {{volunteerRender.first_name}} {{volunteerRender.last_name}}<br>
+          <u>About</u>: {{volunteerRender.about}}<br>
+          <u>Location</u>: {{volunteerRender.city}}, {{volunteerRender.state}}<br>
+          <u>Email</u>: {{volunteerRender.email}}<br>
+          <u>Phone Number</u>: {{volunteerRender.phone_number}}<br>
+        </div>
+        <div class="col-md-6">
+          <div id="map" style="height: 300px;width:auto;"></div>
+        </div>
+    </div>
+  </div>
+</div>

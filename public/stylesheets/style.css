@@ -22,7 +22,15 @@ a {
     float: right;
     margin-top: 2em;
 }
-
+.username {
+    text-align: center;
+}
+#users {
+    font-size: 1.3em;
+}
+#actions {
+    margin-top: 15px;
+}
 
 
 /***************
@@ -110,6 +118,7 @@ ul.topnav li a:hover {
 ul.topnav li.icon {
     display: none;
 }
+
 /**********
 FORMS
 **********/
@@ -223,17 +232,10 @@ FORMS
     background: #6B9FFF;
     color:#fff;
 }
-
 .siteName {
   display: inline-block;
   color:white;
   margin-left: 20px;
   margin-top:0px;
   padding-top: 4px;
-}
-
-footer {
-  position: absolute;
-  bottom: 5px;
-  margin:auto;
 }

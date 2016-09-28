@@ -11,13 +11,19 @@
         <h1>Events</h1>
       </div>
       <div class="row">
-          {{#each eventsRender}}
+          {{#each data}}
+          <div class="col-md-11">
             <div class="event-list">
               <a href='/event/{{id}}'>
                 <h2 class="event-list-names">{{title}}</h2>
               </a>
               <h3 class="event-list-city">{{city}}, {{state}}</h3>
             </div>
+          </div>
+          <div class="col-md-1" id="actions">
+            <a href="/edit">Edit</a>
+            <a href="/delete">Delete</a>
+          </div>
           {{/each}}
       </div>
     </div>
