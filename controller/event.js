@@ -19,8 +19,8 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/create', (req, res, next) => {
-  res.render('event_create')
+router.get('/new', (req, res, next) => {
+  res.render('event_new')
 })
 
 router.get('/:id/update', (req, res, next) => {
