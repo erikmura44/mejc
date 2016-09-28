@@ -9,6 +9,7 @@ function findEventbyID(id){
   return knex('event').where("id", id).first()
 }
 
+
 module.exports = {
   findAllEvents: findAllEvents,
   findEventbyID: findEventbyID
