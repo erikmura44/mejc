@@ -43,14 +43,14 @@ router.get('/:id', (req, res, next) => {
 
 
 router.get('/test/searchc', (req, res, next) => {
-  testModel.findEventbyCause('International')
+  testModel.filterEventbyCause('International')
     .then((data) => {
       console.log(data);
     })
 });
 
 router.get('/test/searchcc', (req, res, next) => {
-  testModel.findEventbyCause_City('International', 'Denver')
+  testModel.filterEventbyCause_City('International', 'Denver')
     .then((data) => {
       console.log(data);
     })

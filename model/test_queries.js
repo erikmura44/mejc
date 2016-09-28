@@ -1,6 +1,6 @@
 var knex = require('./knex_config.js');
 
-function findVolunteerbyCity(city){
+function filterVolunteerbyCity(city){
   return knex('volunteer').where("city", city)
     .select(
       'volunteer.id',
@@ -11,7 +11,7 @@ function findVolunteerbyCity(city){
     .first()
 }
 
-function findVolunteerbyCause(selectedCause){
+function filterVolunteerbyCause(selectedCause){
   return knex('cause')
     .join('cause_volunteer','cause.id', 'cause_volunteer.cause_id')
     .join('volunteer', 'cause_volunteer.volunteer_id', 'volunteer.id')
@@ -25,7 +25,7 @@ function findVolunteerbyCause(selectedCause){
     .where('cause.name', selectedCause)
 }
 
-function findVolunteerbyCause_City(selectedCause, selectedCity){
+function filterVolunteerbyCause_City(selectedCause, selectedCity){
   return knex('cause')
     .join('cause_volunteer','cause.id', 'cause_volunteer.cause_id')
     .join('volunteer', 'cause_volunteer.volunteer_id', 'volunteer.id')
@@ -40,7 +40,7 @@ function findVolunteerbyCause_City(selectedCause, selectedCity){
     .where('volunteer.city', selectedCity)
 }
 
-function findEventbyCity(city){
+function filterEventbyCity(city){
   return knex('event').where("city", city)
     .select(
       'event.id',
@@ -53,7 +53,7 @@ function findEventbyCity(city){
     ).first()
 }
 
-function findEventbyCause(selectedCause){
+function filterEventbyCause(selectedCause){
   return knex('cause')
     .join('cause_event','cause.id', 'cause_event.cause_id')
     .join('event', 'cause_event.event_id', 'event.id')
@@ -70,7 +70,7 @@ function findEventbyCause(selectedCause){
 }
 
 
-function findEventbyCause_City(selectedCause, selectedCity){
+function filterEventbyCause_City(selectedCause, selectedCity){
   return knex('cause')
     .join('cause_event','cause.id', 'cause_event.cause_id')
     .join('event', 'cause_event.event_id', 'event.id')
@@ -89,12 +89,12 @@ function findEventbyCause_City(selectedCause, selectedCity){
 }
 
 module.exports = {
-  findVolunteerbyCity: findVolunteerbyCity,
-  findVolunteerbyCause: findVolunteerbyCause,
-  findVolunteerbyCause_City: findVolunteerbyCause_City,
+  filterVolunteerbyCity: filterVolunteerbyCity,
+  filterVolunteerbyCause: filterVolunteerbyCause,
+  filterVolunteerbyCause_City: filterVolunteerbyCause_City,
 
-  findEventbyCity: findEventbyCity,
-  findEventbyCause: findEventbyCause,
-  findEventbyCause_City: findEventbyCause_City
+  filterEventbyCity: filterEventbyCity,
+  filterEventbyCause: filterEventbyCause,
+  filterEventbyCause_City: filterEventbyCause_City
 
 }
