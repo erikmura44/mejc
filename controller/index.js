@@ -106,6 +106,7 @@ router.post('/login/volunteer', passport.authenticate('volunteer', {
   failureRedirect:'/login/volunteer'
 }));
 
+
 // NEED TO FLESH OUT - partially completed; don't work
 router.get('/dashboard/organization', (req, res, next)=>{
   if (!req.isAuthenticated()){
