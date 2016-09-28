@@ -1,5 +1,19 @@
+{{! /organization/:id }}
 
-<!-- Still need to add cause dropdown -->
+<p>{{data.organization_name}}</p>
+
+<p>About: {{data.about}}</p>
+
+<p>Address: {{data.street}} {{data.city}}, {{data.state}} {{data.zip}}</p>
+<p>Website: {{data.website}}</p>
+<p>Phone: {{data.phone_number}}</p>
+
+<p>Contact: {{data.contact}}</p>
+<p>Email: {{data.email}}</p>
+
+
+<!-- BUILD OUT THESE ROUTES -->
+
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
@@ -8,7 +22,7 @@
           <input type="submit" name="submit" value="Submit" class="form">
           <input type="text" name="city" value="city" placeholder="City" class="form">
         </form>
-        <h1>Events</h1>
+        <h1>All Organized Events</h1>
       </div>
       <div class="row">
           {{#each data}}

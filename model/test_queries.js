@@ -1,15 +1,5 @@
 var knex = require('./knex_config.js');
 
-function findOrganizationbyCity(city){
-  return knex('organization').where("city", city)
-    .select(
-      'organization.id',
-      'organization.user_name',
-      'organization.city',
-      'organization.state'
-    )
-}
-
 function findVolunteerbyCity(city){
   return knex('volunteer').where("city", city)
     .select(
@@ -99,8 +89,6 @@ function findEventbyCause_City(selectedCause, selectedCity){
 }
 
 module.exports = {
-  findOrganizationbyCity: findOrganizationbyCity,
-
   findVolunteerbyCity: findVolunteerbyCity,
   findVolunteerbyCause: findVolunteerbyCause,
   findVolunteerbyCause_City: findVolunteerbyCause_City,
