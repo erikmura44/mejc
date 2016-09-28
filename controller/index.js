@@ -25,7 +25,7 @@ router.get('/register/organization', (req,res,next) => {
 });
 
 router.post('/register/organization', (req, res, next) => {
-  indexModel.countofOrgUser(req.body.user_name)
+  let data= indexModel.countofOrgUser(req.body.user_name)
     .then((num) => {
       console.log('num is: ', num, 'num.count is: ', num[0].count)
       if (parseInt(num[0].count) > 0){
