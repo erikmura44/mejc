@@ -66,6 +66,12 @@ function updateVolunteerInfo(volName, volInfo){
     .update(volInfo)
 }
 
+function updateOrganizationInfo(orgName, orgInfo){
+  return knex('organization')
+    .where('user_name', orgName)
+    .update(orgInfo)
+}
+
 module.exports = {
   findOrganizationData: findOrganizationData,
   findVolunteerData: findVolunteerData,
@@ -75,5 +81,6 @@ module.exports = {
   countofVolUser: countOfVolunteerUser,
   addOrganization: addOrganization,
   addVolunteer: addVolunteer,
-  updateVolunteerInfo: updateVolunteerInfo
+  updateVolunteerInfo: updateVolunteerInfo,
+  updateOrganizationInfo: updateOrganizationInfo
 };

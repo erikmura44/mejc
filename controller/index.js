@@ -37,7 +37,7 @@ router.post('/register/organization', (req, res, next) => {
             userData.type = 'organization'
             req.logIn(userData, (err) => {
               if (err) { return next(err) }
-              res.redirect('/dashboard/organization')
+              res.redirect('/profile/organization')
             })
           })
           .catch((err) => {
@@ -110,6 +110,23 @@ router.post('/profile/volunteer', (req, res, next) => {
   indexModel.updateVolunteerInfo(req.user.user_name, req.body)
     .then((data) => {
       res.redirect('/dashboard/volunteer')
+    })
+    .catch((err) => {
+      console.error('Error caught in inserting into DB')
+      next(err)
+    })
+})
+
+router.get('/profile/organization', (req, res, next) => {
+  res.render('index/profile_form_organization', {
+    username: req.user.user_name, 
+  })
+})
+
+router.post('/profile/organization', (req, res, next) => {
+  indexModel.updateOrganizationInfo(req.user.user_name, req.body)
+    .then((data) => {
+      res.redirect('/dashboard/organization')
     })
     .catch((err) => {
       console.error('Error caught in inserting into DB')
