@@ -17,6 +17,21 @@ a {
 .log-in-title {
     text-align: center;
 }
+.city-input input[type="text"],
+.city-input input[type="submit"]{
+    float: right;
+    margin-top: 2em;
+}
+.organization-list {
+    background-color: #e9e8e8;
+    padding: 20px;
+    margin: 5px;
+}
+.org-list-names, .org-list-city {
+    margin:0;
+    padding:0;
+}
+
 /**********
 NAVBAR
 **********/
