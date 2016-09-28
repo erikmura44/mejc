@@ -1,35 +1,41 @@
-{{! /dashboard/organization }}
+{{! /volunteer/:id }}
 
 <div>
   <h1>Dashboard</h1>
   <h4>for</h4>
-  <h2>{{data.organization_name}}</h2>
+  <h2>{{data.first_name}} {{data.last_name}}</h2>
 </div>
+
 
 <div>
   <h3>User Account Profile</h3>
-    <p>Registered website is {{data.website}}</p>
-    <p>Registered contact is {{data.contact}}</p>
-    <p>Registered email is {{data.email}}</p>
-    <p>Registered address is:{{data.street}} {{data.city}}, {{data.state}} {{data.zip}}</p>
-    <p>Registered phone number is {{data.phone_number}}</p>
-    <p>About: {{data.about}}</p>
-    <a href="/organization/{{data.id}}">View Your Organization's Profile</a>
+  UserID: {{data.id}}
+  Username: {{data.user_name}}
+  Username: {{data.user_name}}
+
+Email: {{data.email}}
+Phone Number: {{data.phone_number}}
+Registered Location: {{data.city}}, {{data.state}}
+
+
+About: {{data.about}}
+<a href="/volunteer/{{data.id}}">View Your Profile</a>
 </div>
+
 
 <!-- BUILD OUT THESE ROUTES -->
 <div>
   <h3>Edit Your User Account</h3>
     <a href="/users/update/user_name/{{data.id}}">Edit Your Username</a>
     <a href="/users/update/password/{{data.id}}">Edit Your Password</a>
-    <a href="/organization/{{data.id}}/update">Update Your Organization's Profile</a>
+    <a href="/organization/{{data.id}}/update">Update Your Profile</a>
     <a href="/users/delete/{{data.id}}">Delete Your Account</a>
 </div>
 
 <div>
   <h3>Do Something</h3>
-    <a href="/">Create A New Event</a>
-    <a href="#">Search for Volunteers</a>
+    <a href="/">Browse Organizations</a>
+    <a href="#">Browse Events</a>
 </div>
 
 <div class="container">
@@ -40,7 +46,7 @@
           <input type="submit" name="submit" value="Submit" class="form">
           <input type="text" name="city" value="city" placeholder="City" class="form">
         </form>
-        <h1>All Organized Events</h1>
+        <h1>Registered Events</h1>
       </div>
       <div class="row">
           {{#each data}}
