@@ -7,7 +7,7 @@ const passport = require('../passport')
 const bcrypt = require('bcrypt')
 
 const indexModel = require('../model/index_query');
-const mapModel = require('../model/map_query');
+
 
 /* GET splash page. */
 router.get('/', (req, res, next) => {

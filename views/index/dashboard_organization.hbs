@@ -1,12 +1,64 @@
+{{! /dashboard/organization }}
 
-{{data.user_name}}<br>
-{{data.email}}<br>
-{{data.about}}<br>
-{{data.phone_number}}<br>
-{{data.organization_name}}<br>
-{{data.street}}<br>
-{{data.city}}<br>
-{{data.state}}<br>
-{{data.zip}}<br>
-{{data.contact}}<br>
-{{data.website}}<br>
+<div>
+  <h1>Dashboard</h1>
+  <h4>for</h4>
+  <h2>{{data.organization_name}}</h2>
+</div>
+
+<div>
+  <h3>User Account Profile</h3>
+    <p>Registered website is {{data.website}}</p>
+    <p>Registered contact is {{data.contact}}</p>
+    <p>Registered email is {{data.email}}</p>
+    <p>Registered address is:{{data.street}} {{data.city}}, {{data.state}} {{data.zip}}</p>
+    <p>Registered phone number is {{data.phone_number}}</p>
+    <p>About: {{data.about}}</p>
+    <a href="/organization/{{data.id}}">View Your Organization's Profile</a>
+</div>
+
+<!-- **************  BUILD OUT THESE ROUTES & CREATE QUERIES  ************** -->
+<div>
+  <h3>Edit Your User Account</h3>
+    <a href="/organization/{{data.id}}/username/update">Edit Your Username</a>
+    <a href="/organization/{{data.id}}/password/update">Edit Your Password</a>
+    <a href="/organization/{{data.id}}/profile/update">Update Your Profile</a>
+    <a href="/organization/{{data.id}}/delete">Delete Your Account</a> <!-- should confirm delete before deleting-->
+</div>
+<!-- ****************************************************** -->
+
+<div>
+  <h3>Do Something</h3>
+    <a href="/event/new">Create A New Event</a>
+    <a href="/volunteer">Search for Volunteers</a>
+</div>
+
+
+<!-- **************  FIX THIS ELEMENT: KNEX QUERY FOR ALL EVENTS ORG HAS PLANNED  ************** -->
+<!-- **************  ADD BUTTON TO EACH EVENT: ONE TO DELETE & ONE TO UPDDATE  ************** -->
+<!-- **************  CREATE ROUTES FOR THE DELETE & UPDDATE EVENT ITEM  ************** -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row" id="form">
+        <form class="city-input" action="index.html" method="post" id="eventForm">
+          <input type="submit" name="submit" value="Submit" class="form">
+          <input type="text" name="city" value="city" placeholder="City" class="form">
+        </form>
+        <h1>All Organized Events</h1>
+      </div>
+      <div class="row">
+          {{#each data}}
+            <div class="event-list">
+              <a href='/event/{{id}}'>
+                <h2 class="event-list-names">{{title}}</h2>
+              </a>
+              <h3 class="event-list-city">{{city}}, {{state}}</h3>
+            </div>
+          {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- **************************************************************************************** -->
