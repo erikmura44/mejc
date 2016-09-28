@@ -25,14 +25,15 @@ router.get('/register/organization', (req,res,next) => {
 });
 
 router.post('/register/organization', (req, res, next) => {
-  let data= indexModel.countofOrgUser(req.body.user_name)
+  console.log('post hit!', req.body.username);
+  indexModel.countofOrgUser(req.body.username)
     .then((num) => {
       console.log('num is: ', num, 'num.count is: ', num[0].count)
       if (parseInt(num[0].count) > 0){
         res.render('error', {message: 'Username is taken.'})
       } else {
         let userData = {
-          user_name: req.body.user_name,
+          user_name: req.body.username,
           password: bcrypt.hashSync(req.body.password, 8),      // passwords are never stored in plain text
           email: req.body.email
         }
@@ -53,14 +54,14 @@ router.get('/register/volunteer', (req,res,next) => {
 });
 
 router.post('/register/volunteer', (req, res, next) => {
-  indexModel.countofVolUser(req.body.user_name)
+  indexModel.countofVolUser(req.body.username)
     .then((num) => {
       console.log('num is: ', num, 'num.count is: ', num[0].count)
       if (parseInt(num[0].count) > 0){
         res.render('error', {message: 'Username is taken.'})
       } else {
         let userData = {
-          user_name: req.body.user_name,
+          user_name: req.body.username,
           password: bcrypt.hashSync(req.body.password, 8),      // passwords are never stored in plain text
           email: req.body.email
         }
@@ -89,13 +90,10 @@ router.get('/login/volunteer', (req,res,next) => {
 });
 
 
-//**********this doesn't work still!!!!!!!!**********
 router.post('/login/organization', passport.authenticate('organization', {
   successRedirect:'/dashboard/organization',
   failureRedirect:'/register/organization'
 }));
-//****************************************************
-
 
 router.post('/login/volunteer', passport.authenticate('volunteer', {
   successRedirect:'/dashboard/volunteer',
