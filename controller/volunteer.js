@@ -24,7 +24,8 @@ router.get('/:id', (req, res, next) => {
   .then(function(volunteer){
     res.render('volunteer/volunteer_single', {
       title: 'MEJC',
-      volunteer: JSON.stringify(volunteer)
+      volunteer: JSON.stringify(volunteer),
+      volunteerRender: volunteer
     });
   })
 });
