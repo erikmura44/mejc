@@ -8,20 +8,14 @@
         </form>
       </div>
       <div class="row">
-          {{#each data}}
-          <div class="col-md-11">
-            <div class="organization-list">
-              <a href='/organization/{{id}}'>
-                <h2 class="org-list-names">{{organization_name}}</h2>
-              </a>
-              <h3 class="org-list-city">{{city}}, {{state}}</h3>
-            </div>
+        {{#each data}}
+          <div class="organization-list">
+            <a href='/organization/{{id}}'>
+              <h2 class="org-list-names">{{organization_name}}</h2>
+            </a>
+            <h3 class="org-list-city">{{city}}, {{state}}</h3>
           </div>
-            <div class="col-md-1" id="actions">
-              <a href="/edit">Edit</a>
-              <a href="/delete">Delete</a>
-            </div>
-          {{/each}}
+        {{/each}}
       </div>
     </div>
   </div>
