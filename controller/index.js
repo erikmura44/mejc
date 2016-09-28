@@ -114,7 +114,7 @@ router.get('/dashboard/organization', (req, res, next)=>{
   }
   indexModel.findOrganizationData(req.user.user_name)
   .then((data) => {
-    console.log('This is after GET to dashboard & before render', req.user); // this is to check that I am getting back the right info; ie type is tracked
+    console.log('This is after GET to dashboard & before render', data); // this is to check that I am getting back the right info; ie type is tracked
     res.render('index/dashboard_organization', {
       data:data
     })
@@ -128,7 +128,7 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
   }
   indexModel.findVolunteerData(req.user.user_name)
   .then((data) => {
-    console.log('This is after GET to dashboard & before render', req.user); // this is to check that I am getting back the right info; ie type is tracked
+    // console.log('This is after GET to dashboard & before render', req.user); // this is to check that I am getting back the right info; ie type is tracked
     res.render('index/dashboard_volunteer', {
       data:data
     })

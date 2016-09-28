@@ -10,6 +10,7 @@ passport.use('organization', new LocalStrategy(
   (username, password, done) => {
     indexModel.findOrganizationData(username)
     .then((userData) => {
+      // console.log(userData);
       if(userData){
         bcrypt.compare(password, userData.password,
         function(err, res){
@@ -59,9 +60,9 @@ passport.serializeUser((userData, done) => {
   done(null, userData)
 })
 
-passport.deserializeUser((userdata, done) => {
-  if (userdata.type === 'volunteer' ){
-    indexModel.findVolunteerData(userdata.user_name)
+passport.deserializeUser((userData, done) => {
+  if (userData.type === 'volunteer' ){
+    indexModel.findVolunteerData(userData.user_name)
       .then((userData) => {
         done(null, userData)
       })
@@ -69,7 +70,7 @@ passport.deserializeUser((userdata, done) => {
         done(err)
       })
   } else {
-    indexModel.findOrganizationData(userdata.user_name)
+    indexModel.findOrganizationData(userData.user_name)
       .then((userData) => {
         done(null, userData)
       })
