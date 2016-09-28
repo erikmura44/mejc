@@ -3,18 +3,29 @@
   organization = {{{organization}}}
 </script>
 
-<p>{{organizationRender.organization_name}}</p>
 
-<p>About: {{organizationRender.about}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <h1 class="username">{{organizationRender.organization_name}}</h1><hr>
+      </div>
+      <div class="row">
+        <div class="col-md-8" id="users">
+          <u>About</u>: {{organizationRender.about}}<br><br>
+          <u>Location</u>: {{organizationRender.street}},  {{organizationRender.city}}, {{organizationRender.state}}  {{organizationRender.zip}}<br><br>
+          <u>Email</u>: {{organizationRender.email}}<br><br>
+          <u>Phone Number</u>: {{organizationRender.phone_number}}<br><br>
+          <u>Contact</u>: {{organizationRender.contact}}<br><br>
+          <u>Website</u>: {{organizationRender.website}}<br><br>
+        </div>
+        <div class="col-md-4">
+          <div id="map" style="height: 300px;width:auto;"></div>
+        </div>
+    </div>
+  </div>
+</div>
 
-<p>Address: {{organizationRender.street}} {{organizationRender.city}}, {{organizationRender.state}} {{organizationRender.zip}}</p>
-<p>Website: {{organizationRender.website}}</p>
-<p>Phone: {{organizationRender.phone_number}}</p>
-
-<p>Contact: {{organizationRender.contact}}</p>
-<p>Email: {{organizationRender.email}}</p>
-
-<div id="map" style="height: 200px;"></div>
 
 <!-- BUILD OUT THESE ROUTES -->
 
