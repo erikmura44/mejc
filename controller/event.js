@@ -25,10 +25,6 @@ router.get('/view/:id', (req, res, next) => {
   })
 })
 
-router.get('/register/:id', (req, res, next) => {
-  eventModel.addNewVolunteer(req.params.id, req.user.id)
-})
-
 router.get('/new', (req, res, next) => {
   res.render('event/event_new')
 })
@@ -56,6 +52,17 @@ router.post('/update/:id', (req, res, next) => {
     })
 })
 
+router.get('/register/:id', (req, res, next) => {
+  console.log('i got hit!');
+  eventModel.registerVolforEvent(parseInt(req.params.id), req.user.id)
+    .then((data)=>{
+      console.log(data)
+    })
+})
+
+router.get('/unregister/:id', (req, res, next) => {
+  eventModel.unregisterVolfromEvent(req.params.id, req.user.id)
+})
 
 router.get('/delete/:id', (req, res, next) => {
   eventModel.deleteEvent(req.params.id)
@@ -67,7 +74,7 @@ router.get('/delete/:id', (req, res, next) => {
 // //THIS DOESN'T WORK
 // router.get('/delete/:id', (req, res, next) => {
 //   eventModel.findHostIDOfEvent(req.params.id)
-//     .then((eventData) => {
+//     .then((eventData) => {p[]
 //       if (eventData.organization_id === req.user.id){
 //         eventModel.deleteEvent(eventData.id)
 //     })

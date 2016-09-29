@@ -36,7 +36,7 @@ function addEvent(eventInfo, orgID){
     })
 }
 
-//this needs to be tested
+// is this needed? If so needs to be tested
 function findHostIDOfEvent(eventID){
   return knex('event').where('id', eventID)
     .select(
@@ -45,7 +45,6 @@ function findHostIDOfEvent(eventID){
     )
 }
 
-//this needs to be tested
 function updateEvent(eventID, orgID, updatedInfo){
   return knex('event').where('id', eventID)
     .update({
@@ -66,15 +65,18 @@ function updateEvent(eventID, orgID, updatedInfo){
     })
 }
 
-//this needs to be tested
 function deleteEvent(eventID){
   return knex('event').where('id', eventID)
   .del()
 }
 
-//this needs to be tested
 function registerVolforEvent(eventID, userID) {
-  return knex('event').where('id', eventID)
+  return knex('event_volunteer')
+      .join('event', 'event_volunteer.event_id', 'event.id')
+      .insert({
+        event_id: eventID,
+        volunteer_id: userID
+      })
 }
 
 //this needs to be tested
