@@ -2,12 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
+
 const eventModel = require('../model/event_query');
-
-// const passport = require('../passport')
-// const bcrypt = require('bcrypt');
-
-// const eventModel = require('../model/event_query');
 const testModel = require('../model/test_queries');
 
 router.get('/', (req, res, next) => {
@@ -24,16 +20,11 @@ router.get('/new', (req, res, next) => {
 })
 
 router.post('/new', (req, res, next) => {
-  // let formData = req.body
-  // let organizationID = req.user.id
-  console.log(req.user.id)
   eventModel.addEvent(req.body, req.user.id)
     .then(() => {
       res.redirect('/dashboard/organization')
     })
 })
-
-
 
 
 router.get('/:id/update', (req, res, next) => {
@@ -45,8 +36,6 @@ router.get('/:id/update', (req, res, next) => {
     })
 })
 
-
-
 router.get('/:id', (req, res, next) => {
   eventModel.findEventbyID(req.params.id)
   .then(function(events){
@@ -57,7 +46,6 @@ router.get('/:id', (req, res, next) => {
     });
   })
 });
-
 
 router.get('/test/searchc', (req, res, next) => {
   testModel.filterEventbyCause('International')
