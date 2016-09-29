@@ -9,11 +9,15 @@ function findEventbyID(id){
 }
 
 function findEventbyOrgID(orgID){
-  return knex('event').where("event.organization_id", orgID)
+  return knex('event').where('organization_id', orgID)
 }
 
 function findEventbyVolID(volID){
-  return knex('event').where("event.registered_volunteers", volID)
+  return knex('event').where("registered_volunteers", volID)
+}
+
+function addNewVolunteer (eventID, volID){
+  return knex('event').where('id', eventID)
 }
 
 function addEvent(eventInfo, orgID){
@@ -36,10 +40,26 @@ function addEvent(eventInfo, orgID){
     })
 }
 
+function findHostIDOfEvent(eventID){
+  return knex('event').where('id', eventID)
+    .select(
+      'event.organization_id',
+      'event.id'
+    )
+}
+
+function deleteEvent(eventId){
+  return knex('event').where('id', eventID)
+    .del()
+}
+
 module.exports = {
   findAllEvents: findAllEvents,
   findEventbyID: findEventbyID,
   findEventbyOrgID: findEventbyOrgID,
   findEventbyVolID: findEventbyVolID,
-  addEvent: addEvent
+  addNewVolunteer: addNewVolunteer,
+  addEvent: addEvent,
+  updateEvent: updateEvent,
+  deleteEvent: deleteEvent
 }

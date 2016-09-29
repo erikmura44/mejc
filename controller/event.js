@@ -26,6 +26,10 @@ router.get('/view/:id', (req, res, next) => {
   })
 })
 
+router.get('/register/:id', (req, res, next) => {
+  eventModel.addNewVolunteer(req.params.id, req.user.id)
+})
+
 router.get('/new', (req, res, next) => {
   res.render('event/event_new')
 })
@@ -39,7 +43,7 @@ router.post('/new', (req, res, next) => {
 
 router.get('/update/:id', (req, res, next) => {
   eventModel.findEventbyID(req.params.id)
-    .then((data) => {
+    .then((data) => { // arg name may change
       res.render('event/event_update', {
         data: data
       })
@@ -50,8 +54,18 @@ router.post('/update/:id', (req, res, next) => {
   // redirect to /event/view/:id
 })
 
+//test this
 router.get('/delete/:id', (req, res, next) => {
-  // redirect to /organization/dashboard
+  eventModel.findHostIDOfEvent(req.params.id)
+    .then((eventData) => {
+      if (eventData.organization_id === req.user.id){
+        eventModel.deleteEvent(eventData.id)
+      }
+      return // is this needed?
+    })
+    .then(() => {
+      res.redirect('/organization/dashboard')
+    })
 })
 
 // router.get('/test/searchc', (req, res, next) => {
