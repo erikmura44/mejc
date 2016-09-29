@@ -33,23 +33,6 @@ router.get('/:id', (req, res, next) => {
     })
 });
 
-router.get('/:id/delete', (req, res, next) => {
-  if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
-    organizationModel.deleteOrganizationUser(req.params.id)
-    .then(() => {
-      req.logout();
-      res.redirect('/')
-    })
-    .catch((err) => {
-      console.error('Error caught in deleting user from DB')
-      next(err)
-    })
-  } else {
-    console.log('CAN\'T DELETE AN ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
-    return
-  }
-})
-
 router.get('/:id/profile/update', (req, res, next) => {
   organizationModel.findOrganizationbyID(req.params.id)
     .then((orgData) => {
@@ -64,7 +47,6 @@ router.post('/:id/profile/update', (req, res, next) => {
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     organizationModel.updateOrganizationUser(req.params.id, req.body)
     .then(() => {
-      console.log('i got updated!');
       res.redirect('/dashboard/organization')
     })
     .catch((err) => {
@@ -73,6 +55,23 @@ router.post('/:id/profile/update', (req, res, next) => {
     })
   } else {
     console.log('CAN\'T UPDATE A USER PROFILE ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
+    return
+  }
+})
+
+router.get('/:id/delete', (req, res, next) => {
+  if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
+    organizationModel.deleteOrganizationUser(req.params.id)
+    .then(() => {
+      req.logout();
+      res.redirect('/')
+    })
+    .catch((err) => {
+      console.error('Error caught in deleting user from DB')
+      next(err)
+    })
+  } else {
+    console.log('CAN\'T DELETE AN ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
     return
   }
 })
