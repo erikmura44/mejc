@@ -1,33 +1,5 @@
 const knex = require('./knex_config.js');
 
-// *********** SHOULD WE RESTRICT THE USER DATA RETURNED? ********//
-function findOrganizationData(orgName){
-  return knex('organization')
-  .where('user_name',orgName).first()
-  .then((userData) => {
-    if (typeof userData === 'undefined') {
-      return
-    } else {
-      userData.type = 'organization'
-      return userData
-    }
-  })
-}
-
-function findVolunteerData(volName){
-  return knex('volunteer')
-    .where('user_name',volName).first()
-    .then((userData) => {
-      if (typeof userData === 'undefined') {
-        return
-      } else {
-        userData.type = 'volunteer'
-        return userData
-      }
-    })
-}
-// *********************************************************//
-
 function findOrganizationHashedPassword(orgName){
   return knex('organization')
   .where('organization.user_name',orgName)
@@ -60,29 +32,11 @@ function addVolunteer(volName){
   return knex('volunteer').insert(volName)
 }
 
-function updateVolunteerInfo(volName, volInfo){
-  return knex('volunteer')
-    .where('user_name', volName)
-    .update(volInfo)
-}
-
-function addedOrganizationInfo(orgName, orgInfo){
-  return knex('organization')
-    .where('user_name', orgName)
-    .update({
-
-    })
-}
-
 module.exports = {
-  findOrganizationData: findOrganizationData,
-  findVolunteerData: findVolunteerData,
   findOrganizationHashedPassword: findOrganizationHashedPassword,
   findVolunteerHashedPassword: findVolunteerHashedPassword,
   countofOrgUser: countOfOrganizationUser,
   countofVolUser: countOfVolunteerUser,
   addOrganization: addOrganization,
   addVolunteer: addVolunteer,
-  updateVolunteerInfo: updateVolunteerInfo,
-  addedOrganizationInfo: addedOrganizationInfo
 };

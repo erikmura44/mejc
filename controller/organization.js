@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/view/:id', (req, res, next) => {
   let orgData = organizationModel.findOrganizationbyID(req.params.id)
   let orgEvents = eventModel.findEventbyOrgID(req.params.id)
   Promise.all([orgData, orgEvents])
@@ -30,6 +30,36 @@ router.get('/:id', (req, res, next) => {
         organizationRender: data[0],
         events: data[1]
       });
+    })
+});
+
+router.get('/:id/profile/new', (req, res, next) => {
+  res.render('organization/profile_new_organization', {
+    username: req.user.user_name,
+  })
+})
+
+router.post('/:id/profile/new', (req, res, next) => {
+  indexModel.addedOrganizationInfo(req.user.user_name, req.body)
+    .then((data) => {
+      res.redirect('/:id/dashboard')
+    })
+    .catch((err) => {
+      console.error('Error caught in inserting into DB')
+      next(err)
+    })
+})
+
+router.get('/:id/dashboard', (req, res, next)=>{
+  if (!req.isAuthenticated()){
+    res.redirect('/register/organization');
+    return;
+  }
+  organizationModel.findOrganizationData(req.user.user_name)
+    .then((data) => {
+      res.render('organization/dashboard_organization', {
+        data:data
+      })
     })
 });
 
@@ -47,7 +77,7 @@ router.post('/:id/profile/update', (req, res, next) => {
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     organizationModel.updateOrganizationUser(req.params.id, req.body)
     .then(() => {
-      res.redirect('/dashboard/organization')
+      res.redirect('/:id/dashboard')
     })
     .catch((err) => {
       console.error('Error caught in deleting user from DB')

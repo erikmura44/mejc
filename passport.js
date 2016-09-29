@@ -5,12 +5,13 @@ const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
 
 const indexModel = require('./model/index_query')
+const organizationModel = require('./model/organization_query');
+const volunteerModel = require('./model/volunteer_query');
 
 passport.use('organization', new LocalStrategy(
   (username, password, done) => {
-    indexModel.findOrganizationData(username)
+    organizationModel.findOrganizationData(username)
     .then((userData) => {
-      // console.log(userData);
       if(userData){
         bcrypt.compare(password, userData.password,
         function(err, res){
@@ -33,9 +34,8 @@ passport.use('organization', new LocalStrategy(
 
 passport.use('volunteer', new LocalStrategy(
   (username, password, done) => {
-    indexModel.findVolunteerData(username)
+    volunteerModel.findVolunteerData(username)
     .then((userData) => {
-      // console.log(userData);
       if(userData){
         bcrypt.compare(password, userData.password,
         function(err, res){
@@ -62,7 +62,7 @@ passport.serializeUser((userData, done) => {
 
 passport.deserializeUser((userData, done) => {
   if (userData.type === 'volunteer' ){
-    indexModel.findVolunteerData(userData.user_name)
+    volunteerModel.findVolunteerData(userData.user_name)
       .then((userData) => {
         done(null, userData)
       })
@@ -70,7 +70,7 @@ passport.deserializeUser((userData, done) => {
         done(err)
       })
   } else {
-    indexModel.findOrganizationData(userData.user_name)
+    organizationModel.findOrganizationData(userData.user_name)
       .then((userData) => {
         done(null, userData)
       })

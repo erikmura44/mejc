@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/view/:id', (req, res, next) => {
   volunteerModel.findVolunteerbyID(req.params.id)
   .then(function(volunteer){
     res.render('volunteer/volunteer_single', {
@@ -26,7 +26,37 @@ router.get('/:id', (req, res, next) => {
   })
 });
 
-router.get('/:id/profile/update', (req, res, next) => {
+router.get('/dashboard', (req, res, next)=>{
+  if (!req.isAuthenticated()){
+    res.redirect('/login/volunteer');
+    return;
+  }
+  volunteerModel.findVolunteerData(req.user.user_name)
+    .then((data) => {
+    res.render('volunteer/dashboard_volunteer', {
+      data:data
+    })
+  })
+});
+
+router.get('/profile/new', (req, res, next) => {
+  res.render('volunteer/profile_new_volunteer', {
+    username: req.user.user_name
+  })
+})
+
+router.post('/profile/new', (req, res, next) => {
+  indexModel.updateVolunteerInfo(req.user.user_name, req.body)
+    .then((data) => {
+      res.redirect('/volunteer/dashboard')
+    })
+    .catch((err) => {
+      console.error('Error caught in inserting into DB')
+      next(err)
+    })
+})
+
+router.get('/profile/update/:id', (req, res, next) => {
   volunteerModel.findVolunteerbyID(req.params.id)
     .then((volData) => {
       res.render('volunteer/profile_update_volunteer', {
@@ -35,12 +65,12 @@ router.get('/:id/profile/update', (req, res, next) => {
     })
 })
 
-router.post('/:id/profile/update', (req, res, next) => {
+router.post('/profile/update/:id', (req, res, next) => {
   console.log('i got hit');
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     volunteerModel.updateVolunteerUser(req.params.id, req.body)
     .then(() => {
-      res.redirect('/dashboard/volunteer')
+      res.redirect('/volunteer/dashboard')
     })
     .catch((err) => {
       console.error('Error caught in deleting user from DB')
@@ -52,7 +82,7 @@ router.post('/:id/profile/update', (req, res, next) => {
   }
 })
 
-router.get('/:id/delete', (req, res, next) => {
+router.get('/delete/:id', (req, res, next) => {
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     volunteerModel.deleteVolunteerUser(req.params.id)
     .then(() => {
