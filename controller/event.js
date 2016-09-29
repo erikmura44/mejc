@@ -51,10 +51,13 @@ router.get('/update/:id', (req, res, next) => {
 })
 
 router.post('/update/:id', (req, res, next) => {
-  // redirect to /event/view/:id
+  eventModel.updateEvent(req.params.id, req.user.id, req.body)
+    .then(() => { // arg name may change
+      res.redirect('/organization/dashboard')
+    })
 })
 
-//test this
+//THIS DOESN'T WORK
 router.get('/delete/:id', (req, res, next) => {
   eventModel.findHostIDOfEvent(req.params.id)
     .then((eventData) => {
