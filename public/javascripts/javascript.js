@@ -25,40 +25,34 @@ address = volunteer.city + "," + volunteer.state
   }
 
 /**************/
-// function organizationMap(organization){
-//
-//
-// var addressOrg = organization.street + "," + organization.city + "," + organization.state + "," + organization.zip
-//
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//       mapTypeId: google.maps.MapTypeId.TERRAIN,
-//       zoom: 13
-//   });
-//
-//   var geocoder = new google.maps.Geocoder();
-//
-//   geocoder.geocode({
-//      'address': addressOrg
-//   },
-//   function(results, status) {
-//      if(status == google.maps.GeocoderStatus.OK) {
-//         new google.maps.Marker({
-//            position: results[0].geometry.location,
-//            map: map
-//         });
-//         // new google.maps.Marker({
-//         //    position: results[1].geometry.location,
-//         //    map: map
-//         // });
-//         map.setCenter(results[0].geometry.location);
-//      }
-//    })
-//   }
+function organizationMap(organization){
+
+
+var addressOrg = organization.street + "," + organization.city + "," + organization.state + "," + organization.zip
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+      zoom: 13
+  });
+
+  var geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode({
+     'address': addressOrg
+  },
+  function(results, status) {
+     if(status == google.maps.GeocoderStatus.OK) {
+        new google.maps.Marker({
+           position: results[0].geometry.location,
+           map: map
+        });
+        map.setCenter(results[0].geometry.location);
+     }
+   })
+  }
 
 
 function eventMap(events){
-
-
 
 addressEvent = events.street + "," + events.city + "," + events.state + "," + events.zip
 
