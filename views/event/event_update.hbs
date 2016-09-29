@@ -6,46 +6,36 @@
       <h1 class="title-post">Update Event</h1>
       <form class="form-style-7" action="/event/update/{{data.id}}" method="POST">
         <div class="col-md-6">
-        <ul>
-          <li>
-            <label for="title">Title</label>
-            <input type="text" name="title" value="{{data.title}}" placeholder="Event Title" required>
-            <span>Enter your event title</span>
-          </li>
-          <li>
-            <label for="location">Location/building</label>
-            <input type="text" name="location" value="{{data.location}}" placeholder="Galvanize Platte">
-            <span>Enter your event location</span>
-          </li>
-          <li>
-            <label for="street">Street</label>
-            <input type="text" name="street" value="{{data.street}}" placeholder="1640 South Broadway" required>
-            <span>Enter the street</span>
-          </li>
-          <li>
-            <label for="city">City</label>
-            <input type="text" name="city" value="{{data.city}}" placeholder="Denver" required>
-            <span>Enter the city</span>
-          </li>
-          <li>
-            <label for="state">State</label>
-            <input type="text" name="state" value="{{data.state}}" placeholder="CO" required>
-            <span>Enter the state</span>
-          </li>
-          <li>
-            <label for="zip">Zip Code</label>
-            <input type="text" name="zip" value="{{data.zip}}" placeholder="Denver" required>
-            <span>Enter the zip code</span>
-          </li>
-          <li>
-            <label for="start_date">Start Date</label>
-            <input type="date" name="start_date" value="{{data.start_date}}" required>
-            <span>Enter the start date</span>
-          </li>
-        </ul>
+          <ul>
+            <li>
+              <label for="title">Title</label>
+              <input type="text" name="title" value="{{data.title}}" required>
+            </li>
+            <li>
+              <label for="location">Location/building</label>
+              <input type="text" name="location" value="{{data.location}}">
+            </li>
+            <li>
+              <label for="street">Street</label>
+              <input type="text" name="street" value="{{data.street}}" required>
+            </li>
+            <li>
+              <label for="city">City</label>
+              <input type="text" name="city" value="{{data.city}}" required>
+            </li>
+            <li>
+              <label for="start_date">Start Date</label>
+              <input type="date" name="start_date" value="{{data.start_date}}" required>
+            </li>
+            <li>
+              <label for="start_time">Start Time</label>
+              <input type="time" name="start_time" value="{{data.start_time}}" required>
+            </li>
+          </ul>
         </div>
         <div class="col-md-6">
           <ul>
+<<<<<<< HEAD
           <li>
             <label for="end_date">End Date</label>
             <input type="date" name="end_date" value="{{data.end_date}}" required>
@@ -74,6 +64,31 @@
           <li>
             <input type="submit" class="submit-btn" value="Submit" required>
           </li>
+=======
+            <li>
+              <label for="end_date">End Date</label>
+              <input type="date" name="end_date" value="{{data.end_date}}" required>
+            </li>
+            <li>
+              <label for="end_time">End Time</label>
+              <input type="time" name="end_time" value="{{data.end_time}}" required>
+            </li>
+            <li>
+              <label for="">Start Date</label>
+              <input type="date" name="start_date"  value="{{data.start_date}}" required>
+            </li>
+            <li>
+              <label for="available_positions">Number of Volunteers Desired</label>
+              <input type="number" name="available_positions" value="{{data.available_positions}}">
+            </li>
+            <li>
+              <label for="description">Event Description</label>
+              <textarea rows='8' name="description" required>{{data.description}}</textarea>
+            </li>
+            <li>
+              <input type="submit" class="submit-btn" name="loginVolSubmit" value="Submit" required>
+            </li>
+>>>>>>> 044f93f4a0e314aeb38cfa4cf65c42f84d85bbc7
           </ul>
         </div>
       </form>

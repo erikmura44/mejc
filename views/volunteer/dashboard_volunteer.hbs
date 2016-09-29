@@ -1,43 +1,51 @@
-{{! /volunteer/dashboard }}
+{{! /volunteer/dashboard }}{{!vol.Data.}}
 
-<div>
-  <h1>Dashboard</h1>
-  <h4>for</h4>
-  <h2>{{volData.first_name}} {{volData.last_name}}</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <h1 style="text-align:center;">Welcome, {{volData.user_name}} <hr>
+      </div>
+      <div class="row">
+        <h4 class="dashboard">Dashboard</h4>
+      </div>
+      <div class="row">
+
+        <div class="col-md-4 ">
+          <div class="dash-button text-center">
+            <a href="/event/new"><button type="button" class="btn btn-primary" id="dropdownMenu1">Create Event</button></a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="dash-button text-center">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Edit Profile <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="/volunteer/view/{{volData.id}}">View Profile</a></li>
+              <li><a href="/volunteer/profile/update/{{volData.id}}">Edit Profile</a></li>
+              <li><a href="/volunteer/password/update/{{volData.id}}">Update Password</a></li>
+              <li><a href="/volunteer/username/update/{{volData.id}}">Update Username</a></li>
+              <li><a href="/volunteer/delete/{{volData.id}}">Delete Account</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="dash-button text-center">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="/organization">by Organizations</a></li>
+              <li><a href="/event">by Events</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-<div>
-  <h3>User Account Profile</h3>
-  UserID: {{volData.id}}
-  Username: {{volData.user_name}}
-  Username: {{volData.user_name}}
-
-Email: {{volData.email}}
-Phone Number: {{volData.phone_number}}
-Registered Location: {{volData.city}}, {{volData.state}}
-
-
-About: {{volData.about}}
-<a href="/volunteer/view/{{volData.id}}">View Your Profile</a>
-</div>
-
-
-<!-- **************  BUILD OUT THESE ROUTES & CREATE QUERIES  ************** -->
-<div>
-  <h3>Edit Your User Account</h3>
-    <a href="/volunteer/username/update/{{volData.id}}">Edit Your Username</a>
-    <a href="/volunteer/password/update/{{volData.id}}">Edit Your Password</a>
-    <a href="/volunteer/profile/update/{{volData.id}}">Update Your Profile</a>
-    <a href="/volunteer/delete/{{volData.id}}">Delete Your Account</a> <!-- should confirm delete before deleting-->
-</div>
-<!-- ****************************************************** -->
-
-<div>
-  <h3>Do Something</h3>
-    <a href="/organization">Browse Organizations</a>
-    <a href="/event">Browse Events</a>
-</div>
 
 <!-- **************  FIX THIS ELEMENT: KNEX QUERY FOR ALL EVENTS VOL IS SIGNED UP FOR  ************** -->
 <!-- **************  ADD BUTTON TO EACH EVENT: ONE UNREGISTER EVENT DETAILS  ************** -->
@@ -46,12 +54,8 @@ About: {{volData.about}}
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="row" id="form">
-        <form class="city-input" action="index.html" method="post" id="eventForm">
-          <input type="submit" name="submit" value="Submit" class="form">
-          <input type="text" name="city" value="city" placeholder="City" class="form">
-        </form>
-        <h1>Registered Events</h1>
+      <div>
+        <h3 class="events">Registered Events</h3><hr>
       </div>
       <div class="row">
           {{#each eventData}}
@@ -59,11 +63,12 @@ About: {{volData.about}}
               <a href='/event/view/{{id}}'>
                 <h2 class="event-list-names">{{title}}</h2>
               </a>
-              <h3 class="event-list-city">{{city}}, {{state}}</h3>
+              <span class="event-list-city">{{organization.name}}</span> ||
+              <span class="event-list-city">{{city}}, {{state}}</span> ||
+              <span class="event-list-city">{{start_date}} @ {{start_time}}</span>
             </div>
           {{/each}}
       </div>
     </div>
   </div>
 </div>
-<!-- **************************************************************************************** -->
