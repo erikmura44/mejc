@@ -27,10 +27,8 @@ router.get('/dashboard', (req, res, next)=>{
   }
   let orgData = organizationModel.findOrganizationbyID(req.user.id)
   let orgEvents = eventModel.findEventbyOrgID(req.user.id)
-
   Promise.all([orgData, orgEvents])
     .then((data) => {
-      console.log(data);
       res.render('organization/dashboard_organization', {
         title: 'MEJC',
         orgData:data[0],
