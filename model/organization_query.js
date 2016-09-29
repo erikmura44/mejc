@@ -31,6 +31,13 @@ function findOrganizationbyID(id){
     .first()
 }
 
+function findOrganizationID(orgName){
+  return knex('organization')
+    .where("user_name", orgName)
+    .select('organization.id')
+    .first()
+}
+
 function filterOrganizationbyCity(city){
   return knex('organization').where("city", city)
     .select(

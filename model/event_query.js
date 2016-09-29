@@ -8,7 +8,12 @@ function findEventbyID(id){
   return knex('event').where("id", id).first()
 }
 
+function findEventbyOrgID(orgID){
+  return knex('event').where("event.organization_id", orgID)
+}
+
 module.exports = {
   findAllEvents: findAllEvents,
-  findEventbyID: findEventbyID
+  findEventbyID: findEventbyID,
+  findEventbyOrgID: findEventbyOrgID
 }

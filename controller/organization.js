@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 const organizationModel = require('../model/organization_query');
+const eventModel = require('../model/event_query');
 
 router.get('/', (req, res, next) => {
   organizationModel.findAllOrganization()
@@ -15,14 +16,17 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  organizationModel.findOrganizationbyID(req.params.id)
-  .then((organization) => {
-    res.render('organization/organization_single', {
-      title: 'MEJC',
-      organization: JSON.stringify(organization),
-      organizationRender: organization
-    });
-  })
+  let orgData = organizationModel.findOrganizationbyID(req.params.id)
+  let orgEvents = eventModel.findEventbyOrgID(req.params.id)
+  Promise.all([orgData, orgEvents])
+    .then((data) => {
+      res.render('organization/organization_single', {
+        title: 'MEJC',
+        organization: JSON.stringify(data[0]),
+        organizationRender: data[0],
+        events: data[1]
+      });
+    })
 });
 
 router.get('/test/searchc', (req, res, next) => {
