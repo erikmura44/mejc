@@ -3,27 +3,27 @@
 <div>
   <h1>Dashboard</h1>
   <h4>for</h4>
-  <h2>{{data.organization_name}}</h2>
+  <h2>{{orgData.organization_name}}</h2>
 </div>
 
 <div>
   <h3>User Account Profile</h3>
-    <p>Registered website is {{data.website}}</p>
-    <p>Registered contact is {{data.contact}}</p>
-    <p>Registered email is {{data.email}}</p>
-    <p>Registered address is:{{data.street}} {{data.city}}, {{data.state}} {{data.zip}}</p>
-    <p>Registered phone number is {{data.phone_number}}</p>
-    <p>About: {{data.about}}</p>
-    <a href="/organization/view/{{data.id}}">View Your Organization's Profile</a>
+    <p>Registered website is {{orgData.website}}</p>
+    <p>Registered contact is {{orgData.contact}}</p>
+    <p>Registered email is {{orgData.email}}</p>
+    <p>Registered address is:{{orgData.street}} {{orgData.city}}, {{orgData.state}} {{orgData.zip}}</p>
+    <p>Registered phone number is {{orgData.phone_number}}</p>
+    <p>About: {{orgData.about}}</p>
+    <a href="/organization/view/{{orgData.id}}">View Your Organization's Profile</a>
 </div>
 
 <!-- **************  BUILD OUT THESE ROUTES & CREATE QUERIES  ************** -->
 <div>
   <h3>Edit Your User Account</h3>
-    <a href="/organization/username/update/{{data.id}}">Edit Your Username</a>
-    <a href="/organization/password/update/{{data.id}}">Edit Your Password</a>
-    <a href="/organization/profile/update/{{data.id}}">Update Your Profile</a>
-    <a href="/organization/delete/{{data.id}}">Delete Your Account</a> <!-- should confirm delete before deleting-->
+    <a href="/organization/username/update/{{orgData.id}}">Edit Your Username</a>
+    <a href="/organization/password/update/{{orgData.id}}">Edit Your Password</a>
+    <a href="/organization/profile/update/{{orgData.id}}">Update Your Profile</a>
+    <a href="/organization/delete/{{orgData.id}}">Delete Your Account</a> <!-- should confirm delete before deleting-->
 </div>
 <!-- ****************************************************** -->
 
@@ -49,7 +49,7 @@
         <h1>All Organized Events</h1>
       </div>
       <div class="row">
-          {{#each data}}
+          {{#each eventData}}
             <div class="event-list">
               <a href='/event/view/{{id}}'>
                 <h2 class="event-list-names">{{title}}</h2>
