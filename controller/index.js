@@ -21,17 +21,20 @@ router.get('/register/organization', (req,res,next) => {
 })
 
 router.post('/register/organization', (req, res, next) => {
-  indexModel.countofOrgUser(req.body.username)
-    .then((num) => {
-      if (parseInt(num[0].count) > 0){
-        res.render('error', {message: 'Username is taken.'})
-      } else {
-        let userData = {
-          user_name: req.body.username,
-          password: bcrypt.hashSync(req.body.password, 8),
-          email: req.body.email
-        }
-        indexModel.addOrganization(userData)
+  let pass =  req.body.password1
+  let confPass = req.body.password2
+    if(confirmPass(pass, confPass)){
+      indexModel.countofOrgUser(req.body.username)
+      .then((num) => {
+        if (parseInt(num[0].count) > 0){
+          res.render('error', {message: 'Username is taken.'})
+        } else {
+          let userData = {
+            user_name: req.body.username,
+            password: bcrypt.hashSync(req.body.password, 8),
+            email: req.body.email
+          }
+          indexModel.addOrganization(userData)
           .then(() =>{
             userData.type = 'organization'
             req.logIn(userData, (err) => {
@@ -42,8 +45,10 @@ router.post('/register/organization', (req, res, next) => {
           .catch((err) => {
             res.render('error', {message: 'error in inserting user data into database'})
           })
-      }
-    })
+        }
+      })
+    }
+    res.redirect('/register/organization')
 })
 
 router.get('/register/volunteer', (req,res,next) => {
@@ -51,30 +56,41 @@ router.get('/register/volunteer', (req,res,next) => {
 })
 
 router.post('/register/volunteer', (req, res, next) => {
-  indexModel.countofVolUser(req.body.username)
-    .then((num) => {
-      if (parseInt(num[0].count) > 0){
-        res.render('error', {message: 'Username is taken.'})
-      } else {
-        let userData = {
-          user_name: req.body.username,
-          password: bcrypt.hashSync(req.body.password, 8),
-          email: req.body.email
-        }
-        indexModel.addVolunteer(userData)
-          .then(() =>{
-            userData.type = 'volunteer'
-            req.logIn(userData, (err) => {
-              if (err) { return next(err) }
-              res.redirect('/volunteer/profile/new')
+let pass =  req.body.password1
+let confPass = req.body.password2
+  if(confirmPass(pass, confPass)){
+    indexModel.countofVolUser(req.body.username)
+      .then((num) => {
+        if (parseInt(num[0].count) > 0){
+          res.render('error', {message: 'Username is taken.'})
+        } else {
+          let userData = {
+            user_name: req.body.username,
+            password: bcrypt.hashSync(req.body.password, 8),
+            email: req.body.email
+          }
+          indexModel.addVolunteer(userData)
+            .then(() =>{
+              userData.type = 'volunteer'
+              req.logIn(userData, (err) => {
+                if (err) { return next(err) }
+                res.redirect('/volunteer/profile/new')
+              })
             })
-          })
-          .catch((err) => {
-            res.render('error', {message: 'error in inserting user data into database'})
-          })
-      }
-    })
+            .catch((err) => {
+              res.render('error', {message: 'error in inserting user data into database'})
+            })
+        }
+      })
+  }
+  res.redirect('/register/volunteer')
 })
+
+function confirmPass(password1, password2) {
+  if(password1 !== password2) {
+      return 'Passwords don\'t match. Please try again'
+  }
+}
 
 router.get('/login', (req,res,next)=>{
   res.render('index/login')
