@@ -100,7 +100,7 @@ router.post('/login/volunteer', passport.authenticate('volunteer', {
 }));
 
 router.get('/profile/volunteer', (req, res, next) => {
-  res.render('index/profile_form_volunteer', {
+  res.render('volunteer/profile_new_volunteer', {
     username: req.user.user_name
   })
 })
@@ -117,7 +117,7 @@ router.post('/profile/volunteer', (req, res, next) => {
 })
 
 router.get('/profile/organization', (req, res, next) => {
-  res.render('index/profile_form_organization', {
+  res.render('organization/profile_new_organization', {
     username: req.user.user_name,
   })
 })
@@ -141,7 +141,7 @@ router.get('/dashboard/organization', (req, res, next)=>{
   }
   indexModel.findOrganizationData(req.user.user_name)
     .then((data) => {
-      res.render('index/dashboard_organization', {
+      res.render('organization/dashboard_organization', {
         data:data
       })
     })
@@ -154,7 +154,7 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
   }
   indexModel.findVolunteerData(req.user.user_name)
     .then((data) => {
-    res.render('index/dashboard_volunteer', {
+    res.render('volunteer/dashboard_volunteer', {
       data:data
     })
   })
