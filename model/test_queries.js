@@ -102,9 +102,7 @@ module.exports = {
   filterEventbyCity: filterEventbyCity,
   filterEventbyCause: filterEventbyCause,
   filterEventbyCause_City: filterEventbyCause_City,
-
   filterOrganizationbyCity: filterOrganizationbyCity,
-
   filterVolunteerbyCity: filterVolunteerbyCity,
   filterVolunteerbyCause: filterVolunteerbyCause,
   filterVolunteerbyCause_City: filterVolunteerbyCause_City
