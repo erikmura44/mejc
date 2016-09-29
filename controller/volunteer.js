@@ -4,7 +4,8 @@ const express = require('express')
 const router = express.Router()
 
 const volunteerModel = require('../model/volunteer_query')
-const testModel = require('../model/test_queries')
+const eventModel = require('../model/event_query')
+// const testModel = require('../model/test_queries')
 
 router.get('/', (req, res, next) => {
   volunteerModel.findAllVolunteers()
@@ -20,10 +21,15 @@ router.get('/dashboard', (req, res, next)=>{
     res.redirect('/login/volunteer')
     return
   }
-  volunteerModel.findVolunteerData(req.user.user_name)
-    .then((data) => {
+  let volData  = volunteerModel.findVolunteerbyID(req.user.id)
+  let volEvents = eventModel.findEventbyVolID(req.user.id)
+  Promise.all([volData, volEvents])
+  .then((data) => {
+    console.log(data);
     res.render('volunteer/dashboard_volunteer', {
-      data:data
+      title: 'MEJC',
+      volData:data[0],
+      eventData:data[1]
     })
   })
 })

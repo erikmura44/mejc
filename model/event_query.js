@@ -12,6 +12,10 @@ function findEventbyOrgID(orgID){
   return knex('event').where("event.organization_id", orgID)
 }
 
+function findEventbyVolID(volID){
+  return knex('event').where("event.registered_volunteers", volID)
+}
+
 function addEvent(eventInfo, orgID){
   return knex('event')
     .insert({
@@ -36,5 +40,6 @@ module.exports = {
   findAllEvents: findAllEvents,
   findEventbyID: findEventbyID,
   findEventbyOrgID: findEventbyOrgID,
+  findEventbyVolID: findEventbyVolID,
   addEvent: addEvent
 }
