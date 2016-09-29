@@ -15,6 +15,9 @@
           <u>Address</u>: {{eventsRender.street}},  {{eventsRender.city}}, {{eventsRender.zip}}<br><br>
           <u>Start Date/Time</u>: {{eventsRender.start_date}} / {{eventsRender.start_time}}<br><br>
           <u>End Date/Time</u>: {{eventsRender.end_date}} / {{eventsRender.end_time}}<br><br>
+
+        <input type="submit" action="event/register/{{eventsRender.id}}"class="submit-btn" id="event-register" value="Register for Event">
+        <a href="/event/update/{{eventsRender.id}}">Update this event</a>
         </div>
         <div class="col-md-4">
           <div id="map" style="height: 300px;width:auto;"></div>
