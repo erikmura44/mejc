@@ -15,11 +15,11 @@ function findOrganizationData(orgName){
 }
 // *************************************************************** //
 
-function addedOrganizationInfo(orgName, orgInfo){
+function addOrganizationInfo(orgName, orgInfo){
   return knex('organization')
     .where('user_name', orgName)
-    .update({
-
+    .insert({
+      orgInfo: orgInfo
     })
 }
 
@@ -82,7 +82,7 @@ function deleteOrganizationUser(orgID){
 
 module.exports = {
   findOrganizationData: findOrganizationData,
-  addedOrganizationInfo: addedOrganizationInfo,
+  addOrganizationInfo: addOrganizationInfo,
   findAllOrganization: findAllOrganization,
   findOrganizationbyID: findOrganizationbyID,
   filterOrganizationbyCity: filterOrganizationbyCity,

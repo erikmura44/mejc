@@ -46,7 +46,7 @@ router.get('/profile/new', (req, res, next) => {
 })
 
 router.post('/profile/new', (req, res, next) => {
-  indexModel.updateVolunteerInfo(req.user.user_name, req.body)
+  volunteerModel.updateVolunteerInfo(req.user.user_name, req.body)
     .then((data) => {
       res.redirect('/volunteer/dashboard')
     })

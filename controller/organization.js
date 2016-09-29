@@ -40,9 +40,9 @@ router.get('/profile/new', (req, res, next) => {
 })
 
 router.post('/profile/new', (req, res, next) => {
-  indexModel.addedOrganizationInfo(req.user.user_name, req.body)
+  organizationModel.updateOrganizationUser(req.user.id, req.body)
     .then((data) => {
-      res.redirect('/:id/dashboard')
+      res.redirect('/organization/dashboard')
     })
     .catch((err) => {
       console.error('Error caught in inserting into DB')
