@@ -12,8 +12,20 @@ function findEventbyOrgID(orgID){
   return knex('event').where("event.organization_id", orgID)
 }
 
+function addEvent(eventInfo, orgID){
+  return knex('event')
+    .insert({
+      title: eventInfo.title,
+      location: eventInfo.location,
+
+      
+      organization_id: orgID
+    })
+}
+
 module.exports = {
   findAllEvents: findAllEvents,
   findEventbyID: findEventbyID,
-  findEventbyOrgID: findEventbyOrgID
+  findEventbyOrgID: findEventbyOrgID,
+  addEvent: addEvent
 }
