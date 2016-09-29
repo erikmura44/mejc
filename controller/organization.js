@@ -45,10 +45,37 @@ router.get('/:id/delete', (req, res, next) => {
       next(err)
     })
   } else {
-    
+    console.log('CAN\'T DELETE AN ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
+    return
   }
 })
 
+router.get('/:id/profile/update', (req, res, next) => {
+  organizationModel.findOrganizationbyID(req.params.id)
+    .then((orgData) => {
+      res.render('index/profile_update_organization', {
+        orgData: orgData
+      });
+    })
+})
+
+router.post('/:id/profile/update', (req, res, next) => {
+  console.log('i got hit');
+  if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
+    organizationModel.updateOrganizationUser(req.params.id, req.body)
+    .then(() => {
+      console.log('i got updated!');
+      res.redirect('/dashboard/organization')
+    })
+    .catch((err) => {
+      console.error('Error caught in deleting user from DB')
+      next(err)
+    })
+  } else {
+    console.log('CAN\'T UPDATE A USER PROFILE ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
+    return
+  }
+})
 
 router.get('/test/searchc', (req, res, next) => {
   organizationModel.filterOrganizationbyCity('Pueblo')

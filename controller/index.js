@@ -123,7 +123,7 @@ router.get('/profile/organization', (req, res, next) => {
 })
 
 router.post('/profile/organization', (req, res, next) => {
-  indexModel.updateOrganizationInfo(req.user.user_name, req.body)
+  indexModel.addedOrganizationInfo(req.user.user_name, req.body)
     .then((data) => {
       res.redirect('/dashboard/organization')
     })
@@ -140,11 +140,11 @@ router.get('/dashboard/organization', (req, res, next)=>{
     return;
   }
   indexModel.findOrganizationData(req.user.user_name)
-  .then((data) => {
-    res.render('index/dashboard_organization', {
-      data:data
+    .then((data) => {
+      res.render('index/dashboard_organization', {
+        data:data
+      })
     })
-  })
 });
 
 router.get('/dashboard/volunteer', (req, res, next)=>{
