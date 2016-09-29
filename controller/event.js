@@ -4,7 +4,6 @@ const express = require('express')
 const router = express.Router()
 
 const eventModel = require('../model/event_query')
-// const testModel = require('../model/test_queries')
 
 router.get('/', (req, res, next) => {
   eventModel.findAllEvents()
@@ -57,31 +56,23 @@ router.post('/update/:id', (req, res, next) => {
     })
 })
 
-//THIS DOESN'T WORK
+
 router.get('/delete/:id', (req, res, next) => {
-  eventModel.findHostIDOfEvent(req.params.id)
-    .then((eventData) => {
-      if (eventData.organization_id === req.user.id){
-        eventModel.deleteEvent(eventData.id)
-      }
-      return // is this needed?
-    })
+  eventModel.deleteEvent(req.params.id)
     .then(() => {
       res.redirect('/organization/dashboard')
     })
 })
 
-// router.get('/test/searchc', (req, res, next) => {
-//   testModel.filterEventbyCause('International')
-//     .then((data) => {
-//       console.log(data)
+// //THIS DOESN'T WORK
+// router.get('/delete/:id', (req, res, next) => {
+//   eventModel.findHostIDOfEvent(req.params.id)
+//     .then((eventData) => {
+//       if (eventData.organization_id === req.user.id){
+//         eventModel.deleteEvent(eventData.id)
 //     })
-// })
-//
-// router.get('/test/searchcc', (req, res, next) => {
-//   testModel.filterEventbyCause_City('International', 'Denver')
-//     .then((data) => {
-//       console.log(data)
+//     .then(() => {
+//       res.redirect('/organization/dashboard')
 //     })
 // })
 

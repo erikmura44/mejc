@@ -5,7 +5,6 @@ const router = express.Router()
 
 const organizationModel = require('../model/organization_query')
 const eventModel = require('../model/event_query')
-// const testModel = require('../model/test_queries')
 
 router.get('/', (req, res, next) => {
   organizationModel.findAllOrganization()
@@ -128,12 +127,5 @@ router.get('/delete/:id', (req, res, next) => {
     return
   }
 })
-
-// router.get('/test/searchc', (req, res, next) => {
-//   organizationModel.filterOrganizationbyCity('Pueblo')
-//     .then((data) => {
-//       console.log(data)
-//     })
-// })
 
 module.exports = router

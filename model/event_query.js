@@ -67,7 +67,7 @@ function updateEvent(eventID, orgID, updatedInfo){
 }
 
 //this needs to be tested
-function deleteEvent(eventId){
+function deleteEvent(eventID){
   return knex('event').where('id', eventID)
   .del()
 }
