@@ -99,18 +99,18 @@ router.get('/delete/:id', (req, res, next) => {
   }
 })
 
-router.get('/test/searchc', (req, res, next) => {
-  testModel.filterVolunteerbyCause('LGBTQIA')
-  .then((data) => {
-    console.log(data)
-  })
-})
-
-router.get('/test/searchcc', (req, res, next) => {
-  testModel.filterVolunteerbyCause_City('LGBTQIA', 'Pueblo')
-  .then((data) => {
-    console.log(data)
-  })
-})
+// router.get('/test/searchc', (req, res, next) => {
+//   testModel.filterVolunteerbyCause('LGBTQIA')
+//   .then((data) => {
+//     console.log(data)
+//   })
+// })
+//
+// router.get('/test/searchcc', (req, res, next) => {
+//   testModel.filterVolunteerbyCause_City('LGBTQIA', 'Pueblo')
+//   .then((data) => {
+//     console.log(data)
+//   })
+// })
 
 module.exports = router
