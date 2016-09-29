@@ -5,7 +5,6 @@ const router = express.Router()
 
 const organizationModel = require('../model/organization_query')
 const eventModel = require('../model/event_query')
-// const testModel = require('../model/test_queries')
 
 router.get('/', (req, res, next) => {
   organizationModel.findAllOrganization()
@@ -27,10 +26,8 @@ router.get('/dashboard', (req, res, next)=>{
   }
   let orgData = organizationModel.findOrganizationbyID(req.user.id)
   let orgEvents = eventModel.findEventbyOrgID(req.user.id)
-
   Promise.all([orgData, orgEvents])
     .then((data) => {
-      console.log(data);
       res.render('organization/dashboard_organization', {
         title: 'MEJC',
         orgData:data[0],
@@ -130,12 +127,5 @@ router.get('/delete/:id', (req, res, next) => {
     return
   }
 })
-
-// router.get('/test/searchc', (req, res, next) => {
-//   organizationModel.filterOrganizationbyCity('Pueblo')
-//     .then((data) => {
-//       console.log(data)
-//     })
-// })
 
 module.exports = router

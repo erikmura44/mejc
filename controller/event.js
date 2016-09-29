@@ -4,7 +4,6 @@ const express = require('express')
 const router = express.Router()
 
 const eventModel = require('../model/event_query')
-// const testModel = require('../model/test_queries')
 
 router.get('/', (req, res, next) => {
   eventModel.findAllEvents()
@@ -26,6 +25,10 @@ router.get('/view/:id', (req, res, next) => {
   })
 })
 
+router.get('/register/:id', (req, res, next) => {
+  eventModel.addNewVolunteer(req.params.id, req.user.id)
+})
+
 router.get('/new', (req, res, next) => {
   res.render('event/event_new')
 })
@@ -39,7 +42,7 @@ router.post('/new', (req, res, next) => {
 
 router.get('/update/:id', (req, res, next) => {
   eventModel.findEventbyID(req.params.id)
-    .then((data) => {
+    .then((data) => { // arg name may change
       res.render('event/event_update', {
         data: data
       })
@@ -47,24 +50,29 @@ router.get('/update/:id', (req, res, next) => {
 })
 
 router.post('/update/:id', (req, res, next) => {
-  // redirect to /event/view/:id
+  eventModel.updateEvent(req.params.id, req.user.id, req.body)
+    .then(() => { // arg name may change
+      res.redirect('/organization/dashboard')
+    })
 })
+
 
 router.get('/delete/:id', (req, res, next) => {
-  // redirect to /organization/dashboard
+  eventModel.deleteEvent(req.params.id)
+    .then(() => {
+      res.redirect('/organization/dashboard')
+    })
 })
 
-// router.get('/test/searchc', (req, res, next) => {
-//   testModel.filterEventbyCause('International')
-//     .then((data) => {
-//       console.log(data)
+// //THIS DOESN'T WORK
+// router.get('/delete/:id', (req, res, next) => {
+//   eventModel.findHostIDOfEvent(req.params.id)
+//     .then((eventData) => {
+//       if (eventData.organization_id === req.user.id){
+//         eventModel.deleteEvent(eventData.id)
 //     })
-// })
-//
-// router.get('/test/searchcc', (req, res, next) => {
-//   testModel.filterEventbyCause_City('International', 'Denver')
-//     .then((data) => {
-//       console.log(data)
+//     .then(() => {
+//       res.redirect('/organization/dashboard')
 //     })
 // })
 

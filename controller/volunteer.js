@@ -5,7 +5,6 @@ const router = express.Router()
 
 const volunteerModel = require('../model/volunteer_query')
 const eventModel = require('../model/event_query')
-// const testModel = require('../model/test_queries')
 
 router.get('/', (req, res, next) => {
   volunteerModel.findAllVolunteers()
@@ -104,19 +103,5 @@ router.get('/delete/:id', (req, res, next) => {
     return
   }
 })
-
-// router.get('/test/searchc', (req, res, next) => {
-//   testModel.filterVolunteerbyCause('LGBTQIA')
-//   .then((data) => {
-//     console.log(data)
-//   })
-// })
-//
-// router.get('/test/searchcc', (req, res, next) => {
-//   testModel.filterVolunteerbyCause_City('LGBTQIA', 'Pueblo')
-//   .then((data) => {
-//     console.log(data)
-//   })
-// })
 
 module.exports = router

@@ -86,7 +86,7 @@ router.get('/login/organization', (req,res,next) => {
 
 router.post('/login/organization', passport.authenticate('organization', {
   successRedirect:'/organization/dashboard',
-  failureRedirect:'/register/organization'
+  failureRedirect:'/login/organization'
 }))
 
 router.get('/login/volunteer', (req,res,next) => {
