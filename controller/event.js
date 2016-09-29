@@ -23,6 +23,18 @@ router.get('/new', (req, res, next) => {
   res.render('event_new')
 })
 
+router.post('/new', (req, res, next) => {
+  let formData = req.body
+  let organizationID = req.user.id
+  eventModel.addEvent(formData, organizationID)
+    .then(() => {
+      res.redirect('/dashboard/organization')
+    })
+})
+
+
+
+
 router.get('/:id/update', (req, res, next) => {
   eventModel.findEventbyID(req.params.id)
     .then((data) => {
