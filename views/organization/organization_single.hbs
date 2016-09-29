@@ -1,8 +1,6 @@
 {{! /organization/view/:id }}
 
-<script>
-  organization = {{{organization}}}
-</script>
+
 
 
 <div class="container">
@@ -49,3 +47,9 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  var organization = {{{organization}}}
+  organizationMap(organization)
+</script>

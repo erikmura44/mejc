@@ -1,8 +1,6 @@
 {{! /event/view/:id }}
 
-<script>
-  events = {{{events}}}
-</script>
+
 
 <div class="container">
   <div class="row">
@@ -24,3 +22,9 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  var events = {{{events}}}
+  eventMap(events)
+</script>

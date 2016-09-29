@@ -1,8 +1,5 @@
 {{! /volunteer/view/:id }}
 
-<script>
-  volunteer = {{{volunteer}}}
-</script>
 
 
 <div class="container">
@@ -25,3 +22,9 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  var volunteer = {{{volunteer}}}
+  volunteerMap(volunteer)
+</script>
