@@ -33,7 +33,7 @@ router.get('/new', (req, res, next) => {
 router.post('/new', (req, res, next) => {
   eventModel.addEvent(req.body, req.user.id)
     .then(() => {
-      res.redirect('/organization/dashboard/')
+      res.redirect('/organization/dashboard/' + req.user.id)
     })
 })
 

@@ -24,10 +24,16 @@ router.get('/dashboard', (req, res, next)=>{
     res.redirect('/register/organization')
     return
   }
-  organizationModel.findOrganizationData(req.user.user_name)
+  let orgData = organizationModel.findOrganizationbyID(req.user.id)
+  let orgEvents = eventModel.findEventbyOrgID(req.user.id)
+
+  Promise.all([orgData, orgEvents])
     .then((data) => {
+      console.log(data);
       res.render('organization/dashboard_organization', {
-        data:data
+        title: 'MEJC',
+        orgData:data[0],
+        eventData:data[1]
       })
     })
 })
@@ -35,6 +41,7 @@ router.get('/dashboard', (req, res, next)=>{
 router.get('/view/:id', (req, res, next) => {
   let orgData = organizationModel.findOrganizationbyID(req.params.id)
   let orgEvents = eventModel.findEventbyOrgID(req.params.id)
+
   Promise.all([orgData, orgEvents])
     .then((data) => {
       res.render('organization/organization_single', {
