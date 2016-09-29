@@ -24,9 +24,10 @@ router.get('/new', (req, res, next) => {
 })
 
 router.post('/new', (req, res, next) => {
-  let formData = req.body
-  let organizationID = req.user.id
-  eventModel.addEvent(formData, organizationID)
+  // let formData = req.body
+  // let organizationID = req.user.id
+  console.log(req.user.id)
+  eventModel.addEvent(req.body, req.user.id)
     .then(() => {
       res.redirect('/dashboard/organization')
     })

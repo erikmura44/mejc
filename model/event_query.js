@@ -17,8 +17,17 @@ function addEvent(eventInfo, orgID){
     .insert({
       title: eventInfo.title,
       location: eventInfo.location,
-
-      
+      street: eventInfo.street,
+      city: eventInfo.city,
+      state: eventInfo.state,
+      zip: eventInfo.zip,
+      start_date: eventInfo.start_date,
+      end_date: eventInfo.end_date,
+      start_time: eventInfo.start_time,
+      end_time: eventInfo.end_time,
+      available_positions: eventInfo.available_positions,
+      registered_volunteers: 0,
+      description: eventInfo.description,
       organization_id: orgID
     })
 }
