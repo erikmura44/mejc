@@ -1,0 +1,61 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="title-post">Welcome, {{orgData.user_name}}</h1>
+      <h4 class="log-in-title">Please update your profile</h4>
+      <form class="form-style-7" action="/organization/{{orgData.id}}/profile/update" method="POST"> {{!change action type}}
+        <ul>
+          <li>
+            <label for="organization_name">Enter Organization Name</label>
+            <input type="text" name="organization_name" value="{{orgData.organization_name}}" placeholder="{{orgData.organization_name}}" required>
+            <span>Enter Your Company Name</span>
+          </li>
+          <li>
+            <label for="contact">Enter Contact Name</label>
+            <input type="text" name="contact" value="{{orgData.contact}}" placeholder="{{orgData.contact}}" required>
+            <span>Enter Your Contact Name</span>
+          </li>
+          <li>
+            <label for="phone_number">Enter Contact Number</label>
+            <input type="text" name="phone_number" value="{{orgData.phone_number}}" placeholder="{{orgData.phone_number}}"  required>
+            <span>Enter Your Contact Number</span>
+          </li>
+          <li>
+            <label for="website">Enter Website</label>
+            <input type="website" name="website"value="{{orgData.website}}" placeholder="{{orgData.website}}"  required>
+            <span>Enter Your Website</span>
+          </li>
+          <li>
+            <label for="street">Enter Street Name</label>
+            <input type="text" name="street" value="{{orgData.street}}" placeholder="{{orgData.street}}" required>
+            <span>Enter Your Street</span>
+          </li>
+          <li>
+            <label for="city">Enter City</label>
+            <input type="text" name="city" value="{{orgData.city}}" placeholder="{{orgData.city}}" equired>
+            <span>Enter Your City</span>
+          </li>
+          <li>
+            <label for="state">Enter State</label>
+            <input type="text" name="state" value="{{orgData.state}}" placeholder="{{orgData.state}}" required>
+            <span>Enter Your State</span>
+          </li>
+          <li>
+            <label for="zip">Enter Zip</label>
+            <input type="text" name="zip" value="{{orgData.zip}}" placeholder="{{orgData.zip}}" required>
+            <span>Enter Your Zip</span>
+          </li>
+          <li>
+            <label for="about">Enter Company Description</label>
+            <textarea rows="4" type="text" name="about" required>{{orgData.about}}</textarea>
+            <span>Enter Your Company Description</span>
+          </li>
+          <li>
+            <input type="submit" class="submit-btn" value="Submit" required>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>

@@ -66,10 +66,12 @@ function updateVolunteerInfo(volName, volInfo){
     .update(volInfo)
 }
 
-function updateOrganizationInfo(orgName, orgInfo){
+function addedOrganizationInfo(orgName, orgInfo){
   return knex('organization')
     .where('user_name', orgName)
-    .update(orgInfo)
+    .update({
+
+    })
 }
 
 module.exports = {
@@ -82,5 +84,5 @@ module.exports = {
   addOrganization: addOrganization,
   addVolunteer: addVolunteer,
   updateVolunteerInfo: updateVolunteerInfo,
-  updateOrganizationInfo: updateOrganizationInfo
+  addedOrganizationInfo: addedOrganizationInfo
 };
