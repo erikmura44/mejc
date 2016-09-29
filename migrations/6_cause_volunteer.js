@@ -8,8 +8,8 @@ exports.up = function(knex, Promise) {
       .onDelete('CASCADE');
     // table.refenence skills foreign
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('cause_volunteer')
-};
+}

@@ -1,25 +1,24 @@
 'use strict'
 
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 const passport = require('../passport')
 const bcrypt = require('bcrypt')
 
-const indexModel = require('../model/index_query');
-
+const indexModel = require('../model/index_query')
 
 router.get('/', (req, res, next) => {
-  res.render('index/index', { title: 'MEJC' });
-});
+  res.render('index/index', { title: 'MEJC' })
+})
 
 router.get('/register', (req,res,next) => {
-  res.render('index/register');
-});
+  res.render('index/register')
+})
 
 router.get('/register/organization', (req,res,next) => {
-  res.render('index/register_organization');
-});
+  res.render('index/register_organization')
+})
 
 router.post('/register/organization', (req, res, next) => {
   indexModel.countofOrgUser(req.body.username)
@@ -48,8 +47,8 @@ router.post('/register/organization', (req, res, next) => {
 })
 
 router.get('/register/volunteer', (req,res,next) => {
-  res.render('index/register_volunteer');
-});
+  res.render('index/register_volunteer')
+})
 
 router.post('/register/volunteer', (req, res, next) => {
   indexModel.countofVolUser(req.body.username)
@@ -78,31 +77,31 @@ router.post('/register/volunteer', (req, res, next) => {
 })
 
 router.get('/login', (req,res,next)=>{
-  res.render('index/login');
-});
+  res.render('index/login')
+})
 
 router.get('/login/organization', (req,res,next) => {
-  res.render('index/login_organization');
-});
+  res.render('index/login_organization')
+})
 
 router.post('/login/organization', passport.authenticate('organization', {
   successRedirect:'/organization/dashboard',
   failureRedirect:'/register/organization'
-}));
+}))
 
 router.get('/login/volunteer', (req,res,next) => {
-  res.render('index/login_volunteer');
-});
+  res.render('index/login_volunteer')
+})
 router.post('/login/volunteer', passport.authenticate('volunteer', {
   successRedirect:'/volunteer/dashboard',
   failureRedirect:'/login/volunteer'
-}));
+}))
 
 router.get('/logout', (req,res,next) => {
   if(req.isAuthenticated()){
-    req.logout();
+    req.logout()
     res.redirect('/')
   }
-});
+})
 
-module.exports = router;
+module.exports = router

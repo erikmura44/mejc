@@ -1,4 +1,4 @@
-var knex = require('./knex_config.js');
+var knex = require('./knex_config.js')
 
 function filterEventbyCity(city){
   return knex('event').where("city", city)

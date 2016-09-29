@@ -18,8 +18,8 @@ exports.up = function(knex, Promise) {
       .references('organization.id')
       .onDelete('CASCADE');
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('event')
-};
+}

@@ -16,8 +16,8 @@ exports.up = function(knex, Promise) {
     table.string('contact');
     table.string('website');
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('organization')
-};
+}

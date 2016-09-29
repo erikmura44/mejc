@@ -56,6 +56,6 @@ exports.seed = function(knex, Promise) {
           event_id: 9,
           volunteer_id: 14,
         })
-      ]);
-    });
-};
+      ])
+    })
+}
