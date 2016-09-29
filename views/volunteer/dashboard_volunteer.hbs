@@ -59,6 +59,7 @@
       </div>
       <div class="row">
           {{#each eventData}}
+          <div class="col-md-10">
             <div class="event-list">
               <a href='/event/view/{{id}}'>
                 <h2 class="event-list-names">{{title}}</h2>
@@ -66,6 +67,14 @@
               <span class="event-list-city">{{organization.name}}</span> ||
               <span class="event-list-city">{{city}}, {{state}}</span> ||
               <span class="event-list-city">{{start_date}} @ {{start_time}}</span>
+            </div>
+            <div class="col-md-2 text-center">
+              <div class="row">
+                <div class="event-list">
+                  <a href="/event/unregister/{{id}}">Unregister</a><br>
+                  <span></span>
+                </div>
+              </div>
             </div>
           {{/each}}
       </div>
