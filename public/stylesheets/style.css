@@ -34,7 +34,7 @@ a {
 .logo {
   display: inline-block;
   margin-left: 20px;
-  height: 75px;
+  height: 60px;
 }
 .title-post {
     text-align: center;
@@ -107,7 +107,6 @@ ul.topnav {
 /* Float the list items side by side */
 ul.topnav li {
     float: right;
-    vertical-align: middle;
 }
 /* Style the links inside the list items */
 ul.topnav li a {
@@ -117,7 +116,7 @@ ul.topnav li a {
     padding: 20px 16px;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 14px;
 }
 /* Change background color of links on hover */
 ul.topnav li a:hover {
