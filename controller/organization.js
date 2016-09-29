@@ -53,7 +53,7 @@ router.get('/:id/delete', (req, res, next) => {
 router.get('/:id/profile/update', (req, res, next) => {
   organizationModel.findOrganizationbyID(req.params.id)
     .then((orgData) => {
-      res.render('index/profile_update_organization', {
+      res.render('organization/profile_update_organization', {
         orgData: orgData
       });
     })
