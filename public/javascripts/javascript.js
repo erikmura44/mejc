@@ -1,7 +1,7 @@
 
 function volunteerMap (volunteer){
 
-address = volunteer.city + "," + volunteer.state
+var address = volunteer.city + "," + volunteer.state
 
   var map = new google.maps.Map(document.getElementById('map'), {
       mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -21,24 +21,20 @@ address = volunteer.city + "," + volunteer.state
         });
         map.setCenter(results[0].geometry.location);
      }
-   });
+   })
   }
 
 /**************/
 function organizationMap(organization){
-
-
-var addressOrg = organization.street + "," + organization.city + "," + organization.state + "," + organization.zip
+var address = organization.street + "," + organization.city + "," + organization.state
 
   var map = new google.maps.Map(document.getElementById('map'), {
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       zoom: 13
   });
-
   var geocoder = new google.maps.Geocoder();
-
   geocoder.geocode({
-     'address': addressOrg
+     'address': address
   },
   function(results, status) {
      if(status == google.maps.GeocoderStatus.OK) {
@@ -54,7 +50,7 @@ var addressOrg = organization.street + "," + organization.city + "," + organizat
 
 function eventMap(events){
 
-addressEvent = events.street + "," + events.city + "," + events.state + "," + events.zip
+var address = events.street + "," + events.city + "," + events.state
 
   var map = new google.maps.Map(document.getElementById('map'), {
       mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -64,7 +60,7 @@ addressEvent = events.street + "," + events.city + "," + events.state + "," + ev
   var geocoder = new google.maps.Geocoder();
 
   geocoder.geocode({
-     'address': addressEvent
+     'address': address
   },
   function(results, status) {
      if(status == google.maps.GeocoderStatus.OK) {
