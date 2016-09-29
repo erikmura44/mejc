@@ -159,6 +159,6 @@ exports.seed = function(knex, Promise) {
           phone_number: '303-749-0110',
           website: 'http://www.galvanize.com/'
         })
-      ]);
-    });
-};
+      ])
+    })
+}

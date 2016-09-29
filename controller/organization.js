@@ -1,10 +1,10 @@
 'use strict'
 
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const organizationModel = require('../model/organization_query');
-const eventModel = require('../model/event_query');
+const organizationModel = require('../model/organization_query')
+const eventModel = require('../model/event_query')
 
 router.get('/', (req, res, next) => {
   organizationModel.findAllOrganization()
@@ -17,7 +17,20 @@ router.get('/', (req, res, next) => {
       console.error('Error caught in deleting post from DB')
       next(err)
     })
-});
+})
+
+router.get('/dashboard', (req, res, next)=>{
+  if (!req.isAuthenticated()){
+    res.redirect('/register/organization')
+    return
+  }
+  organizationModel.findOrganizationData(req.user.user_name)
+    .then((data) => {
+      res.render('organization/dashboard_organization', {
+        data:data
+      })
+    })
+})
 
 router.get('/view/:id', (req, res, next) => {
   let orgData = organizationModel.findOrganizationbyID(req.params.id)
@@ -29,9 +42,9 @@ router.get('/view/:id', (req, res, next) => {
         organization: JSON.stringify(data[0]),
         organizationRender: data[0],
         events: data[1]
-      });
+      })
     })
-});
+})
 
 router.get('/profile/new', (req, res, next) => {
   res.render('organization/profile_new_organization', {
@@ -50,50 +63,54 @@ router.post('/profile/new', (req, res, next) => {
     })
 })
 
-router.get('/dashboard', (req, res, next)=>{
-  if (!req.isAuthenticated()){
-    res.redirect('/register/organization');
-    return;
-  }
-  organizationModel.findOrganizationData(req.user.user_name)
-    .then((data) => {
-      res.render('organization/dashboard_organization', {
-        data:data
-      })
-    })
-});
-
 router.get('/profile/update/:id', (req, res, next) => {
   organizationModel.findOrganizationbyID(req.params.id)
     .then((orgData) => {
       res.render('organization/profile_update_organization', {
         orgData: orgData
-      });
+      })
     })
 })
 
 router.post('/profile/update/:id', (req, res, next) => {
-  console.log('i got hit');
+  console.log('i got hit')
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     organizationModel.updateOrganizationUser(req.params.id, req.body)
     .then(() => {
-      res.redirect('/:id/dashboard')
+      res.redirect('/organization/dashboard')
     })
     .catch((err) => {
       console.error('Error caught in deleting user from DB')
       next(err)
     })
   } else {
-    console.log('CAN\'T UPDATE A USER PROFILE ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
+    console.log('CAN\'T UPDATE A USER PROFILE ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!')
     return
   }
+})
+
+// ********************** DO THIS TOMM MORN ***************************
+router.get('/username/update/:id', (req, res, next) => {
+
+})
+
+router.post('/username/update/:id', (req, res, next) => {
+  // redirect to /event/view/:id
+})
+
+router.get('/password/update/:id', (req, res, next) => {
+
+})
+
+router.post('/password/update/:id', (req, res, next) => {
+  // redirect to /event/view/:id
 })
 
 router.get('/delete/:id', (req, res, next) => {
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     organizationModel.deleteOrganizationUser(req.params.id)
     .then(() => {
-      req.logout();
+      req.logout()
       res.redirect('/')
     })
     .catch((err) => {
@@ -101,16 +118,16 @@ router.get('/delete/:id', (req, res, next) => {
       next(err)
     })
   } else {
-    console.log('CAN\'T DELETE AN ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
+    console.log('CAN\'T DELETE AN ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!')
     return
   }
 })
 
-router.get('/test/searchc', (req, res, next) => {
-  organizationModel.filterOrganizationbyCity('Pueblo')
-    .then((data) => {
-      console.log(data);
-    })
-});
+// router.get('/test/searchc', (req, res, next) => {
+//   organizationModel.filterOrganizationbyCity('Pueblo')
+//     .then((data) => {
+//       console.log(data)
+//     })
+// })
 
-module.exports = router;
+module.exports = router

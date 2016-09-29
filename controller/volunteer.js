@@ -1,10 +1,10 @@
 'use strict'
 
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const volunteerModel = require('../model/volunteer_query');
-const testModel = require('../model/test_queries');
+const volunteerModel = require('../model/volunteer_query')
+const testModel = require('../model/test_queries')
 
 router.get('/', (req, res, next) => {
   volunteerModel.findAllVolunteers()
@@ -13,7 +13,20 @@ router.get('/', (req, res, next) => {
         data: data
       })
     })
-});
+})
+
+router.get('/dashboard', (req, res, next)=>{
+  if (!req.isAuthenticated()){
+    res.redirect('/login/volunteer')
+    return
+  }
+  volunteerModel.findVolunteerData(req.user.user_name)
+    .then((data) => {
+    res.render('volunteer/dashboard_volunteer', {
+      data:data
+    })
+  })
+})
 
 router.get('/view/:id', (req, res, next) => {
   volunteerModel.findVolunteerbyID(req.params.id)
@@ -22,22 +35,9 @@ router.get('/view/:id', (req, res, next) => {
       title: 'MEJC',
       volunteer: JSON.stringify(volunteer),
       volunteerRender: volunteer
-    });
-  })
-});
-
-router.get('/dashboard', (req, res, next)=>{
-  if (!req.isAuthenticated()){
-    res.redirect('/login/volunteer');
-    return;
-  }
-  volunteerModel.findVolunteerData(req.user.user_name)
-    .then((data) => {
-    res.render('volunteer/dashboard_volunteer', {
-      data:data
     })
   })
-});
+})
 
 router.get('/profile/new', (req, res, next) => {
   res.render('volunteer/profile_new_volunteer', {
@@ -61,12 +61,12 @@ router.get('/profile/update/:id', (req, res, next) => {
     .then((volData) => {
       res.render('volunteer/profile_update_volunteer', {
         volData: volData
-      });
+      })
     })
 })
 
 router.post('/profile/update/:id', (req, res, next) => {
-  console.log('i got hit');
+  console.log('i got hit')
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     volunteerModel.updateVolunteerUser(req.params.id, req.body)
     .then(() => {
@@ -77,7 +77,7 @@ router.post('/profile/update/:id', (req, res, next) => {
       next(err)
     })
   } else {
-    console.log('CAN\'T UPDATE A USER PROFILE ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
+    console.log('CAN\'T UPDATE A USER PROFILE ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!')
     return
   }
 })
@@ -86,7 +86,7 @@ router.get('/delete/:id', (req, res, next) => {
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     volunteerModel.deleteVolunteerUser(req.params.id)
     .then(() => {
-      req.logout();
+      req.logout()
       res.redirect('/')
     })
     .catch((err) => {
@@ -94,7 +94,7 @@ router.get('/delete/:id', (req, res, next) => {
       next(err)
     })
   } else {
-    console.log('CAN\'T DELETE AN ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!');
+    console.log('CAN\'T DELETE AN ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!')
     return
   }
 })
@@ -102,16 +102,15 @@ router.get('/delete/:id', (req, res, next) => {
 router.get('/test/searchc', (req, res, next) => {
   testModel.filterVolunteerbyCause('LGBTQIA')
   .then((data) => {
-    console.log(data);
+    console.log(data)
   })
-});
+})
 
 router.get('/test/searchcc', (req, res, next) => {
   testModel.filterVolunteerbyCause_City('LGBTQIA', 'Pueblo')
   .then((data) => {
-    console.log(data);
+    console.log(data)
   })
-});
+})
 
-
-module.exports = router;
+module.exports = router

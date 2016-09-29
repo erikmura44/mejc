@@ -13,8 +13,8 @@ exports.up = function(knex, Promise) {
     table.string('city');
     table.string('state');    // table.refenence skills foreign
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('volunteer')
-};
+}

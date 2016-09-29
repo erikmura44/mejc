@@ -189,6 +189,6 @@ exports.seed = function(knex, Promise) {
           phone_number: fakeInfo.phone(),
           about: fakeInfo.description(),
         })
-      ]);
-    });
-};
+      ])
+    })
+}

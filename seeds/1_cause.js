@@ -120,6 +120,6 @@ exports.seed = function(knex, Promise) {
           id: 29,
           name: 'Women'
         })
-      ]);
-    });
-};
+      ])
+    })
+}

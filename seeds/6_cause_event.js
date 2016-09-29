@@ -116,6 +116,6 @@ exports.seed = function(knex, Promise) {
           cause_id: 16,
           event_id: 10,
         })
-      ]);
-    });
-};
+      ])
+    })
+}

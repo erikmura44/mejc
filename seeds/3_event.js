@@ -179,6 +179,6 @@ exports.seed = function(knex, Promise) {
           registered_volunteers: 0,
           organization_id: 5
         })
-      ]);
-    });
-};
+      ])
+    })
+}

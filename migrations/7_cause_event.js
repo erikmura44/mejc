@@ -6,10 +6,9 @@ exports.up = function(knex, Promise) {
     table.integer('event_id')
       .references('event.id')
       .onDelete('CASCADE');
-    // table.refenence skills foreign
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('cause_event')
-};
+}

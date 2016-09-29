@@ -155,7 +155,7 @@ exports.seed = function(knex, Promise) {
         knex('cause_volunteer').insert({
           cause_id: 2,
           volunteer_id: 15,
-        }),
-      ]);
-    });
-};
+        })
+      ])
+    })
+}
