@@ -5,6 +5,7 @@ const router = express.Router()
 
 const organizationModel = require('../model/organization_query')
 const eventModel = require('../model/event_query')
+// const testModel = require('../model/test_queries')
 
 router.get('/', (req, res, next) => {
   organizationModel.findAllOrganization()

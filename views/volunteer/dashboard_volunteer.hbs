@@ -3,33 +3,33 @@
 <div>
   <h1>Dashboard</h1>
   <h4>for</h4>
-  <h2>{{data.first_name}} {{data.last_name}}</h2>
+  <h2>{{volData.first_name}} {{volData.last_name}}</h2>
 </div>
 
 
 <div>
   <h3>User Account Profile</h3>
-  UserID: {{data.id}}
-  Username: {{data.user_name}}
-  Username: {{data.user_name}}
+  UserID: {{volData.id}}
+  Username: {{volData.user_name}}
+  Username: {{volData.user_name}}
 
-Email: {{data.email}}
-Phone Number: {{data.phone_number}}
-Registered Location: {{data.city}}, {{data.state}}
+Email: {{volData.email}}
+Phone Number: {{volData.phone_number}}
+Registered Location: {{volData.city}}, {{volData.state}}
 
 
-About: {{data.about}}
-<a href="/volunteer/view/{{data.id}}">View Your Profile</a>
+About: {{volData.about}}
+<a href="/volunteer/view/{{volData.id}}">View Your Profile</a>
 </div>
 
 
 <!-- **************  BUILD OUT THESE ROUTES & CREATE QUERIES  ************** -->
 <div>
   <h3>Edit Your User Account</h3>
-    <a href="/volunteer/username/update/{{data.id}}">Edit Your Username</a>
-    <a href="/volunteer/password/update/{{data.id}}">Edit Your Password</a>
-    <a href="/volunteer/profile/update/{{data.id}}">Update Your Profile</a>
-    <a href="/volunteer/delete/{{data.id}}">Delete Your Account</a> <!-- should confirm delete before deleting-->
+    <a href="/volunteer/username/update/{{volData.id}}">Edit Your Username</a>
+    <a href="/volunteer/password/update/{{volData.id}}">Edit Your Password</a>
+    <a href="/volunteer/profile/update/{{volData.id}}">Update Your Profile</a>
+    <a href="/volunteer/delete/{{volData.id}}">Delete Your Account</a> <!-- should confirm delete before deleting-->
 </div>
 <!-- ****************************************************** -->
 
@@ -54,7 +54,7 @@ About: {{data.about}}
         <h1>Registered Events</h1>
       </div>
       <div class="row">
-          {{#each data}}
+          {{#each eventData}}
             <div class="event-list">
               <a href='/event/view/{{id}}'>
                 <h2 class="event-list-names">{{title}}</h2>
