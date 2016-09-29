@@ -1,6 +1,28 @@
 var knex = require('./knex_config.js');
 
-// ************ FUNCTIONS NOT BEING USED ********//
+// *********** SHOULD WE RESTRICT THE USER DATA RETURNED? ******** //
+function findOrganizationData(orgName){
+  return knex('organization')
+  .where('user_name',orgName).first()
+  .then((userData) => {
+    if (typeof userData === 'undefined') {
+      return
+    } else {
+      userData.type = 'organization'
+      return userData
+    }
+  })
+}
+// *************************************************************** //
+
+function addOrganizationInfo(orgName, orgInfo){
+  return knex('organization')
+    .where('user_name', orgName)
+    .insert({
+      orgInfo: orgInfo
+    })
+}
+
 function findAllOrganization(){
   return knex('organization')
   .select(
@@ -59,6 +81,8 @@ function deleteOrganizationUser(orgID){
 }
 
 module.exports = {
+  findOrganizationData: findOrganizationData,
+  addOrganizationInfo: addOrganizationInfo,
   findAllOrganization: findAllOrganization,
   findOrganizationbyID: findOrganizationbyID,
   filterOrganizationbyCity: filterOrganizationbyCity,

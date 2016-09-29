@@ -22,12 +22,12 @@ router.get('/new', (req, res, next) => {
 router.post('/new', (req, res, next) => {
   eventModel.addEvent(req.body, req.user.id)
     .then(() => {
-      res.redirect('/dashboard/organization')
+      res.redirect('/:id/dashboard')
     })
 })
 
 
-router.get('/:id/update', (req, res, next) => {
+router.get('/update/:id', (req, res, next) => {
   eventModel.findEventbyID(req.params.id)
     .then((data) => {
       res.render('event_update', {
@@ -36,7 +36,7 @@ router.get('/:id/update', (req, res, next) => {
     })
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/view/:id', (req, res, next) => {
   eventModel.findEventbyID(req.params.id)
   .then(function(events){
     res.render('event_single', {

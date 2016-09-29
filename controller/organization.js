@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/view/:id', (req, res, next) => {
   let orgData = organizationModel.findOrganizationbyID(req.params.id)
   let orgEvents = eventModel.findEventbyOrgID(req.params.id)
   Promise.all([orgData, orgEvents])
@@ -33,7 +33,37 @@ router.get('/:id', (req, res, next) => {
     })
 });
 
-router.get('/:id/profile/update', (req, res, next) => {
+router.get('/profile/new', (req, res, next) => {
+  res.render('organization/profile_new_organization', {
+    username: req.user.user_name,
+  })
+})
+
+router.post('/profile/new', (req, res, next) => {
+  organizationModel.updateOrganizationUser(req.user.id, req.body)
+    .then((data) => {
+      res.redirect('/organization/dashboard')
+    })
+    .catch((err) => {
+      console.error('Error caught in inserting into DB')
+      next(err)
+    })
+})
+
+router.get('/dashboard', (req, res, next)=>{
+  if (!req.isAuthenticated()){
+    res.redirect('/register/organization');
+    return;
+  }
+  organizationModel.findOrganizationData(req.user.user_name)
+    .then((data) => {
+      res.render('organization/dashboard_organization', {
+        data:data
+      })
+    })
+});
+
+router.get('/profile/update/:id', (req, res, next) => {
   organizationModel.findOrganizationbyID(req.params.id)
     .then((orgData) => {
       res.render('organization/profile_update_organization', {
@@ -42,12 +72,12 @@ router.get('/:id/profile/update', (req, res, next) => {
     })
 })
 
-router.post('/:id/profile/update', (req, res, next) => {
+router.post('/profile/update/:id', (req, res, next) => {
   console.log('i got hit');
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     organizationModel.updateOrganizationUser(req.params.id, req.body)
     .then(() => {
-      res.redirect('/dashboard/organization')
+      res.redirect('/:id/dashboard')
     })
     .catch((err) => {
       console.error('Error caught in deleting user from DB')
@@ -59,7 +89,7 @@ router.post('/:id/profile/update', (req, res, next) => {
   }
 })
 
-router.get('/:id/delete', (req, res, next) => {
+router.get('/delete/:id', (req, res, next) => {
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     organizationModel.deleteOrganizationUser(req.params.id)
     .then(() => {

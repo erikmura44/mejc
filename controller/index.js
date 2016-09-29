@@ -37,7 +37,7 @@ router.post('/register/organization', (req, res, next) => {
             userData.type = 'organization'
             req.logIn(userData, (err) => {
               if (err) { return next(err) }
-              res.redirect('/profile/organization')
+              res.redirect('/organization/profile/new')
             })
           })
           .catch((err) => {
@@ -67,7 +67,7 @@ router.post('/register/volunteer', (req, res, next) => {
             userData.type = 'volunteer'
             req.logIn(userData, (err) => {
               if (err) { return next(err) }
-              res.redirect('/profile/volunteer')
+              res.redirect('/volunteer/profile/new')
             })
           })
           .catch((err) => {
@@ -85,80 +85,18 @@ router.get('/login/organization', (req,res,next) => {
   res.render('index/login_organization');
 });
 
-router.get('/login/volunteer', (req,res,next) => {
-  res.render('index/login_volunteer');
-});
-
 router.post('/login/organization', passport.authenticate('organization', {
-  successRedirect:'/dashboard/organization',
+  successRedirect:'/organization/dashboard',
   failureRedirect:'/register/organization'
 }));
 
+router.get('/login/volunteer', (req,res,next) => {
+  res.render('index/login_volunteer');
+});
 router.post('/login/volunteer', passport.authenticate('volunteer', {
-  successRedirect:'/dashboard/volunteer',
+  successRedirect:'/volunteer/dashboard',
   failureRedirect:'/login/volunteer'
 }));
-
-router.get('/profile/volunteer', (req, res, next) => {
-  res.render('volunteer/profile_new_volunteer', {
-    username: req.user.user_name
-  })
-})
-
-router.post('/profile/volunteer', (req, res, next) => {
-  indexModel.updateVolunteerInfo(req.user.user_name, req.body)
-    .then((data) => {
-      res.redirect('/dashboard/volunteer')
-    })
-    .catch((err) => {
-      console.error('Error caught in inserting into DB')
-      next(err)
-    })
-})
-
-router.get('/profile/organization', (req, res, next) => {
-  res.render('organization/profile_new_organization', {
-    username: req.user.user_name,
-  })
-})
-
-router.post('/profile/organization', (req, res, next) => {
-  indexModel.addedOrganizationInfo(req.user.user_name, req.body)
-    .then((data) => {
-      res.redirect('/dashboard/organization')
-    })
-    .catch((err) => {
-      console.error('Error caught in inserting into DB')
-      next(err)
-    })
-})
-
-
-router.get('/dashboard/organization', (req, res, next)=>{
-  if (!req.isAuthenticated()){
-    res.redirect('/register/organization');
-    return;
-  }
-  indexModel.findOrganizationData(req.user.user_name)
-    .then((data) => {
-      res.render('organization/dashboard_organization', {
-        data:data
-      })
-    })
-});
-
-router.get('/dashboard/volunteer', (req, res, next)=>{
-  if (!req.isAuthenticated()){
-    res.redirect('/login/volunteer');
-    return;
-  }
-  indexModel.findVolunteerData(req.user.user_name)
-    .then((data) => {
-    res.render('volunteer/dashboard_volunteer', {
-      data:data
-    })
-  })
-});
 
 router.get('/logout', (req,res,next) => {
   if(req.isAuthenticated()){
