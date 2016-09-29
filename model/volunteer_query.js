@@ -71,10 +71,21 @@ function filterVolunteerbyCause_City(selectedCause, selectedCity){
     .where('volunteer.city', selectedCity)
 }
 
+function updateVolunteerUser(volID, updatedInfo){
+  return knex('volunteer').where('id', volID)
+  .update(updatedInfo)
+}
+
+function deleteVolunteerUser(volID){
+  return knex('volunteer').where('id', volID)
+    .del()
+}
 module.exports = {
   findAllVolunteers: findAllVolunteers,
   findVolunteerbyID: findVolunteerbyID,
   filterVolunteerbyCity: filterVolunteerbyCity,
   filterVolunteerbyCause: filterVolunteerbyCause,
-  filterVolunteerbyCause_City: filterVolunteerbyCause_City
+  filterVolunteerbyCause_City: filterVolunteerbyCause_City,
+  updateVolunteerUser: updateVolunteerUser,
+  deleteVolunteerUser: deleteVolunteerUser
 }
