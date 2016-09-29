@@ -13,6 +13,10 @@ router.get('/', (req, res, next) => {
         data: data
       })
     })
+    .catch((err) => {
+      console.error('Error caught in deleting post from DB')
+      next(err)
+    })
 });
 
 router.get('/:id', (req, res, next) => {
@@ -28,6 +32,23 @@ router.get('/:id', (req, res, next) => {
       });
     })
 });
+
+router.get('/:id/delete', (req, res, next) => {
+  if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
+    organizationModel.deleteOrganizationUser(req.params.id)
+    .then(() => {
+      req.logout();
+      res.redirect('/')
+    })
+    .catch((err) => {
+      console.error('Error caught in deleting user from DB')
+      next(err)
+    })
+  } else {
+    
+  }
+})
+
 
 router.get('/test/searchc', (req, res, next) => {
   organizationModel.filterOrganizationbyCity('Pueblo')

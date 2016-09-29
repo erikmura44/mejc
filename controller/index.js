@@ -99,7 +99,6 @@ router.post('/login/volunteer', passport.authenticate('volunteer', {
   failureRedirect:'/login/volunteer'
 }));
 
-// ***************************************
 router.get('/profile/volunteer', (req, res, next) => {
   res.render('index/profile_form_volunteer', {
     username: req.user.user_name
@@ -134,9 +133,7 @@ router.post('/profile/organization', (req, res, next) => {
     })
 })
 
-// ********************************
 
-// NEED TO FLESH OUT - partially completed; don't work
 router.get('/dashboard/organization', (req, res, next)=>{
   if (!req.isAuthenticated()){
     res.redirect('/register/organization');
@@ -144,7 +141,6 @@ router.get('/dashboard/organization', (req, res, next)=>{
   }
   indexModel.findOrganizationData(req.user.user_name)
   .then((data) => {
-    // console.log('This is after GET to dashboard & before render', data); // this is to check that I am getting back the right info; ie type is tracked
     res.render('index/dashboard_organization', {
       data:data
     })
@@ -158,7 +154,6 @@ router.get('/dashboard/volunteer', (req, res, next)=>{
   }
   indexModel.findVolunteerData(req.user.user_name)
     .then((data) => {
-    // console.log`('This is after GET to dashboard & before render', req.user); // this is to check that I am getting back the right info; ie type is tracked
     res.render('index/dashboard_volunteer', {
       data:data
     })

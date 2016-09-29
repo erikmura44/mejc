@@ -48,9 +48,14 @@ function filterOrganizationbyCity(city){
     )
 }
 
+function deleteOrganizationUser(orgID){
+  return knex('organization').where('id', orgID)
+    .del()
+}
 
 module.exports = {
   findAllOrganization: findAllOrganization,
   findOrganizationbyID: findOrganizationbyID,
   filterOrganizationbyCity: filterOrganizationbyCity,
+  deleteOrganizationUser: deleteOrganizationUser
 }
