@@ -35,6 +35,36 @@
         </div>
         <div class="col-md-6">
           <ul>
+<<<<<<< HEAD
+          <li>
+            <label for="end_date">End Date</label>
+            <input type="date" name="end_date" value="{{data.end_date}}" required>
+            <span>Enter the end date</span>
+          </li>
+          <li>
+            <label for="start_time">Start Time</label>
+            <input type="time" name="start_time" value="{{data.start_time}}" required>
+            <span>Enter the time the event ends</span>
+          </li>
+          <li>
+            <label for="end_time">End Time</label>
+            <input type="time" name="end_time" value="{{data.end_time}}" placeholder="" required>
+            <span>Enter the time the event ends</span>
+          </li>
+          <li>
+            <label for="available_positions">Number of Volunteers Desired</label>
+            <input type="number" name="available_positions" value="{{data.available_positions}}" placeholder="0" required>
+            <span>Enter the number of Volunteers Desired</span>
+          </li>
+          <li>
+            <label for="description">Event Description</label>
+            <textarea rows="8" name="description" value="{{data.description}}" placeholder="Insert information about the event." required>{{data.description}}</textarea>
+            <span>Enter the event description</span>
+          </li>
+          <li>
+            <input type="submit" class="submit-btn" value="Submit" required>
+          </li>
+=======
             <li>
               <label for="end_date">End Date</label>
               <input type="date" name="end_date" value="{{data.end_date}}" required>
@@ -58,6 +88,7 @@
             <li>
               <input type="submit" class="submit-btn" name="loginVolSubmit" value="Submit" required>
             </li>
+>>>>>>> 044f93f4a0e314aeb38cfa4cf65c42f84d85bbc7
           </ul>
         </div>
       </form>
