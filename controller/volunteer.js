@@ -7,17 +7,27 @@ const volunteerModel = require('../model/volunteer_query')
 const eventModel = require('../model/event_query')
 const causeModel = require('../model/cause_query')
 
-router.get('/', (req, res, next) => {
+router.get('/test', (req, res, next) => {
   volunteerModel.findAllVolunteers()
-    .then((data) => {
-      res.render('volunteer/volunteer', {
-        data: data
-      })
+  .then((volunteers) => {
+    let volwCauses = volunteers.map((volData) => {
+      return causeModel.findCausesforEvent(volData.id)
+        .then((causes) => {
+          volData.causes = causes
+          return volData
+        })
     })
-    .catch((err) => {
-      console.error('Error caught in deleting post from DB')
-      next(err)
-    })
+    return Promise.all(volwCauses)
+  })
+  .then((data)=>{  //rename to more descriptive
+    res.render('volunteer/volunteer', {
+      data:data
+    });
+  })
+  .catch((err) => {
+    console.error('Error caught in deleting post from DB')
+    next(err)
+  })
 })
 
 router.get('/dashboard', (req, res, next)=>{

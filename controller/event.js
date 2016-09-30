@@ -6,19 +6,19 @@ const router = express.Router()
 const eventModel = require('../model/event_query')
 const causeModel = require('../model/cause_query')
 
-router.get('/test', (req, res, next) => {
+router.get('/', (req, res, next) => {
   eventModel.findAllEvents()
   .then((events) => {
-    let eventswAuthors = events.map((eventData) => {
+    let eventswEvents = events.map((eventData) => {
       return causeModel.findCausesforEvent(eventData.id)
-        .then((causes)=>{
-            eventData.causes = causes;
+        .then((causes) => {
+          eventData.causes = causes
           return eventData
         })
     })
-    return Promise.all(eventswAuthors)
+    return Promise.all(eventswEvents)
   })
-  .then((data)=>{
+  .then((data)=>{  //rename to more descriptive
     res.render('event/event', {
       data:data
     });

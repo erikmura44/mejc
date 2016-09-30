@@ -1,0 +1,39 @@
+{{! /volunteer }}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <!-- <div class="row" id="form">
+        <form class="city-input" action="index.html" method="post" id="orgForm">
+          <input type="submit" name="submit" value="Submit" class="form">
+          <input type="text" name="city" value="city" placeholder="City" class="form">
+        </form>
+        <select class="causeDropdown">
+          {{#each data}}
+          <option value="{{name}}">{{name}}</option>
+          {{/each}}
+        </select>
+      </div> -->
+      <h1>Volunteers</h1>
+      <div class="row">
+        {{#each data}}
+          <div class="organization-list">
+            <a href='/volunteer/view/{{id}}'>
+              <!-- <img class='org-list-pic'src="/images/headshot-crop.jpg"> -->
+              <h2 class="org-list-names">{{first_name}} {{last_name}}</h2>
+            </a>
+            <h3 class="org-list-city">{{city}}, {{state}}</h3>
+
+
+<!-- ****************MY ADD ******************** -->
+            {{#each causes}}
+              <span>{{this.name}}</span>
+            {{/each}}
+<!-- ******************************************* -->
+
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
