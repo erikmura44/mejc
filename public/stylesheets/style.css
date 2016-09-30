@@ -100,6 +100,13 @@ Event List
     padding: 20px;
     margin: 5px;
 }
+.event-lists {
+    background-color: #e9e8e8;
+    padding: 20px;
+    margin: 5px;
+    padding-top: 33px;
+    padding-bottom: 33px;
+}
 .event-list-names, .event-list-city {
     margin:0;
     padding:0;
