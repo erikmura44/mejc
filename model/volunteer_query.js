@@ -43,6 +43,7 @@ function findVolunteerbyID(id){
     'volunteer.user_name',
     'volunteer.about',
     'volunteer.email',
+    'volunteer.picture_url',
     'volunteer.phone_number',
     'volunteer.first_name',
     'volunteer.last_name',

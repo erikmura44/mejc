@@ -299,12 +299,15 @@ FORMS
   background-color: #FF5252;
 }
 
+
 .vol-profile-pic  {
   margin: auto;
   border-radius: 65%;
-  width: 22%;
+  height:150px;
+  overflow: hidden;
   display: block;
   box-shadow: 4px 4px 9px grey;
+
 }
 
 

@@ -19,6 +19,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"http://vickmark.com/wp-content/uploads/2011/03/20boston-headshot-photographer.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -31,6 +32,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"http://amandanelsonphoto.com/wp-content/uploads/2015/11/Rachel_Headshots_0004.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -43,6 +45,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"https://upload.wikimedia.org/wikipedia/commons/6/68/Bob_Davis-headshot.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -55,6 +58,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"http://lifeedited.com/wp-content/uploads/2012/03/graham-hill-headshot.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -67,6 +71,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWY0uzjcR7tsswEmkOOfZNH9q-cXUwb0y3MV-a0v9sU2AFdWHR",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -79,6 +84,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"http://srkheadshotday.com/wp-content/uploads/Lauren_Pufpaf_Y9563_Crop32.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -91,6 +97,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"https://zsuttonphoto.com/wp-content/uploads/2014/12/New-Mexico-Headshot-Photography-31.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -103,6 +110,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"https://s-media-cache-ak0.pinimg.com/236x/25/3a/bf/253abf4f1f4bc16b6dc04571f8d21624.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -115,6 +123,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"http://caamedia.org/wp-content/uploads/2012/02/Harry-Headshot.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -127,6 +136,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"http://allthingsd.com/files/2011/11/Peter-Pham-headshot.png",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -139,6 +149,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"http://srkheadshotday.com/wp-content/uploads/Anna_Feenstra_Headshot_16J1097_Crop32-760x507.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -151,6 +162,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"https://static1.squarespace.com/static/53dac69ae4b0ea7cdef448c2/53dacf12e4b0ea7cdef45368/56699920a128e6a6243ae428/1463589413688/Gibney-Dancer-Headshot-Sarah-Burke.jpg?format=1000w",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -163,6 +175,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"https://static1.squarespace.com/static/511526cde4b067782b69109c/51561f43e4b05239ba831e2a/517acb5fe4b041a7f26676f1/1367001954162/21-corporate-headshot-photo-ac_111002_115153_2554-12x18.JPG-1500px.JPG",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -175,6 +188,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"https://zsuttonphoto.com/wp-content/uploads/2015/11/Trevor-Wayne-LA-Headshot-Photography-1.jpg",
           about: fakeInfo.description(),
         }),
         knex('volunteer').insert({
@@ -187,6 +201,7 @@ exports.seed = function(knex, Promise) {
           state: 'CO',
           email: fakeInfo.email(),
           phone_number: fakeInfo.phone(),
+          picture_url:"http://i.imgur.com/DDSpcZg.jpg",
           about: fakeInfo.description(),
         })
       ])
