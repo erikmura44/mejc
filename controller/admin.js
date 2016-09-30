@@ -1,8 +1,9 @@
 'use strict'
 
-const adminModel = require('../model/admin_query')
+const express = require('express')
+const router = express.Router()
 
-// BUILD THIS OUT  *************************************************************
+const adminModel = require('../model/admin_query')
 
 
 module.exports = router

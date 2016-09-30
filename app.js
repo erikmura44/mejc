@@ -14,7 +14,7 @@ const index = require('./controller/index')
 const volunteer = require('./controller/volunteer')
 const organization = require('./controller/organization')
 const events = require('./controller/event')
-const events = require('./controller/admin')
+const admin = require('./controller/admin')
 
 const app = express()
 
