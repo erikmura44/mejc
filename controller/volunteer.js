@@ -5,18 +5,29 @@ const router = express.Router()
 
 const volunteerModel = require('../model/volunteer_query')
 const eventModel = require('../model/event_query')
+const causeModel = require('../model/cause_query')
 
 router.get('/', (req, res, next) => {
   volunteerModel.findAllVolunteers()
-    .then((data) => {
-      res.render('volunteer/volunteer', {
-        data: data
-      })
+  .then((volunteers) => {
+    let volwCauses = volunteers.map((volData) => {
+      return causeModel.findCausesforEvent(volData.id)
+        .then((causes) => {
+          volData.causes = causes
+          return volData
+        })
     })
-    .catch((err) => {
-      console.error('Error caught in deleting post from DB')
-      next(err)
-    })
+    return Promise.all(volwCauses)
+  })
+  .then((data)=>{  //rename to more descriptive
+    res.render('volunteer/volunteer', {
+      data:data
+    });
+  })
+  .catch((err) => {
+    console.error('Error caught in deleting post from DB')
+    next(err)
+  })
 })
 
 router.get('/dashboard', (req, res, next)=>{
@@ -47,7 +58,7 @@ router.get('/view/:id', (req, res, next) => {
     res.redirect('/login')
   }
   let volInfo = volunteerModel.findVolunteerbyID(req.params.id)
-  let causeTags = volunteerModel.findVolunteerCauses(req.params.id)
+  let causeTags = causeModel.findCausesforVolunteer(req.params.id)
   Promise.all([volInfo, causeTags])
   .then((volData) => {
     res.render('volunteer/volunteer_single', {
@@ -61,18 +72,6 @@ router.get('/view/:id', (req, res, next) => {
     console.error('Error caught in deleting post from DB')
     next(err)
   })
-
-  // .then(function(volunteer){
-  //   res.render('volunteer/volunteer_single', {
-  //     title: 'iVolunteer',
-  //     volunteer: JSON.stringify(volunteer),
-  //     volunteerRender: volunteer
-  //   })
-  // })
-  // .catch((err) => {
-  //   console.error('Error caught in deleting post from DB')
-  //   next(err)
-  // })
 })
 
 router.get('/profile/new', (req, res, next) => {
