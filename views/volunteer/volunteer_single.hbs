@@ -1,16 +1,15 @@
 {{! /volunteer/view/:id }}
 
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
-        <h1 class="username">{{volunteerRender.user_name}}</h1><hr>
+        <img class='vol-profile-pic' src="/images/natural-light-headshot-actress-montreal-portrait-photography-studio-e1455046508245.jpg">
+        <h1 class="name">{{volunteerRender.first_name}} {{volunteerRender.last_name}}</h1><hr>
       </div>
       <div class="row">
         <div class="col-md-6" id="users">
-          <b><u>Name</u></b><br> {{volunteerRender.first_name}} {{volunteerRender.last_name}}<br><br>
+          <b><u>Username</u></b><br>{{volunteerRender.user_name}}<br><br>
           <u>About</u> <br>{{volunteerRender.about}}<br><br>
           <u>Location</u><br> {{volunteerRender.city}}, {{volunteerRender.state}}<br><br>
           <u>Email</u><br>{{volunteerRender.email}}<br><br>
