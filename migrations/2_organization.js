@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
     table.string('state');
     table.string('zip');
     table.string('contact');
+    table.string('org_logo_url')
     table.string('website');
   })
 }
