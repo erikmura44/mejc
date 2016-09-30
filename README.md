@@ -1,9 +1,9 @@
 # iVolunteer
 ### by Team MEJC
 
-[Working Site](https://mejc.herokuapp.com/)
+[Working Site](http://ivolunteerg31.herokuapp.com/)
 
-[GitHub](http://ivolunteerg31.herokuapp.com/)
+[GitHub](https://github.com/erikmura44/mejc)
 
 
 ### iVolunteer's main focus is to connect individuals seeking volunteer opportunities with organizations seeking volunteers. At iVolunteer, you are able to post opportunities to a wide audience who are searching for volunteer work. For volunteers, what better way to search for exciting volunteer experiences having them all at the push of a button.  Welcome to iVolunteer.  
