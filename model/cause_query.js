@@ -10,7 +10,7 @@ function findCausesforVolunteer(volID){
     )
 }
 
-function findCausesforEvents(eventID){
+function findCausesforEvent(eventID){
   return knex('cause')
     .join('cause_event','cause.id', 'cause_event.cause_id')
     .join('event', 'cause_event.event_id', 'event.id')
@@ -22,5 +22,5 @@ function findCausesforEvents(eventID){
 
 module.exports = {
   findCausesforVolunteer:findCausesforVolunteer,
-  findCausesforEvents: findCausesforEvents
+  findCausesforEvent: findCausesforEvent
 }

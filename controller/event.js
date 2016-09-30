@@ -4,27 +4,41 @@ const express = require('express')
 const router = express.Router()
 
 const eventModel = require('../model/event_query')
+const causeModel = require('../model/cause_query')
 
-router.get('/', (req, res, next) => {
+router.get('/test', (req, res, next) => {
   eventModel.findAllEvents()
-    .then((data) => {
-      res.render('event/event', {
-        data:data
-      })
+  .then((events) => {
+    let eventswAuthors = events.map((eventData) => {
+      return causeModel.findCausesforEvent(eventData.id)
+        .then((causes)=>{
+            eventData.causes = causes;
+          return eventData
+        })
     })
-    .catch((err) => {
-      console.error('Error caught in deleting post from DB')
-      next(err)
-    })
+    return Promise.all(eventswAuthors)
+  })
+  .then((data)=>{
+    res.render('event/event', {
+      data:data
+    });
+  })
+  .catch((err) => {
+    console.error('Error caught in deleting post from DB')
+    next(err)
+  })
 })
 
 router.get('/view/:id', (req, res, next) => {
-  eventModel.findEventbyID(req.params.id)
-  .then(function(events){
+  let eventInfo = eventModel.findEventbyID(req.params.id)
+  let causeTags = causeModel.findCausesforEvent(req.params.id)
+  Promise.all([eventInfo, causeTags])
+  .then((eventData) => {
     res.render('event/event_single', {
       title: 'iVolunteer',
-      events: JSON.stringify(events),
-      eventsRender: events
+      events: JSON.stringify(eventData[0]),
+      eventsRender: eventData[0],
+      eventsCauseRender: eventData[1]
     })
   })
   .catch((err) => {

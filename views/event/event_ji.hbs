@@ -1,0 +1,37 @@
+{{! /event }}
+
+<!-- Still need to add cause dropdown -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <!-- <div class="row" id="form">
+        <form class="city-input" action="index.html" method="post" id="eventForm">
+          <input type="submit" name="submit" value="Submit" class="form">
+          <input type="text" name="city" value="city" placeholder="City" class="form">
+        </form>
+      </div> -->
+      <h1>Events</h1>
+      <div class="row">
+        {{#each data}}
+          <div class="event-list">
+            <a href='/event/view/{{id}}'>
+              <h2 class="event-list-names">{{title}}</h2>
+            </a>
+            <h3 class="event-list-city">{{city}}, {{state}}</h3>
+
+
+
+<!-- ****************MY ADD ******************** -->
+            {{#each causes}}
+              <span>{{this.name}}</span>
+            {{/each}}
+<!-- ******************************************* -->
+
+
+
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
