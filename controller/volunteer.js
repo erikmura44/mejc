@@ -46,7 +46,28 @@ router.get('/view/:id', (req, res, next) => {
   if (!req.isAuthenticated()) {
     res.redirect('/login')
   }
-  volunteerModel.findVolunteerbyID(req.params.id)
+  let volInfo = volunteerModel.findVolunteerbyID(req.params.id)
+  let causeTags = volunteerModel.findVolunteerCauses(req.params.id)
+  Promise.all([volInfo, causeTags])
+  .then((volData) => {
+    res.render('volunteer/volunteer_single', {
+      title: 'iVolunteer',
+      volunteer: JSON.stringify(volData[0]),
+      volunteerRender: volData[0],
+      volCauseRender: volData[1]
+    })
+  })
+  .catch((err) => {
+    console.error('Error caught in deleting post from DB')
+    next(err)
+  })
+
+  {{#each volCauseRender}}
+    <span>{{name}}</span>
+  {{/each}
+
+
+
   .then(function(volunteer){
     res.render('volunteer/volunteer_single', {
       title: 'iVolunteer',
