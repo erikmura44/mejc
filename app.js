@@ -14,6 +14,7 @@ const index = require('./controller/index')
 const volunteer = require('./controller/volunteer')
 const organization = require('./controller/organization')
 const events = require('./controller/event')
+const events = require('./controller/admin')
 
 const app = express()
 
@@ -43,6 +44,7 @@ app.use('/', index)
 app.use('/volunteer', volunteer)
 app.use('/organization', organization)
 app.use('/event', events)
+app.use('/admin', admin)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

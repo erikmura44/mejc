@@ -1,4 +1,4 @@
-var knex = require('./knex_config.js')
+const knex = require('./knex_config.js')
 
 function findCausesforVolunteer(volID){
   return knex('cause')
