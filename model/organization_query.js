@@ -42,6 +42,7 @@ function findOrganizationbyID(id){
       'organization.organization_name',
       'organization.about',
       'organization.website',
+      'organization.org_logo_url',
       'organization.email',
       'organization.phone_number',
       'organization.contact',

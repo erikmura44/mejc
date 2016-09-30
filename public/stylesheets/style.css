@@ -311,6 +311,16 @@ FORMS
 
 }
 
+.org-profile-pic  {
+  margin: auto;
+  max-height:120px;
+  width:auto;
+  overflow: hidden;
+  display: block;
+  box-shadow: 4px 4px 9px grey;
+
+}
+
 u {
   font-size:18px;
 }
