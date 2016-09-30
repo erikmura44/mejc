@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.text('about');
     table.string('email');
     table.string('phone_number');
+    table.string('picture_url');
 
     table.string('first_name');
     table.string('last_name');
