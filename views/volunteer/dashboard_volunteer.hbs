@@ -46,7 +46,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div>
+      <div class="row" id="form">
         <h3 class="events">Registered Events</h3><hr>
       </div>
       <div class="row">
@@ -56,21 +56,22 @@
               <a href='/event/view/{{id}}'>
                 <h2 class="event-list-names">{{title}}</h2>
               </a>
-              <span class="event-list-city">{{organization.name}}</span> ||
-              <span class="event-list-city">{{city}}, {{state}}</span> ||
+              <span class="event-list-city">{{organization.name}}</span>
+              <span class="event-list-city">{{city}}, {{state}}</span>
               <span class="event-list-city">{{start_date}} @ {{start_time}}</span>
             </div>
-            <div class="col-md-2 text-center">
+          </div>
+          <div class="col-md-2 text-center">
               <div class="row">
-                <div class="event-list">
-                  <a onclick="return confirm('Are you sure you would like to unregister from this event?');"href="/event/unregister/{{id}}">Unregister</a><br>
+                <div class="event-lists">
+                  <a onclick="return confirm('Are you sure you would like to unregister from this event?');" class="delete-button"href="/event/unregister/{{id}}">Unregister</a>
+                <div></div>
                   <span></span>
                 </div>
               </div>
-            </div>
+          </div>
           {{/each}}
+        </div>
       </div>
     </div>
-  </div>
-</div>
 </div>
