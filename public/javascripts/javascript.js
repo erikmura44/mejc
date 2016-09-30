@@ -100,3 +100,18 @@ function confirmPass() {
      alert('Wrong confirm password !');
   }
 }
+
+$(document).ready(() =>{
+
+  $('#event-register').click(() => {
+    // $('#event-register').css('display','none')
+    $("#event-register").css("display","none")
+    $("#event-unregister").css("display","inline-block")
+  })
+
+  $('#event-unregister').click(() => {
+    // $('#event-register').css('display','none')
+    $("#event-unregister").css("display","none")
+    $("#event-register").css("display","inline-block")
+  })
+})

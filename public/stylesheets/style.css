@@ -259,3 +259,10 @@ FORMS
     background: #6B9FFF;
     color:#fff;
 }
+
+
+/**********Register**********/
+#event-unregister {
+  display:none;
+  background-color: #FF5252;
+}

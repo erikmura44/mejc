@@ -26,7 +26,7 @@
               <li><a href="/volunteer/profile/update/{{volData.id}}">Edit Profile</a></li>
               <li><a href="/volunteer/password/update/{{volData.id}}">Update Password</a></li>
               <li><a href="/volunteer/username/update/{{volData.id}}">Update Username</a></li>
-              <li><a href="/volunteer/delete/{{volData.id}}">Delete Account</a></li>
+              <li><a onclick="return confirm('Are you sure you would like to delete this profile');" href="/volunteer/delete/{{volData.id}}">Delete Account</a></li>
             </ul>
           </div>
         </div>

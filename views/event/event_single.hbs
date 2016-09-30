@@ -16,8 +16,16 @@
           <u>Start Date/Time</u>: {{eventsRender.start_date}} / {{eventsRender.start_time}}<br><br>
           <u>End Date/Time</u>: {{eventsRender.end_date}} / {{eventsRender.end_time}}<br><br>
 
-          <a href="/event/register/{{eventsRender.id}}"><input type="submit" class="btn btn-primary" id="event-register" value="Register for Event"></a>
-          <a href="/event/update/{{eventsRender.id}}"><input type="button"  class="btn btn-primary" id="event-update" value="Update this event"></a>
+      <a href="/event/register/{{eventsRender.id}}">
+        <input type="submit" action="event/register/:id"class="btn btn-primary" id="event-register" value="Register for Event">
+      </a>
+
+
+      <a href="/event/unregister/{{eventsRender.id}}">
+        <input type="submit" action="event/unregister/:id"class="btn btn-primary" id="event-unregister" value="Unregister">
+      </a>
+
+
         </div>
         <div class="col-md-4">
           <div id="map" style="height: 300px;width:auto;"></div>
@@ -25,6 +33,7 @@
     </div>
   </div>
 </div>
+
 
 <script>
   var events = {{{events}}}
