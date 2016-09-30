@@ -94,7 +94,6 @@ router.post('/profile/update/:id', (req, res, next) => {
   }
 })
 
-// ********************** DO THIS TOMM MORN ***************************
 router.get('/username/update/:id', (req, res, next) => {
 
 })
