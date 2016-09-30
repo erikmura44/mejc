@@ -10,11 +10,11 @@
       </div>
       <div class="row">
         <div class="col-md-8" id="users">
-          <u>About</u>: {{eventsRender.description}}<br><br>
-          <u>Location</u>: {{eventsRender.location}}<br><br>
-          <u>Address</u>: {{eventsRender.street}},  {{eventsRender.city}}, {{eventsRender.zip}}<br><br>
-          <u>Start Date/Time</u>: {{eventsRender.start_date}} / {{eventsRender.start_time}}<br><br>
-          <u>End Date/Time</u>: {{eventsRender.end_date}} / {{eventsRender.end_time}}<br><br>
+          <u>About</u></b><br> {{eventsRender.description}}<br><br>
+          <u>Location</u></b><br> {{eventsRender.location}}<br><br>
+          <u>Address</u></b><br> {{eventsRender.street}},  {{eventsRender.city}}, {{eventsRender.zip}}<br><br>
+          <u>Start Date/Time</u></b><br> {{eventsRender.start_date}} / {{eventsRender.start_time}}<br><br>
+          <u>End Date/Time</u></b><br> {{eventsRender.end_date}} / {{eventsRender.end_time}}<br><br>
 
       <a href="/event/register/{{eventsRender.id}}">
         <input type="submit" action="event/register/:id"class="btn btn-primary" id="event-register" value="Register for Event">
