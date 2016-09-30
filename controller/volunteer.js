@@ -7,7 +7,7 @@ const volunteerModel = require('../model/volunteer_query')
 const eventModel = require('../model/event_query')
 const causeModel = require('../model/cause_query')
 
-router.get('/test', (req, res, next) => {
+router.get('/', (req, res, next) => {
   volunteerModel.findAllVolunteers()
   .then((volunteers) => {
     let volwCauses = volunteers.map((volData) => {
