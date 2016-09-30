@@ -15,7 +15,10 @@
           <u>Address</u></b><br> {{eventsRender.street}},  {{eventsRender.city}}, {{eventsRender.zip}}<br><br>
           <u>Start Date/Time</u></b><br> {{eventsRender.start_date}} / {{eventsRender.start_time}}<br><br>
           <u>End Date/Time</u></b><br> {{eventsRender.end_date}} / {{eventsRender.end_time}}<br><br>
-
+          {{#each eventsCauseRender}}
+            <span>{{name}} |</span>
+          {{/each}}
+          <br><br>
       <a href="/event/register/{{eventsRender.id}}">
         <input type="submit" action="event/register/:id"class="btn btn-primary" id="event-register" value="Register for Event">
       </a>
