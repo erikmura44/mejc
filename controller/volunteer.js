@@ -48,7 +48,6 @@ router.get('/dashboard', (req, res, next)=>{
     //         return eventData
     //       })
     //   })
-    // })
 
     Promise.all([volData, volEvents])
     .then((data) => {
