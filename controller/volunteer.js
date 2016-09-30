@@ -26,7 +26,7 @@ router.get('/dashboard', (req, res, next)=>{
   .then((data) => {
     console.log(data);
     res.render('volunteer/dashboard_volunteer', {
-      title: 'MEJC',
+      title: 'iVolunteer',
       volData:data[0],
       eventData:data[1]
     })
@@ -37,7 +37,7 @@ router.get('/view/:id', (req, res, next) => {
   volunteerModel.findVolunteerbyID(req.params.id)
   .then(function(volunteer){
     res.render('volunteer/volunteer_single', {
-      title: 'MEJC',
+      title: 'iVolunteer',
       volunteer: JSON.stringify(volunteer),
       volunteerRender: volunteer
     })

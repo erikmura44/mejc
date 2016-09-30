@@ -18,7 +18,7 @@ router.get('/view/:id', (req, res, next) => {
   eventModel.findEventbyID(req.params.id)
   .then(function(events){
     res.render('event/event_single', {
-      title: 'MEJC',
+      title: 'iVolunteer',
       events: JSON.stringify(events),
       eventsRender: events
     })

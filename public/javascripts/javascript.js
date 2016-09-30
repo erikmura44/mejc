@@ -1,4 +1,3 @@
-
 function volunteerMap (volunteer){
 
 address = volunteer.city + "," + volunteer.state
