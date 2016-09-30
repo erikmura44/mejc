@@ -18,13 +18,13 @@ function findEventbyVolID(volID){
     .join('volunteer', 'event_volunteer.volunteer_id', 'volunteer.id')
     .where('volunteer.id', volID)
     .select (
+      'event.id',
       'event.title',
       'event.city',
       'event.state',
       'event.start_date',
       'event.start_time'
     )
-  // return knex('event').where("registered_volunteers", volID)
 }
 
 function addEvent(eventInfo, orgID){
@@ -92,7 +92,7 @@ function registerVolforEvent(eventID, userID) {
 
 //this needs to be tested
 function unregisterVolfromEvent(eventID, userID) {
-  return knex('event').where('id', eventID)
+  return knex('event').where('id', eventID).del()
 }
 
 
