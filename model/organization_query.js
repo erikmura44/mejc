@@ -13,7 +13,6 @@ function findOrganizationData(orgName){
     }
   })
 }
-// *************************************************************** //
 
 function addOrganizationInfo(orgName, orgInfo){
   return knex('organization')
