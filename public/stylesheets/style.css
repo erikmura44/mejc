@@ -192,7 +192,6 @@ nav.navbar.navbar-default li a:hover {
 nav.navbar.navbar-default li.icon {
     display: none;
 }
-
 /**********
 FORMS
 **********/
@@ -308,9 +307,7 @@ FORMS
   overflow: hidden;
   display: block;
   box-shadow: 4px 4px 9px grey;
-
 }
-
 .org-profile-pic  {
   margin: auto;
   max-height:120px;
@@ -318,18 +315,14 @@ FORMS
   overflow: hidden;
   display: block;
   box-shadow: 4px 4px 9px grey;
-
 }
-
 u {
   font-size:18px;
 }
-
 #map  {
   border:1px 0px 1px 0px grey;
   box-shadow: 2px 2px 6px grey;
 }
-
 .vol-cause  {
   display: inline-block;
   border: 1px 0px 1px 0px solid black;
@@ -341,9 +334,7 @@ u {
   margin-bottom: 3px;
   font-size:14px;
   box-shadow: 1px 1px 2px grey;
-
 }
-
 #causeU {
   display: block;
 }
