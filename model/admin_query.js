@@ -1,8 +1,8 @@
 const knex = require('./knex_config.js')
 
-function findAdminData() {
+function findAdminData(adminName) {
   return knex('organization')
-  .where('user_name',orgName).first()
+  .where('user_name', adminName).first()
   .then((userData) => {
     if (typeof userData === 'undefined') {
       return

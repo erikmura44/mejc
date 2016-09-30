@@ -33,6 +33,7 @@ router.post('/register/organization', (req, res, next) => {
         }
         indexModel.addOrganization(userData)
           .then(() =>{
+            console.log(userData);
             userData.type = 'organization'
             req.logIn(userData, (err) => {
               if (err) { return next(err) }
@@ -40,11 +41,12 @@ router.post('/register/organization', (req, res, next) => {
             })
           })
           .catch((err) => {
-            res.render('error', {message: 'error in inserting user data into database'})
+            next(err)
           })
       }
     })
 })
+
 
 router.get('/register/volunteer', (req,res,next) => {
   res.render('index/register_volunteer')
