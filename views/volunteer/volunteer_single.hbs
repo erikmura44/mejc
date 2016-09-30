@@ -14,6 +14,11 @@
           <u>Location</u><br> {{volunteerRender.city}}, {{volunteerRender.state}}<br><br>
           <u>Email</u><br>{{volunteerRender.email}}<br><br>
           <u>Phone Number</u><br> {{volunteerRender.phone_number}}<br><br>
+          <div class="cause-tags">
+              {{#each volCauseRender}}
+                <span>{{name}}</span>
+              {{/each}
+          </div>
         </div>
         <div class="col-md-6">
           <div id="map" style="height: 300px;width:auto;"></div>

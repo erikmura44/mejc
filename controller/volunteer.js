@@ -62,23 +62,17 @@ router.get('/view/:id', (req, res, next) => {
     next(err)
   })
 
-  {{#each volCauseRender}}
-    <span>{{name}}</span>
-  {{/each}
-
-
-
-  .then(function(volunteer){
-    res.render('volunteer/volunteer_single', {
-      title: 'iVolunteer',
-      volunteer: JSON.stringify(volunteer),
-      volunteerRender: volunteer
-    })
-  })
-  .catch((err) => {
-    console.error('Error caught in deleting post from DB')
-    next(err)
-  })
+  // .then(function(volunteer){
+  //   res.render('volunteer/volunteer_single', {
+  //     title: 'iVolunteer',
+  //     volunteer: JSON.stringify(volunteer),
+  //     volunteerRender: volunteer
+  //   })
+  // })
+  // .catch((err) => {
+  //   console.error('Error caught in deleting post from DB')
+  //   next(err)
+  // })
 })
 
 router.get('/profile/new', (req, res, next) => {
