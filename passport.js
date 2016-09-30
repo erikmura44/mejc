@@ -59,7 +59,7 @@ passport.use('volunteer', new LocalStrategy(
 
 passport.use('admin', new LocalStrategy(
   (username, password, done) => {
-    organizationModel.findOrganizationData(username)
+    adminModel.findAdminData(username)
     .then((userData) => {
       if(userData){
         bcrypt.compare(password, userData.password,

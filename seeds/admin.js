@@ -1,6 +1,6 @@
 
 exports.seed = function(knex, Promise) {
-  return knex.raw('ALTER SEQUENCE organization_id_seq RESTART WITH 3')
+  return knex.raw('ALTER SEQUENCE admin_id_seq RESTART WITH 3')
     .then(function() {
       return knex('admin').del()
     })
