@@ -29,7 +29,7 @@ router.get('/dashboard', (req, res, next)=>{
   Promise.all([orgData, orgEvents])
     .then((data) => {
       res.render('organization/dashboard_organization', {
-        title: 'MEJC',
+        title: 'iVolunteer',
         orgData:data[0],
         eventData:data[1]
       })
@@ -43,7 +43,7 @@ router.get('/view/:id', (req, res, next) => {
   Promise.all([orgData, orgEvents])
     .then((data) => {
       res.render('organization/organization_single', {
-        title: 'MEJC',
+        title: 'iVolunteer',
         organization: JSON.stringify(data[0]),
         organizationRender: data[0],
         events: data[1]
