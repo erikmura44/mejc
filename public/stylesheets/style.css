@@ -1,3 +1,13 @@
+body  {
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+.about  {
+  font-size:17px;
+  padding:20px 10px 3px 10px;
+  margin-top: 0px;
+}
+
 a {
   color: #003c9e;
 }
@@ -28,6 +38,11 @@ a {
 .username {
     text-align: center;
 }
+
+.name {
+    text-align: center;
+}
+
 #users {
     font-size: 1.3em;
 }
@@ -90,13 +105,25 @@ Event List
 
 .event-list-names {
   font-size: 20px;
+  padding-bottom:5px;
 }
 
 .event-list-city {
   font-size: 16px;
   padding-right: 50px;
-  padding-left: 50px;
+  padding-left: 0px;
 }
+
+/*************COULD ADD DESCRIPTION SNIPPET TO EVENT LISTS***********/
+
+
+/*.event-list-description {
+  width:75%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}*/
 
 .event-list-names:hover {
   color: #0457dd;
@@ -272,8 +299,16 @@ FORMS
   background-color: #FF5252;
 }
 
+.vol-profile-pic  {
+  margin: auto;
+  border-radius: 65%;
+  width: 22%;
+  display: block;
+  box-shadow: 4px 4px 9px grey;
+}
 
 
-h1  {
-  font-family: 'PT Sans Caption', sans-serif;
+#map  {
+  border:1px 0px 1px 0px grey;
+  box-shadow: 2px 2px 6px grey;
 }
