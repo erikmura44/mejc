@@ -13,27 +13,39 @@ router.get('/', (req, res, next) => {
         data: data
       })
     })
+    .catch((err) => {
+      console.error('Error caught in deleting post from DB')
+      next(err)
+    })
 })
 
 router.get('/dashboard', (req, res, next)=>{
   if (!req.isAuthenticated()){
     res.redirect('/login/volunteer')
-    return
-  }
-  let volData  = volunteerModel.findVolunteerbyID(req.user.id)
-  let volEvents = eventModel.findEventbyVolID(req.user.id)
-  Promise.all([volData, volEvents])
-  .then((data) => {
-    console.log(data);
-    res.render('volunteer/dashboard_volunteer', {
-      title: 'iVolunteer',
-      volData:data[0],
-      eventData:data[1]
+  } else if (req.user.type !== 'volunteer') {
+    res.redirect('/organization/dashboard')
+  } else {
+    let volData  = volunteerModel.findVolunteerbyID(req.user.id)
+    let volEvents = eventModel.findEventbyVolID(req.user.id)
+    Promise.all([volData, volEvents])
+    .then((data) => {
+      res.render('volunteer/dashboard_volunteer', {
+        title: 'iVolunteer',
+        volData:data[0],
+        eventData:data[1]
+      })
     })
-  })
+    .catch((err) => {
+      console.error('Error caught in deleting post from DB')
+      next(err)
+    })
+  }
 })
 
 router.get('/view/:id', (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    res.redirect('/login')
+  }
   volunteerModel.findVolunteerbyID(req.params.id)
   .then(function(volunteer){
     res.render('volunteer/volunteer_single', {
@@ -42,15 +54,25 @@ router.get('/view/:id', (req, res, next) => {
       volunteerRender: volunteer
     })
   })
+  .catch((err) => {
+    console.error('Error caught in deleting post from DB')
+    next(err)
+  })
 })
 
 router.get('/profile/new', (req, res, next) => {
+  if (!req.isAuthenticated() || req.user.type !== 'volunteer') {
+    res.redirect('/login/volunteer')
+  }
   res.render('volunteer/profile_new_volunteer', {
     username: req.user.user_name
   })
 })
 
 router.post('/profile/new', (req, res, next) => {
+  if (!req.isAuthenticated() || req.user.type !== 'volunteer') {
+    res.redirect('/login/volunteer')
+  }
   volunteerModel.updateVolunteerInfo(req.user.user_name, req.body)
     .then((data) => {
       res.redirect('/volunteer/dashboard')
@@ -62,16 +84,25 @@ router.post('/profile/new', (req, res, next) => {
 })
 
 router.get('/profile/update/:id', (req, res, next) => {
-  volunteerModel.findVolunteerbyID(req.params.id)
+  if (!req.isAuthenticated() || req.user.type !== 'volunteer') {
+    res.redirect('/login/volunteer')
+  } else if (req.user.id !== parseInt(req.params.id)){
+    res.redirect('/volunteer/dashboard')
+  } else {
+    volunteerModel.findVolunteerbyID(req.params.id)
     .then((volData) => {
       res.render('volunteer/profile_update_volunteer', {
         volData: volData
       })
     })
+    .catch((err) => {
+      console.error('Error caught in inserting into DB')
+      next(err)
+    })
+  }
 })
 
 router.post('/profile/update/:id', (req, res, next) => {
-  console.log('i got hit')
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     volunteerModel.updateVolunteerUser(req.params.id, req.body)
     .then(() => {
@@ -87,6 +118,26 @@ router.post('/profile/update/:id', (req, res, next) => {
   }
 })
 
+// BUILD THIS OUT  *************************************************************
+router.get('/username/update/:id', (req, res, next) => {
+
+})
+
+// BUILD THIS OUT  *************************************************************
+router.post('/username/update/:id', (req, res, next) => {
+  // redirect to /event/view/:id
+})
+
+// BUILD THIS OUT  *************************************************************
+router.get('/password/update/:id', (req, res, next) => {
+
+})
+
+// BUILD THIS OUT  *************************************************************
+router.post('/password/update/:id', (req, res, next) => {
+  // redirect to /event/view/:id
+})
+
 router.get('/delete/:id', (req, res, next) => {
   if(req.isAuthenticated() && req.user.id === parseInt(req.params.id)){
     volunteerModel.deleteVolunteerUser(req.params.id)
@@ -100,7 +151,6 @@ router.get('/delete/:id', (req, res, next) => {
     })
   } else {
     console.log('CAN\'T DELETE AN ACCOUNT IF YOU\'RE NOT LOGGED IN OR AREN\'T THE USER!!!!')
-    return
   }
 })
 
