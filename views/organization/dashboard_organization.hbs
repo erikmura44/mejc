@@ -24,7 +24,7 @@
               <li><a href="/organization/profile/update/{{orgData.id}}">Edit Profile</a></li>
               <li><a href="/organization/password/update/{{orgData.id}}">Update Password</a></li>
               <li><a href="/organization/username/update/{{orgData.id}}">Update Username</a></li>
-              <li><a href="/organization/delete/{{orgData.id}}">Delete Account</a></li>
+              <li><a onclick="return confirm('Are you sure you would like to delete this profile?');" href="/organization/delete/{{orgData.id}}">Delete Account</a></li>
             </ul>
           </div>
         </div>
@@ -69,7 +69,7 @@
             <div class="row">
               <div class="event-list">
                 <a href="/event/update/{{id}}">Edit</a><br>
-                <a href="/event/delete/{{id}}">Delete</a>
+                <a onclick="return confirm('Are you sure you would like to delete this event');" class="delete-button"href="/event/delete/{{id}}">Delete</a>
                 <span></span>
               </div>
             </div>

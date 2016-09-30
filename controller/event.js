@@ -56,8 +56,8 @@ router.get('/register/:id', (req, res, next) => {
   console.log(parseInt(req.params.id), req.user.id);
   eventModel.registerVolforEvent(parseInt(req.params.id), req.user.id)
     .then((data)=>{
-      console.log(data)
-      res.redirect('/event')
+      console.log('User is registered for event id #' + req.params.id)
+      // res.redirect('/event/view/' + req.params.id)
     })
 })
 
@@ -65,7 +65,7 @@ router.get('/unregister/:id', (req, res, next) => {
   eventModel.unregisterVolfromEvent(req.params.id, req.user.id)
     .then((data)=>{
       console.log(data)
-      res.redirect('/event')
+      // res.redirect('/event')
     })
 })
 
