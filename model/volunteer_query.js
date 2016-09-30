@@ -78,16 +78,6 @@ function filterVolunteerbyCause(selectedCause){
     .where('cause.name', selectedCause)
 }
 
-function findVolunteerCauses(volID){
-  return knex('cause')
-    .join('cause_volunteer','cause.id', 'cause_volunteer.cause_id')
-    .join('volunteer', 'cause_volunteer.volunteer_id', 'volunteer.id')
-    .where('volunteer.id', volID)
-    .select (
-      'cause.name'
-    )
-}
-
 function filterVolunteerbyCause_City(selectedCause, selectedCity){
   return knex('cause')
     .join('cause_volunteer','cause.id', 'cause_volunteer.cause_id')
@@ -120,7 +110,6 @@ module.exports = {
   filterVolunteerbyCity: filterVolunteerbyCity,
   filterVolunteerbyCause: filterVolunteerbyCause,
   filterVolunteerbyCause_City: filterVolunteerbyCause_City,
-  findVolunteerCauses: findVolunteerCauses,
   updateVolunteerUser: updateVolunteerUser,
   deleteVolunteerUser: deleteVolunteerUser
 }
