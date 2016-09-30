@@ -1,4 +1,4 @@
-var knex = require('./knex_config.js')
+const knex = require('./knex_config.js')
 
 // *********** SHOULD WE RESTRICT THE USER DATA RETURNED? ******** //
 function findVolunteerData(volName){
