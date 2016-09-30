@@ -98,10 +98,11 @@ router.post('/login/volunteer', passport.authenticate('volunteer', {
 }))
 
 router.get('/logout', (req,res,next) => {
-  if(req.isAuthenticated()){
-    req.logout()
+  if(!req.isAuthenticated()){
     res.redirect('/')
   }
+  req.logout()
+  res.redirect('/')
 })
 
 module.exports = router
