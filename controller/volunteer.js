@@ -37,9 +37,22 @@ router.get('/dashboard', (req, res, next)=>{
     res.redirect('/organization/dashboard')
   } else {
     let volData  = volunteerModel.findVolunteerbyID(req.user.id)
-    let volEvents = eventModel.findEventbyVolID(req.user.id)
+
+    let volEvents =
+    eventModel.findEventbyVolID(req.user.id)
+    // .then((events) => {
+    //   let eventswEvents = events.map((eventData) => {
+    //     return causeModel.findCausesforEvent(eventData.id)
+    //       .then((causes) => {
+    //         eventData.causes = causes
+    //         return eventData
+    //       })
+    //   })
+    // })
+
     Promise.all([volData, volEvents])
     .then((data) => {
+      console.log(data[1]);
       res.render('volunteer/dashboard_volunteer', {
         title: 'iVolunteer',
         volData:data[0],
@@ -50,6 +63,7 @@ router.get('/dashboard', (req, res, next)=>{
       console.error('Error caught in deleting post from DB')
       next(err)
     })
+
   }
 })
 

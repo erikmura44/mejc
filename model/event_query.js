@@ -13,7 +13,18 @@ function findEventbyOrgID(orgID){
 }
 
 function findEventbyVolID(volID){
-  return knex('event').where("registered_volunteers", volID)
+  return knex('event')
+    .join('event_volunteer','event.id', 'event_volunteer.event_id')
+    .join('volunteer', 'event_volunteer.volunteer_id', 'volunteer.id')
+    .where('volunteer.id', volID)
+    .select (
+      'event.title',
+      'event.city',
+      'event.state',
+      'event.start_date',
+      'event.start_time'
+    )
+  // return knex('event').where("registered_volunteers", volID)
 }
 
 function addEvent(eventInfo, orgID){
