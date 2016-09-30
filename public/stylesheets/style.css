@@ -42,7 +42,12 @@ a {
 .title-post {
     text-align: center;
 }
-
+.link {
+    text-decoration: none;
+}
+.link-list {
+    list-style: none;
+}
 
 /***************
 organization list
